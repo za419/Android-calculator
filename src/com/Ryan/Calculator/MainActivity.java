@@ -59,8 +59,8 @@ public class MainActivity extends Activity
 		int n=(int)tmp;
 		if (n==tmp)
 		{
-			if (n==-1)
-				return "-\u03C0";
+			if (n==-1) // If it is a negative, but otherwise 1
+				return "-\u03C0"; // Return negative pi
 			return (n==1 ? "" : Integer.toString(n))+"\u03C0";
 		}
 		else
@@ -75,8 +75,8 @@ public class MainActivity extends Activity
 		int n=(int)tmp;
 		if (n==tmp)
 		{
-			if (n==-1)
-				return "-e";
+			if (n==-1) // If it is a negative, but otherwise 1
+				return "-e"; // Return negative e
 			return (n==1 ? "" : Integer.toString((int)tmp))+"e";
 		}
 		else
