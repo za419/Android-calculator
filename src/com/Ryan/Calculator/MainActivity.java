@@ -1,11 +1,11 @@
 package com.Ryan.Calculator;
 
+import android.annotation.TargetApi;
 import android.app.*;
 import android.os.*;
 import android.view.*;
 import android.widget.*;
 import android.view.View.*;
-import java.util.*;
 import java.math.*;
 
 public class MainActivity extends Activity
@@ -13,7 +13,8 @@ public class MainActivity extends Activity
 	public double currentValue=0;
 	
     /** Called when the activity is first created. */
-    @Override
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+	@Override
     public void onCreate(Bundle savedInstanceState)
 	{
         super.onCreate(savedInstanceState);
@@ -21,7 +22,8 @@ public class MainActivity extends Activity
 		if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB)
 		{
 			getActionBar().hide();
-			findViewById(R.id.mainLayout).setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
+			if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+				findViewById(R.id.mainLayout).setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
 		}
 		setZero();
     }
