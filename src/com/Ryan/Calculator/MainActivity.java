@@ -1,11 +1,11 @@
 package com.Ryan.Calculator;
 
+import android.annotation.TargetApi;
 import android.app.*;
 import android.os.*;
 import android.view.*;
 import android.widget.*;
 import android.view.View.*;
-import java.util.*;
 import java.math.*;
 
 public class MainActivity extends Activity
@@ -13,7 +13,8 @@ public class MainActivity extends Activity
 	public double currentValue=0;
 	
     /** Called when the activity is first created. */
-    @Override
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+	@Override
     public void onCreate(Bundle savedInstanceState)
 	{
         super.onCreate(savedInstanceState);
@@ -21,7 +22,8 @@ public class MainActivity extends Activity
 		if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB)
 		{
 			getActionBar().hide();
-			findViewById(R.id.mainLayout).setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
+			if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+				findViewById(R.id.mainLayout).setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
 		}
 		setZero();
     }
@@ -119,7 +121,7 @@ public class MainActivity extends Activity
 	public void add(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
+		currentValue=getValue(ev);
 		setZero(ev);
 		final Button b=(Button)findViewById(R.id.mainCalculateButton);
 		b.setVisibility(View.VISIBLE);
@@ -136,11 +138,16 @@ public class MainActivity extends Activity
 			}
 		});
 	}
+
+	public double getValue(final EditText ev) // Parses the content of ev into a double.
+	{
+		return parseDouble(ev.getText().toString().trim());
+	}
 	
 	public void subtract(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
+		currentValue=getValue(ev);
 		setZero(ev);
 		final Button b=(Button)findViewById(R.id.mainCalculateButton);
 		b.setVisibility(View.VISIBLE);
@@ -161,7 +168,7 @@ public class MainActivity extends Activity
 	public void subtract2(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
+		currentValue=getValue(ev);
 		setZero(ev);
 		final Button b=(Button)findViewById(R.id.mainCalculateButton);
 		b.setVisibility(View.VISIBLE);
@@ -182,7 +189,7 @@ public class MainActivity extends Activity
 	public void multiply(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
+		currentValue=getValue(ev);
 		setZero(ev);
 		final Button b=(Button)findViewById(R.id.mainCalculateButton);
 		b.setVisibility(View.VISIBLE);
@@ -203,7 +210,7 @@ public class MainActivity extends Activity
 	public void divide(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
+		currentValue=getValue(ev);
 		setZero(ev);
 		final Button b=(Button)findViewById(R.id.mainCalculateButton);
 		b.setVisibility(View.VISIBLE);
@@ -224,7 +231,7 @@ public class MainActivity extends Activity
 	public void divide2(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
+		currentValue=getValue(ev);
 		setZero(ev);
 		final Button b=(Button)findViewById(R.id.mainCalculateButton);
 		b.setVisibility(View.VISIBLE);
@@ -245,7 +252,7 @@ public class MainActivity extends Activity
 	public void remainder(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
+		currentValue=getValue(ev);
 		if (Math.round(currentValue)!=currentValue)
 		{
 			setText("Error: Parameter is not an integer: "+ev.getText(), ev);
@@ -277,7 +284,7 @@ public class MainActivity extends Activity
 	public void remainder2(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
+		currentValue=getValue(ev);
 		if (Math.round(currentValue)!=currentValue)
 		{
 			setText("Error: Parameter is not an integer: "+ev.getText(), ev);
