@@ -121,7 +121,7 @@ public class MainActivity extends Activity
 	public void add(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
+		currentValue=getValue(ev);
 		setZero(ev);
 		final Button b=(Button)findViewById(R.id.mainCalculateButton);
 		b.setVisibility(View.VISIBLE);
@@ -138,11 +138,16 @@ public class MainActivity extends Activity
 			}
 		});
 	}
+
+	public double getValue(final EditText ev) // Parses the content of ev into a double.
+	{
+		return parseDouble(ev.getText().toString().trim());
+	}
 	
 	public void subtract(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
+		currentValue=getValue(ev);
 		setZero(ev);
 		final Button b=(Button)findViewById(R.id.mainCalculateButton);
 		b.setVisibility(View.VISIBLE);
@@ -163,7 +168,7 @@ public class MainActivity extends Activity
 	public void subtract2(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
+		currentValue=getValue(ev);
 		setZero(ev);
 		final Button b=(Button)findViewById(R.id.mainCalculateButton);
 		b.setVisibility(View.VISIBLE);
@@ -184,7 +189,7 @@ public class MainActivity extends Activity
 	public void multiply(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
+		currentValue=getValue(ev);
 		setZero(ev);
 		final Button b=(Button)findViewById(R.id.mainCalculateButton);
 		b.setVisibility(View.VISIBLE);
@@ -205,7 +210,7 @@ public class MainActivity extends Activity
 	public void divide(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
+		currentValue=getValue(ev);
 		setZero(ev);
 		final Button b=(Button)findViewById(R.id.mainCalculateButton);
 		b.setVisibility(View.VISIBLE);
@@ -226,7 +231,7 @@ public class MainActivity extends Activity
 	public void divide2(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
+		currentValue=getValue(ev);
 		setZero(ev);
 		final Button b=(Button)findViewById(R.id.mainCalculateButton);
 		b.setVisibility(View.VISIBLE);
@@ -247,7 +252,7 @@ public class MainActivity extends Activity
 	public void remainder(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
+		currentValue=getValue(ev);
 		if (Math.round(currentValue)!=currentValue)
 		{
 			setText("Error: Parameter is not an integer: "+ev.getText(), ev);
@@ -279,7 +284,7 @@ public class MainActivity extends Activity
 	public void remainder2(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
+		currentValue=getValue(ev);
 		if (Math.round(currentValue)!=currentValue)
 		{
 			setText("Error: Parameter is not an integer: "+ev.getText(), ev);
