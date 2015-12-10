@@ -1,8 +1,5 @@
 package com.Ryan.Calculator;
 
-import java.math.*;
-import android.view.inputmethod.*;
-
 public class Complex
 {
 	public double real;
