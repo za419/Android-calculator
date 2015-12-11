@@ -10,109 +10,121 @@ import java.math.*;
 
 public class MainActivity extends Activity
 {
-	public double currentValue=0; // Holds the currently entered double.
-	
-    /** Called when the activity is first created. */
-    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+	public double currentValue=0;
+
+	/** Called when the activity is first created. */
+	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 	@Override
-    public void onCreate(Bundle savedInstanceState)
+	public void onCreate(Bundle savedInstanceState)
 	{
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-		if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB) // If on or above Honeycomb...
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+		if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB)
 		{
-			getActionBar().hide(); // Hide the action bar. We don't need it.
-			if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.ICE_CREAM_SANDWICH) // If on or above ICS...
-				findViewById(R.id.mainLayout).setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE); // Set the UI to low profile.
+			getActionBar().hide();
+			if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+				findViewById(R.id.mainLayout).setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
 		}
-		setZero(); // Set the text to zero, allowing the app to start.
-    }
-	
-	public double parseDouble(String num) // Function like Double.parseDouble(), except adding support for some constants.
-	{
-		if (num.indexOf("Error", 0)==0 || num.indexOf("ERROR", 0)==0) // Errors have a value of 0
-			return 0;
-		if (num.charAt(num.length()-1)=='\u03C0') // Check for the pi symbol, and use it to represent pi.
-		{
-			if (num.length()==1) // If that's the entire string...
-				return Math.PI; // Its value is pi
-			return parseDouble(num.substring(0, num.length()-1))*Math.PI; // Else, its value is that of the first part of the string times pi. This allows for "5e*pi" to be computed natively.
-		}
-		if (num.charAt(num.length()-1)=='e') // Use 'e' for e.
-		{
-			if (num.length()==1) // If that's the entire string...
-				return Math.E; // Its value is e.
-			return parseDouble(num.substring(0, num.length()-1))*Math.E; // Else, its value is that of the first part of the string times e. See above comment.
-		}
-		return Double.parseDouble(num); // If there is no special character, then the native parseDouble() will work.
+		setZero();
 	}
-	
-	public String inIntTermsOfPi(double num) // Returns the number as a string, either as-is or as an integer prefixed to pi.
+
+	public double parseDouble(String num)
+	{
+		if (num.indexOf("Error", 0)==0 || num.indexOf("ERROR", 0)==0)
+			return 0;
+		if (num.charAt(num.length()-1)=='\u03C0')
+		{
+			if (num.length()==1)
+				return Math.PI;
+			else if (num.length()==2 && num.charAt(0)=='-') // If the string is two long and the first character is a negation
+				return -Math.PI; // Return negative pi
+			return parseDouble(num.substring(0, num.length()-1))*Math.PI;
+		}
+		if (num.charAt(num.length()-1)=='e')
+		{
+			if (num.length()==1)
+				return Math.E;
+			else if (num.length()==2 && num.charAt(0)=='-') // If the string is two long and the first character is a negation
+				return -Math.E; // Return negative e
+			return parseDouble(num.substring(0, num.length()-1))*Math.E;
+		}
+		return Double.parseDouble(num);
+	}
+
+	public String inIntTermsOfPi(double num)
 	{
 		if (num==0)
-			return "0"; // Special case, because 0 is obviously special.
+			return "0";
 		double tmp=num/Math.PI;
 		int n=(int)tmp;
-		if (n==tmp) // If the quotient is an integer
-			return (n==1 ? "" : Integer.toString(n))+"\u03C0"; // Return it either prefixed (n!=1) or omitted in front of pi.
+		if (n==tmp)
+		{
+			if (n==-1)
+				return "-\u03C0";
+			return (n==1 ? "" : Integer.toString(n))+"\u03C0";
+		}
 		else
-			return Double.toString(num); // Else, return it as a string.
+			return Double.toString(num);
 	}
-	
-	public String inIntTermsOfE(double num) // Returns the number as a string, either as-is or as an integer prefixed to e.
+
+	public String inIntTermsOfE(double num)
 	{
 		if (num==0)
-			return "0"; // Special case.
+			return "0";
 		double tmp=num/Math.E;
 		int n=(int)tmp;
-		if (n==tmp) // If the quotient is an integer
-			return (n==1 ? "" : Integer.toString((int)tmp))+"e"; // Return it either prefixed (n!=1) or omitted in fron tof e.
+		if (n==tmp)
+		{
+			if (n==-1)
+				return "-e";
+			return (n==1 ? "" : Integer.toString((int)tmp))+"e";
+		}
 		else
-			return Double.toString(num); // Else, return it as a string.
+			return Double.toString(num);
 	}
-	
-	public String inIntTermsOfAny(double num) // Returns the number either in terms of e or in terms of pi.
+
+	public String inIntTermsOfAny(double num)
 	{
 		String out=inIntTermsOfPi(num);
-		if (!out.equals(Double.toString(num))) // If it is in terms of pi
-			return out; // Return it in terms of pi
+		if (!out.equals(Double.toString(num)))
+			return out;
 		else
-			return inIntTermsOfE(num); // Otherwise return it in terms of e
+			return inIntTermsOfE(num);
 	}
-	
-	public void zero(View v) // Triggers the zeroing of the input, as a button click handler.
+
+	public void zero(View v)
 	{
 		setZero();
 	}
-	
-	public void setZero(EditText ev) // Set an arbitrary EditText to "0"
+
+	public void setZero(EditText ev)
 	{
 		setText("0", ev);
 	}
-	
-	public void setZero() // Zero the main input
+
+	public void setZero()
 	{
 		setZero((EditText)findViewById(R.id.mainTextField));
 	}
-	
-	public void setText(String n, EditText ev) // Set an arbitrary EditText to have the content n
+
+	public void setText(String n, EditText ev)
 	{
 		ev.setText(n);
 		ev.setSelection(0, n.length()); // Ensure the cursor is at the end
 	}
-	
-	public void setText(String n) // Set the main input to have the content n
+
+	public void setText(String n)
 	{
 		setText(n, (EditText)findViewById(R.id.mainTextField));
 	}
-	
-	public void terms(View v) // Place the number in terms of e and pi
+
+	public void terms(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(inIntTermsOfAny(parseDouble(ev.getText().toString())), ev);
 	}
-	
-	public void decimal(View v) // Place the number in decimals.
+
+	public void decimal(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(Double.toString(parseDouble(ev.getText().toString())), ev);
