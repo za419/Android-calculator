@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.Ryan.Calculator;
 
 import android.annotation.TargetApi;
