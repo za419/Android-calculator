@@ -36,12 +36,16 @@ public class MainActivity extends Activity
 		{
 			if (num.length()==1)
 				return Math.PI;
+			else if (num.length()==2 && num.charAt(0)=='-') // If the string is two long and the first character is a negation
+				return -Math.PI; // Return negative pi
 			return parseDouble(num.substring(0, num.length()-1))*Math.PI;
 		}
 		if (num.charAt(num.length()-1)=='e')
 		{
 			if (num.length()==1)
 				return Math.E;
+			else if (num.length()==2 && num.charAt(0)=='-') // If the string is two long and the first character is a negation
+				return -Math.E; // Return negative e
 			return parseDouble(num.substring(0, num.length()-1))*Math.E;
 		}
 		return Double.parseDouble(num);
@@ -54,7 +58,11 @@ public class MainActivity extends Activity
 		double tmp=num/Math.PI;
 		int n=(int)tmp;
 		if (n==tmp)
+		{
+			if (n==-1)
+				return "-\u03C0";
 			return (n==1 ? "" : Integer.toString(n))+"\u03C0";
+		}
 		else
 			return Double.toString(num);
 	}
@@ -66,7 +74,11 @@ public class MainActivity extends Activity
 		double tmp=num/Math.E;
 		int n=(int)tmp;
 		if (n==tmp)
+		{
+			if (n==-1)
+				return "-e";
 			return (n==1 ? "" : Integer.toString((int)tmp))+"e";
+		}
 		else
 			return Double.toString(num);
 	}
