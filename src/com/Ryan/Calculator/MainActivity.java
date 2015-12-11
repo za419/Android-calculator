@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.Ryan.Calculator;
 
 import android.annotation.TargetApi;
@@ -117,267 +118,269 @@ public class MainActivity extends Activity
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(Double.toString(parseDouble(ev.getText().toString())), ev);
 	}
-	
+
+	public double getValue(final EditText ev) // Parses the content of ev into a double.
+	{
+		return parseDouble(ev.getText().toString().trim());
+	}
+
+	public void doCalculate(final EditText ev, OnClickListener ocl) // Common code for buttons that use the mainCalculateButton.
+	{
+		doCalculate(ev, ocl, 0);
+	}
+
+	public void doCalculate(final EditText ev, OnClickListener ocl, double n) // Common code for buttons that use the mainCalculateButton, setting the default value to n rather than zero.
+	{
+		setText(Double.toString(n));
+		final Button b=(Button)findViewById(R.id.mainCalculateButton);
+		b.setVisibility(View.VISIBLE);
+		b.setOnClickListener(ocl);
+	}
+
 	public void add(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
-		setZero(ev);
-		final Button b=(Button)findViewById(R.id.mainCalculateButton);
-		b.setVisibility(View.VISIBLE);
-		b.setOnClickListener(new OnClickListener()
+		currentValue=getValue(ev);
+		doCalculate(ev, new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
 			{
+				v.setOnClickListener(null);
 				String num=ev.getText().toString().trim();
 				if (num==null || "".equals(num))
 					return;
 				setText(inIntTermsOfAny(currentValue+parseDouble(num)), ev);
-				b.setVisibility(View.GONE);
+				v.setVisibility(View.GONE);
 			}
 		});
 	}
-	
+
 	public void subtract(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
-		setZero(ev);
-		final Button b=(Button)findViewById(R.id.mainCalculateButton);
-		b.setVisibility(View.VISIBLE);
-		b.setOnClickListener(new OnClickListener()
+		currentValue=getValue(ev);
+		doCalculate(ev, new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
 			{
-				@Override
-				public void onClick(View v)
-				{
-					String num=ev.getText().toString().trim();
-					if (num==null || "".equals(num))
-						return;
-					setText(inIntTermsOfAny(currentValue-parseDouble(num)), ev);
-					b.setVisibility(View.GONE);
-				}
-			});
+				v.setOnClickListener(null);
+				String num=ev.getText().toString().trim();
+				if (num==null || "".equals(num))
+					return;
+				setText(inIntTermsOfAny(currentValue-parseDouble(num)), ev);
+				v.setVisibility(View.GONE);
+			}
+		});
 	}
 
 	public void subtract2(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
-		setZero(ev);
-		final Button b=(Button)findViewById(R.id.mainCalculateButton);
-		b.setVisibility(View.VISIBLE);
-		b.setOnClickListener(new OnClickListener()
+		currentValue=getValue(ev);
+		doCalculate(ev, new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
 			{
-				@Override
-				public void onClick(View v)
-				{
-					String num=ev.getText().toString().trim();
-					if (num==null || "".equals(num))
-						return;
-					setText(inIntTermsOfAny(parseDouble(num)-currentValue), ev);
-					b.setVisibility(View.GONE);
-				}
-			});
+				v.setOnClickListener(null);
+				String num=ev.getText().toString().trim();
+				if (num==null || "".equals(num))
+					return;
+				setText(inIntTermsOfAny(parseDouble(num)-currentValue), ev);
+				v.setVisibility(View.GONE);
+			}
+		});
 	}
-	
+
 	public void multiply(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
-		setZero(ev);
-		final Button b=(Button)findViewById(R.id.mainCalculateButton);
-		b.setVisibility(View.VISIBLE);
-		b.setOnClickListener(new OnClickListener()
+		currentValue=getValue(ev);
+		doCalculate(ev, new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
 			{
-				@Override
-				public void onClick(View v)
-				{
-					String num=ev.getText().toString().trim();
-					if (num==null || "".equals(num))
-						return;
-					setText(inIntTermsOfAny(currentValue*parseDouble(num)), ev);
-					b.setVisibility(View.GONE);
-				}
-			});
+				v.setOnClickListener(null);
+				String num=ev.getText().toString().trim();
+				if (num==null || "".equals(num))
+					return;
+				setText(inIntTermsOfAny(currentValue*parseDouble(num)), ev);
+				v.setVisibility(View.GONE);
+			}
+		});
 	}
-	
+
 	public void divide(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
-		setZero(ev);
-		final Button b=(Button)findViewById(R.id.mainCalculateButton);
-		b.setVisibility(View.VISIBLE);
-		b.setOnClickListener(new OnClickListener()
+		currentValue=getValue(ev);
+		doCalculate(ev, new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
 			{
-				@Override
-				public void onClick(View v)
-				{
-					String num=ev.getText().toString().trim();
-					if (num==null || "".equals(num))
-						return;
-					setText(inIntTermsOfAny(currentValue/parseDouble(num)), ev);
-					b.setVisibility(View.GONE);
-				}
-			});
+				v.setOnClickListener(null);
+				String num=ev.getText().toString().trim();
+				if (num==null || "".equals(num))
+					return;
+				setText(inIntTermsOfAny(currentValue/parseDouble(num)), ev);
+				v.setVisibility(View.GONE);
+			}
+		});
 	}
 
 	public void divide2(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
-		setZero(ev);
-		final Button b=(Button)findViewById(R.id.mainCalculateButton);
-		b.setVisibility(View.VISIBLE);
-		b.setOnClickListener(new OnClickListener()
+		currentValue=getValue(ev);
+		doCalculate(ev, new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
 			{
-				@Override
-				public void onClick(View v)
-				{
-					String num=ev.getText().toString().trim();
-					if (num==null || "".equals(num))
-						return;
-					setText(inIntTermsOfAny(parseDouble(num)/currentValue), ev);
-					b.setVisibility(View.GONE);
-				}
-			});
+				v.setOnClickListener(null);
+				String num=ev.getText().toString().trim();
+				if (num==null || "".equals(num))
+					return;
+				setText(inIntTermsOfAny(parseDouble(num)/currentValue), ev);
+				v.setVisibility(View.GONE);
+			}
+		});
 	}
-	
+
 	public void remainder(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
+		currentValue=getValue(ev);
 		if (Math.round(currentValue)!=currentValue)
 		{
 			setText("Error: Parameter is not an integer: "+ev.getText(), ev);
 			return;
 		}
-		setZero(ev);
-		final Button b=(Button)findViewById(R.id.mainCalculateButton);
-		b.setVisibility(View.VISIBLE);
-		b.setOnClickListener(new OnClickListener()
+		doCalculate(ev, new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
 			{
-				@Override
-				public void onClick(View v)
+				v.setOnClickListener(null);
+				String num=ev.getText().toString().trim();
+				if (num==null || "".equals(num))
+					return;
+				v.setVisibility(View.GONE);
+				double tmp=parseDouble(num);
+				if (Math.round(tmp)!=tmp)
 				{
-					String num=ev.getText().toString().trim();
-					if (num==null || "".equals(num))
-						return;
-					b.setVisibility(View.GONE);
-					double tmp=parseDouble(num);
-					if (Math.round(tmp)!=tmp)
-					{
-						setText("Error: Parameter is not an integer: "+num, ev);
-						return;
-					}
-					setText(inIntTermsOfAny(Math.round(currentValue)%Math.round(tmp)), ev);
+					setText("Error: Parameter is not an integer: "+num, ev);
+					return;
 				}
-			});
+				setText(inIntTermsOfAny(Math.round(currentValue)%Math.round(tmp)), ev);
+			}
+		});
 	}
 
 	public void remainder2(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString().trim());
+		currentValue=getValue(ev);
 		if (Math.round(currentValue)!=currentValue)
 		{
 			setText("Error: Parameter is not an integer: "+ev.getText(), ev);
 			return;
 		}
-		setZero(ev);
-		final Button b=(Button)findViewById(R.id.mainCalculateButton);
-		b.setVisibility(View.VISIBLE);
-		b.setOnClickListener(new OnClickListener()
+		doCalculate(ev, new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
 			{
-				@Override
-				public void onClick(View v)
+				v.setOnClickListener(null);
+				String num=ev.getText().toString().trim();
+				if (num==null || "".equals(num))
+					return;
+				v.setVisibility(View.GONE);
+				double tmp=parseDouble(num);
+				if (Math.round(tmp)!=tmp)
 				{
-					String num=ev.getText().toString().trim();
-					if (num==null || "".equals(num))
-						return;
-					b.setVisibility(View.GONE);
-					double tmp=parseDouble(num);
-					if (Math.round(tmp)!=tmp)
-					{
-						setText("Error: Parameter is not an integer: "+num, ev);
-						return;
-					}
-					setText(inIntTermsOfAny(Math.round(tmp)%Math.round(currentValue)), ev);
+					setText("Error: Parameter is not an integer: "+num, ev);
+					return;
 				}
-			});
+				setText(inIntTermsOfAny(Math.round(tmp)%Math.round(currentValue)), ev);
+			}
+		});
 	}
-	
+
 	public void e(View v)
 	{
 		setText("e");
 	}
-	
+
 	public void pi(View v)
 	{
 		setText("\u03C0");
 	}
-	
+
 	public void negate(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(inIntTermsOfAny(-1*parseDouble(ev.getText().toString())), ev);
 	}
-	
+
 	public void sin(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(inIntTermsOfPi(Math.sin(parseDouble(ev.getText().toString()))), ev);
 	}
-	
+
 	public void cos(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(inIntTermsOfPi(Math.cos(parseDouble(ev.getText().toString()))), ev);
 	}
-	
+
 	public void tan(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(inIntTermsOfPi(Math.tan(parseDouble(ev.getText().toString()))), ev);
 	}
-	
+
 	public void arcsin(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(inIntTermsOfPi(Math.asin(parseDouble(ev.getText().toString()))), ev);
 	}
-	
+
 	public void arccos(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(inIntTermsOfPi(Math.acos(parseDouble(ev.getText().toString()))), ev);
 	}
-	
+
 	public void arctan(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(inIntTermsOfPi(Math.atan(parseDouble(ev.getText().toString()))), ev);
 	}
-	
+
 	public void exp(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(inIntTermsOfE(Math.exp(parseDouble(ev.getText().toString()))), ev);
 	}
-	
+
 	public void degrees(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(((Double)Math.toDegrees(parseDouble(ev.getText().toString()))).toString(), ev);
 	}
-	
+
 	public void radians(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(inIntTermsOfPi(Math.toRadians(parseDouble(ev.getText().toString()))), ev);
 	}
-	
+
 	public void radians2(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
@@ -385,7 +388,7 @@ public class MainActivity extends Activity
 		tmp/=180;
 		setText(Double.toString(tmp)+'\u03C0', ev);
 	}
-	
+
 	public void ln(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
@@ -397,173 +400,169 @@ public class MainActivity extends Activity
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(inIntTermsOfAny(Math.log10(parseDouble(ev.getText().toString()))), ev);
 	}
-	
+
 	public void logb(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
 		currentValue=parseDouble(ev.getText().toString());
-		final Button b=(Button)findViewById(R.id.mainCalculateButton);
-		b.setVisibility(View.VISIBLE);
-		b.setOnClickListener(new OnClickListener()
+		doCalculate(ev,new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
 			{
+				v.setOnClickListener(null);
 				String num=ev.getText().toString();
 				if (num==null || "".equals(num))
 					return;
 				setText(inIntTermsOfAny(Math.log(currentValue)/Math.log(parseDouble(num))), ev);
-				b.setVisibility(View.GONE);
+				v.setVisibility(View.GONE);
 			}
-		});
+		},10);
 	}
 
 	public void logb2(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
 		currentValue=parseDouble(ev.getText().toString());
-		final Button b=(Button)findViewById(R.id.mainCalculateButton);
-		b.setVisibility(View.VISIBLE);
-		b.setOnClickListener(new OnClickListener()
+		doCalculate(ev,new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
 			{
-				@Override
-				public void onClick(View v)
-				{
-					String num=ev.getText().toString();
-					if (num==null || "".equals(num))
-						return;
-					setText(inIntTermsOfAny(Math.log(parseDouble(num))/Math.log(currentValue)), ev);
-					b.setVisibility(View.GONE);
-				}
-			});
+				v.setOnClickListener(null);
+				String num=ev.getText().toString();
+				if (num==null || "".equals(num))
+					return;
+				setText(inIntTermsOfAny(Math.log(parseDouble(num))/Math.log(currentValue)), ev);
+				v.setVisibility(View.GONE);
+			}
+		}, 10);
 	}
-	
+
 	public void round(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(Long.toString(Math.round(parseDouble(ev.getText().toString()))));
 	}
-	
+
 	public void sqrt(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(inIntTermsOfAny(Math.sqrt(parseDouble(ev.getText().toString()))), ev);
 	}
-	
+
 	public void cbrt(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(inIntTermsOfAny(Math.cbrt(parseDouble(ev.getText().toString()))), ev);
 	}
-	
+
 	public void ceil(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(Long.toString((long)Math.ceil(parseDouble(ev.getText().toString()))), ev);
 	}
-	
+
 	public void floor(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(Long.toString((long)Math.floor(parseDouble(ev.getText().toString()))), ev);
 	}
-	
+
 	public void pow(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
 		currentValue=parseDouble(ev.getText().toString());
-		final Button b=(Button)findViewById(R.id.mainCalculateButton);
-		b.setVisibility(View.VISIBLE);
-		b.setOnClickListener(new OnClickListener()
+		doCalculate(ev, new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
 			{
+				v.setOnClickListener(null);
 				String num=ev.getText().toString();
 				if (num==null || "".equals(num))
 					return;
 				setText(inIntTermsOfAny(Math.pow(currentValue, parseDouble(num))), ev);
-				b.setVisibility(View.GONE);
+				v.setVisibility(View.GONE);
 			}
-		});
+		}, currentValue);
 	}
 
 	public void pow2(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
 		currentValue=parseDouble(ev.getText().toString());
-		final Button b=(Button)findViewById(R.id.mainCalculateButton);
-		b.setVisibility(View.VISIBLE);
-		b.setOnClickListener(new OnClickListener()
+		doCalculate(ev, new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
 			{
-				@Override
-				public void onClick(View v)
-				{
-					String num=ev.getText().toString();
-					if (num==null || "".equals(num))
-						return;
-					setText(inIntTermsOfAny(Math.pow(parseDouble(num), currentValue)), ev);
-					b.setVisibility(View.GONE);
-				}
-			});
+				v.setOnClickListener(null);
+				String num=ev.getText().toString();
+				if (num==null || "".equals(num))
+					return;
+				setText(inIntTermsOfAny(Math.pow(parseDouble(num), currentValue)), ev);
+				v.setVisibility(View.GONE);
+			}
+		}, currentValue);
 	}
-	
+
 	public void abs (View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(inIntTermsOfAny(Math.abs(parseDouble(ev.getText().toString()))), ev);
 	}
-	
+
 	public void signum(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(Long.toString((long)Math.signum(parseDouble(ev.getText().toString()))), ev);
 	}
-	
+
 	public void sinh(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(inIntTermsOfAny(Math.sinh(parseDouble(ev.getText().toString()))), ev);
 	}
-	
+
 	public void expm(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(inIntTermsOfAny(Math.expm1(parseDouble(ev.getText().toString()))), ev);
 	}
-	
+
 	public void cosh(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(inIntTermsOfAny(Math.cosh(parseDouble(ev.getText().toString()))), ev);
 	}
-	
+
 	public void tanh(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(inIntTermsOfAny(Math.tanh(parseDouble(ev.getText().toString()))), ev);
 	}
-	
+
 	public void lnp(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(inIntTermsOfAny(Math.log1p(parseDouble(ev.getText().toString()))), ev);
 	}
-	
+
 	public void square(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		double num=parseDouble(ev.getText().toString());
 		setText(inIntTermsOfAny(num*num), ev);
 	}
-	
+
 	public void cube(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		double num=parseDouble(ev.getText().toString());
 		setText(inIntTermsOfAny(num*num*num), ev);
 	}
-	
+
 	public double fastPow(double val, int power)
 	{
 		if (val==2)
@@ -584,12 +583,12 @@ public class MainActivity extends Activity
 			return val*fastPow(val, power-1);
 		}
 	}
-	
+
 	public BigInteger fastPow(int pow) // 2 as base
 	{
 		return BigInteger.ZERO.flipBit(pow);
 	}
-	
+
 	public void raise2(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
