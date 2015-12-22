@@ -1,12 +1,15 @@
 package com.Ryan.Calculator;
 
 import android.annotation.TargetApi;
-import android.app.*;
-import android.os.*;
-import android.view.*;
-import android.widget.*;
-import android.view.View.*;
-import java.math.*;
+import android.app.Activity;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+
+import java.math.BigInteger;
 
 public class MainActivity extends Activity
 {
@@ -104,7 +107,7 @@ public class MainActivity extends Activity
 
 	public void setZero()
 	{
-		setZero((EditText)findViewById(R.id.mainTextField));
+		setZero((EditText) findViewById(R.id.mainTextField));
 	}
 
 	public void setText(String n, EditText ev)
@@ -237,7 +240,12 @@ public class MainActivity extends Activity
 				String num=ev.getText().toString().trim();
 				if (num==null || "".equals(num))
 					return;
-				setText(inIntTermsOfAny(currentValue/parseDouble(num)), ev);
+				double n=parseDouble(num);
+				if (n==0) {
+					setText("Error: Divide by zero.");
+					return;
+				}
+				setText(inIntTermsOfAny(currentValue/n), ev);
 				v.setVisibility(View.GONE);
 			}
 		});
@@ -256,7 +264,12 @@ public class MainActivity extends Activity
 				String num=ev.getText().toString().trim();
 				if (num==null || "".equals(num))
 					return;
-				setText(inIntTermsOfAny(parseDouble(num)/currentValue), ev);
+				double n=parseDouble(num);
+				if (n==0) {
+					setText("Error: Divide by zero.");
+					return;
+				}
+				setText(inIntTermsOfAny(n/currentValue), ev);
 				v.setVisibility(View.GONE);
 			}
 		});
@@ -287,6 +300,11 @@ public class MainActivity extends Activity
 					setText("Error: Parameter is not an integer: "+num, ev);
 					return;
 				}
+				if (Math.round(tmp)==0)
+				{
+					setText("Error: Divide by zero.");
+					return;
+				}
 				setText(inIntTermsOfAny(Math.round(currentValue)%Math.round(tmp)), ev);
 			}
 		});
@@ -315,6 +333,11 @@ public class MainActivity extends Activity
 				if (Math.round(tmp)!=tmp)
 				{
 					setText("Error: Parameter is not an integer: "+num, ev);
+					return;
+				}
+				if (Math.round(currentValue)==0)
+				{
+					setText("Error: Divide by zero.");
 					return;
 				}
 				setText(inIntTermsOfAny(Math.round(tmp)%Math.round(currentValue)), ev);
