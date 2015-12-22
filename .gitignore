@@ -25,3 +25,8 @@ proguard/
 
 # Log Files
 *.log
+
+# Backup files
+*.blend1
+*.bak
+*.*~
