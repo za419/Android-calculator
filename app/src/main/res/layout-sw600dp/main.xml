@@ -219,6 +219,7 @@
 				android:layout_marginLeft="10dp"
 				android:layout_marginTop="5dp"
 				android:layout_below="@id/mainRemainderFromButton"
+				android:layout_toRightOf="@id/mainSinButton"
 				android:layout_toEndOf="@id/mainSinButton"
 				android:onClick="cos"/>
 
@@ -230,6 +231,7 @@
 				android:layout_marginLeft="10dp"
 				android:layout_marginTop="5dp"
 				android:layout_below="@id/mainRemainderFromButton"
+				android:layout_toRightOf="@id/mainCosButton"
 				android:layout_toEndOf="@id/mainCosButton"
 				android:onClick="tan"/>
 
@@ -248,6 +250,7 @@
 				android:layout_width="wrap_content"
 				android:id="@+id/mainArccosButton"
 				android:layout_marginLeft="5dp"
+				android:layout_toRightOf="@id/mainArcsinButton"
 				android:layout_toEndOf="@id/mainArcsinButton"
 				android:layout_below="@id/mainSinButton"
 				android:layout_marginTop="5dp"
@@ -261,6 +264,7 @@
 				android:layout_marginLeft="5dp"
 				android:layout_marginTop="5dp"
 				android:layout_below="@id/mainCosButton"
+				android:layout_toRightOf="@id/mainArccosButton"
 				android:layout_toEndOf="@id/mainArccosButton"
 				android:onClick="arctan"/>
 
@@ -272,6 +276,7 @@
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="5dp"
 				android:layout_below="@id/mainTanButton"
+				android:layout_toRightOf="@id/mainArctanButton"
 				android:layout_toEndOf="@id/mainArctanButton"
 				android:onClick="exp"/>
 
@@ -291,6 +296,7 @@
 				android:id="@+id/mainToRadiansAbsoluteButton"
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="5dp"
+				android:layout_toRightOf="@id/mainToDegreesButton"
 				android:layout_toEndOf="@id/mainToDegreesButton"
 				android:layout_below="@id/mainArccosButton"
 				android:onClick="radians"/>
@@ -303,6 +309,7 @@
 				android:layout_marginLeft="5dp"
 				android:id="@+id/mainToRadiansButton"
 				android:layout_below="@id/mainArctanButton"
+				android:layout_toRightOf="@id/mainToRadiansAbsoluteButton"
 				android:layout_toEndOf="@id/mainToRadiansAbsoluteButton"
 				android:onClick="radians2"/>
 
@@ -322,6 +329,7 @@
 				android:id="@+id/mainLogButton"
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="5dp"
+				android:layout_toRightOf="@id/mainLnButton"
 				android:layout_toEndOf="@id/mainLnButton"
 				android:layout_below="@id/mainToRadiansAbsoluteButton"
 				android:onClick="log"/>
@@ -334,6 +342,7 @@
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="5dp"
 				android:layout_below="@id/mainToRadiansAbsoluteButton"
+				android:layout_toRightOf="@id/mainLogButton"
 				android:layout_toEndOf="@id/mainLogButton"
 				android:onClick="logb"/>
 
