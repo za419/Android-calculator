@@ -363,6 +363,7 @@
 				android:layout_marginLeft="5dp"
 				android:layout_marginTop="5dp"
 				android:layout_below="@id/mainToRadiansButton"
+				android:layout_toRightOf="@id/mainLogBaseButton"
 				android:layout_toEndOf="@id/mainLogBaseButton"
 				android:onClick="round"/>
 
@@ -373,6 +374,7 @@
 				android:id="@+id/mainSquareRootButton"
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="5dp"
+				android:layout_toRightOf="@id/mainLogInBaseButton"
 				android:layout_toEndOf="@id/mainLogInBaseButton"
 				android:layout_below="@id/mainLogButton"
 				android:onClick="sqrt"/>
@@ -385,6 +387,7 @@
 				android:layout_marginLeft="5dp"
 				android:layout_marginTop="5dp"
 				android:layout_below="@id/mainLogBaseButton"
+				android:layout_toRightOf="@id/mainSquareRootButton"
 				android:layout_toEndOf="@id/mainSquareRootButton"
 				android:onClick="cbrt"/>
 
@@ -404,6 +407,7 @@
 				android:id="@+id/mainFloorButton"
 				android:layout_marginLeft="5dp"
 				android:layout_marginTop="5dp"
+				android:layout_toRightOf="@id/mainCeilButton"
 				android:layout_toEndOf="@id/mainCeilButton"
 				android:layout_below="@id/mainSquareRootButton"
 				android:onClick="floor"/>
@@ -415,6 +419,7 @@
 				android:id="@+id/mainPowButton"
 				android:layout_marginLeft="5dp"
 				android:layout_marginTop="5dp"
+				android:layout_toRightOf="@id/mainFloorButton"
 				android:layout_toEndOf="@id/mainFloorButton"
 				android:layout_below="@id/mainCubeRootButton"
 				android:onClick="pow"/>
@@ -435,6 +440,7 @@
 				android:id="@+id/mainAbsButton"
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="10dp"
+				android:layout_toRightOf="@id/mainPowOfButton"
 				android:layout_toEndOf="@id/mainPowOfButton"
 				android:layout_below="@id/mainFloorButton"
 				android:onClick="abs"/>
@@ -456,6 +462,7 @@
 				android:layout_marginLeft="7dp"
 				android:layout_marginTop="5dp"
 				android:layout_below="@id/mainPowOfButton"
+				android:layout_toRightOf="@id/mainSignumButton"
 				android:layout_toEndOf="@id/mainSignumButton"
 				android:onClick="sinh"/>
 
@@ -467,6 +474,7 @@
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="7dp"
 				android:layout_below="@id/mainAbsButton"
+				android:layout_toRightOf="@id/mainSinhButton"
 				android:layout_toEndOf="@id/mainSinhButton"
 				android:onClick="expm"/>
 
@@ -486,6 +494,7 @@
 				android:id="@+id/mainTanhButton"
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="10dp"
+				android:layout_toRightOf="@id/mainCoshButton"
 				android:layout_toEndOf="@id/mainCoshButton"
 				android:layout_below="@id/mainSinhButton"
 				android:onClick="tanh"/>
@@ -505,6 +514,7 @@
 				android:layout_width="wrap_content"
 				android:layout_marginTop="5dp"
 				android:id="@+id/mainSquareButton"
+				android:layout_toRightOf="@id/mainLnpButton"
 				android:layout_toEndOf="@id/mainLnpButton"
 				android:layout_below="@id/mainCoshButton"
 				android:layout_marginLeft="7dp"
@@ -518,6 +528,7 @@
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="7dp"
 				android:layout_below="@id/mainTanhButton"
+				android:layout_toRightOf="@id/mainSquareButton"
 				android:layout_toEndOf="@id/mainSquareButton"
 				android:onClick="cube"/>
 
@@ -528,6 +539,7 @@
 				android:id="@+id/mainTwoToButton"
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="7dp"
+				android:layout_toRightOf="@id/mainCubeButton"
 				android:layout_toEndOf="@id/mainCubeButton"
 				android:layout_below="@id/mainTanhButton"
 				android:onClick="raise2"/>
