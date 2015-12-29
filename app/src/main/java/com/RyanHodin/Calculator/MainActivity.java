@@ -149,7 +149,7 @@ public class MainActivity extends Activity
 
 	public void doCalculate(final EditText ev, OnClickListener ocl, double n) // Common code for buttons that use the mainCalculateButton, setting the default value to n rather than zero.
 	{
-		setText(Double.toString(n), ev);
+		setText(inIntTermsOfAny(n), ev);
 		final Button b=(Button)findViewById(R.id.mainCalculateButton);
 		b.setVisibility(View.VISIBLE);
 		b.setOnClickListener(ocl);
