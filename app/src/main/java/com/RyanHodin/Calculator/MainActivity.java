@@ -241,11 +241,10 @@ public class MainActivity extends Activity
 				if (num==null || "".equals(num))
 					return;
 				double n=parseDouble(num);
-				if (n==0) {
+				if (n==0)
 					setText("Error: Divide by zero.");
-					return;
-				}
-				setText(inIntTermsOfAny(currentValue/n), ev);
+				else
+					setText(inIntTermsOfAny(currentValue/n), ev);
 				v.setVisibility(View.GONE);
 			}
 		});
@@ -265,11 +264,10 @@ public class MainActivity extends Activity
 				if (num==null || "".equals(num))
 					return;
 				double n=parseDouble(num);
-				if (n==0) {
+				if (n==0)
 					setText("Error: Divide by zero.");
-					return;
-				}
-				setText(inIntTermsOfAny(n/currentValue), ev);
+				else
+					setText(inIntTermsOfAny(n/currentValue), ev);
 				v.setVisibility(View.GONE);
 			}
 		});
@@ -296,16 +294,11 @@ public class MainActivity extends Activity
 				v.setVisibility(View.GONE);
 				double tmp=parseDouble(num);
 				if (Math.round(tmp)!=tmp)
-				{
 					setText("Error: Parameter is not an integer: "+num, ev);
-					return;
-				}
-				if (Math.round(tmp)==0)
-				{
+				else if (Math.round(tmp)==0)
 					setText("Error: Divide by zero.");
-					return;
-				}
-				setText(inIntTermsOfAny(Math.round(currentValue)%Math.round(tmp)), ev);
+				else
+					setText(inIntTermsOfAny(Math.round(currentValue)%Math.round(tmp)), ev);
 			}
 		});
 	}
@@ -328,15 +321,12 @@ public class MainActivity extends Activity
 					return;
 				v.setVisibility(View.GONE);
 				double tmp = parseDouble(num);
-				if (Math.round(tmp) != tmp) {
+				if (Math.round(tmp) != tmp)
 					setText("Error: Parameter is not an integer: " + num, ev);
-					return;
-				}
-				if (Math.round(currentValue) == 0) {
+				else if (Math.round(currentValue) == 0)
 					setText("Error: Divide by zero.");
-					return;
-				}
-				setText(inIntTermsOfAny(Math.round(tmp) % Math.round(currentValue)), ev);
+				else
+					setText(inIntTermsOfAny(Math.round(tmp) % Math.round(currentValue)), ev);
 			}
 		});
 	}
@@ -510,9 +500,8 @@ public class MainActivity extends Activity
 			{
 				v.setOnClickListener(null);
 				String num=ev.getText().toString();
-				if ("".equals(num))
-					return;
-				setText(inIntTermsOfAny(Math.pow(currentValue, parseDouble(num))), ev);
+				if (!"".equals(num))
+					setText(inIntTermsOfAny(Math.pow(currentValue, parseDouble(num))), ev);
 				v.setVisibility(View.GONE);
 			}
 		}, currentValue);
@@ -529,9 +518,8 @@ public class MainActivity extends Activity
 			{
 				v.setOnClickListener(null);
 				String num=ev.getText().toString();
-				if (num==null || "".equals(num))
-					return;
-				setText(inIntTermsOfAny(Math.pow(parseDouble(num), currentValue)), ev);
+				if (!"".equals(num))
+					setText(inIntTermsOfAny(Math.pow(parseDouble(num), currentValue)), ev);
 				v.setVisibility(View.GONE);
 			}
 		}, currentValue);
