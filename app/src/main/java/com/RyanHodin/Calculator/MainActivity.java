@@ -88,6 +88,10 @@ public class MainActivity extends Activity
 
 	public String inIntTermsOfAny(double num)
 	{
+		if (Double.isNaN(num)) // "Last-resort" check
+			return "ERROR: Nonreal or non-numeric result."; // Trap NaN and return a generic error for it.
+		// Because of that check, we can guarantee that NaN's will not be floating around for more than one expression.
+
 		String out=inIntTermsOfPi(num);
 		if (!out.equals(Double.toString(num)))
 			return out;
