@@ -1,4 +1,4 @@
-package com.RyanHodin.Calculator;
+package com.Ryan.Calculator;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
