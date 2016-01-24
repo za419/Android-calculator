@@ -122,7 +122,7 @@ public class MainActivity extends Activity
 
 	public void setText(String n)
 	{
-		setText(n, (EditText)findViewById(R.id.mainTextField));
+		setText(n, (EditText) findViewById(R.id.mainTextField));
 	}
 
 	public void terms(View v)
@@ -159,16 +159,14 @@ public class MainActivity extends Activity
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
 		currentValue=getValue(ev);
-		doCalculate(ev, new OnClickListener()
-		{
+		doCalculate(ev, new OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				v.setOnClickListener(null);
-				String num=ev.getText().toString().trim();
-				if (num==null || "".equals(num))
+				String num = ev.getText().toString().trim();
+				if ("".equals(num))
 					return;
-				setText(inIntTermsOfAny(currentValue+parseDouble(num)), ev);
+				setText(inIntTermsOfAny(currentValue + parseDouble(num)), ev);
 				v.setVisibility(View.GONE);
 			}
 		});
@@ -185,7 +183,7 @@ public class MainActivity extends Activity
 			{
 				v.setOnClickListener(null);
 				String num=ev.getText().toString().trim();
-				if (num==null || "".equals(num))
+				if ("".equals(num))
 					return;
 				setText(inIntTermsOfAny(currentValue-parseDouble(num)), ev);
 				v.setVisibility(View.GONE);
@@ -204,7 +202,7 @@ public class MainActivity extends Activity
 			{
 				v.setOnClickListener(null);
 				String num=ev.getText().toString().trim();
-				if (num==null || "".equals(num))
+				if ("".equals(num))
 					return;
 				setText(inIntTermsOfAny(parseDouble(num)-currentValue), ev);
 				v.setVisibility(View.GONE);
@@ -223,7 +221,7 @@ public class MainActivity extends Activity
 			{
 				v.setOnClickListener(null);
 				String num=ev.getText().toString().trim();
-				if (num==null || "".equals(num))
+				if ("".equals(num))
 					return;
 				setText(inIntTermsOfAny(currentValue*parseDouble(num)), ev);
 				v.setVisibility(View.GONE);
@@ -242,7 +240,7 @@ public class MainActivity extends Activity
 			{
 				v.setOnClickListener(null);
 				String num=ev.getText().toString().trim();
-				if (num==null || "".equals(num))
+				if ("".equals(num))
 					return;
 				double n=parseDouble(num);
 				if (n==0)
@@ -265,7 +263,7 @@ public class MainActivity extends Activity
 			{
 				v.setOnClickListener(null);
 				String num=ev.getText().toString().trim();
-				if (num==null || "".equals(num))
+				if ("".equals(num))
 					return;
 				double n=parseDouble(num);
 				if (n==0)
@@ -293,7 +291,7 @@ public class MainActivity extends Activity
 			{
 				v.setOnClickListener(null);
 				String num=ev.getText().toString().trim();
-				if (num==null || "".equals(num))
+				if ("".equals(num))
 					return;
 				v.setVisibility(View.GONE);
 				double tmp=parseDouble(num);
@@ -321,7 +319,7 @@ public class MainActivity extends Activity
 			public void onClick(View v) {
 				v.setOnClickListener(null);
 				String num = ev.getText().toString().trim();
-				if (num == null || "".equals(num))
+				if ("".equals(num))
 					return;
 				v.setVisibility(View.GONE);
 				double tmp = parseDouble(num);
@@ -429,19 +427,17 @@ public class MainActivity extends Activity
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
 		currentValue=parseDouble(ev.getText().toString());
-		doCalculate(ev,new OnClickListener()
-		{
+		doCalculate(ev, new OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				v.setOnClickListener(null);
-				String num=ev.getText().toString();
-				if (num==null || "".equals(num))
+				String num = ev.getText().toString();
+				if ("".equals(num))
 					return;
-				setText(inIntTermsOfAny(Math.log(currentValue)/Math.log(parseDouble(num))), ev);
+				setText(inIntTermsOfAny(Math.log(currentValue) / Math.log(parseDouble(num))), ev);
 				v.setVisibility(View.GONE);
 			}
-		},10);
+		}, 10);
 	}
 
 	public void logb2(View v)
@@ -455,7 +451,7 @@ public class MainActivity extends Activity
 			{
 				v.setOnClickListener(null);
 				String num=ev.getText().toString();
-				if (num==null || "".equals(num))
+				if ("".equals(num))
 					return;
 				setText(inIntTermsOfAny(Math.log(parseDouble(num))/Math.log(currentValue)), ev);
 				v.setVisibility(View.GONE);
@@ -488,7 +484,7 @@ public class MainActivity extends Activity
 	public void ceil(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(Long.toString((long)Math.ceil(parseDouble(ev.getText().toString()))), ev);
+		setText(Long.toString((long) Math.ceil(parseDouble(ev.getText().toString()))), ev);
 	}
 
 	public void floor(View v)
@@ -501,13 +497,11 @@ public class MainActivity extends Activity
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
 		currentValue=parseDouble(ev.getText().toString());
-		doCalculate(ev, new OnClickListener()
-		{
+		doCalculate(ev, new OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				v.setOnClickListener(null);
-				String num=ev.getText().toString();
+				String num = ev.getText().toString();
 				if (!"".equals(num))
 					setText(inIntTermsOfAny(Math.pow(currentValue, parseDouble(num))), ev);
 				v.setVisibility(View.GONE);
@@ -542,7 +536,7 @@ public class MainActivity extends Activity
 	public void signum(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(Long.toString((long)Math.signum(parseDouble(ev.getText().toString()))), ev);
+		setText(Long.toString((long) Math.signum(parseDouble(ev.getText().toString()))), ev);
 	}
 
 	public void sinh(View v)
@@ -587,6 +581,31 @@ public class MainActivity extends Activity
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		double num=parseDouble(ev.getText().toString());
 		setText(inIntTermsOfAny(num*num*num), ev);
+	}
+
+	public void isPrime(View v) {
+		EditText ev=(EditText)findViewById(R.id.mainTextField);
+		double num=parseDouble(ev.getText().toString());
+		int n=(int)Math.floor(num);
+		if (n!=num || n<1 || isDivisible(n,2)) {
+			setText("Not prime");
+			return;
+		}
+		if (n==1) {
+			setText("Not prime or composite");
+			return;
+		}
+		for (int i=3; i<=Math.sqrt(n); i+=2) {
+			if (isDivisible(n, i)) {
+				setText("Not prime");
+				return;
+			}
+		}
+		setText("Prime");
+	}
+
+	public boolean isDivisible(int num, int den) {
+		return num%den==0;
 	}
 
 	public double fastPow(double val, int power)
