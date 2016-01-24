@@ -533,12 +533,6 @@ public class MainActivity extends Activity
 		setText(inIntTermsOfAny(Math.abs(parseDouble(ev.getText().toString()))), ev);
 	}
 
-	public void signum(View v)
-	{
-		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(Long.toString((long) Math.signum(parseDouble(ev.getText().toString()))), ev);
-	}
-
 	public void sinh(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
