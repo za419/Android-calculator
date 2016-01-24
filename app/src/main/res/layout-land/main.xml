@@ -396,12 +396,12 @@
 
 			<Button
 				android:layout_height="wrap_content"
-				android:text="signum"
+				android:text="Prime?"
 				android:layout_width="wrap_content"
-				android:id="@+id/mainSignumButton"
+				android:id="@+id/mainIsPrimeButton"
 				android:layout_marginTop="5dp"
 				android:layout_below="@id/mainPowOfButton"
-				android:onClick="signum"/>
+				android:onClick="isPrime"/>
 
 			<Button
 				android:layout_height="wrap_content"
@@ -411,8 +411,8 @@
 				android:layout_marginLeft="7dp"
 				android:layout_marginTop="5dp"
 				android:layout_below="@id/mainPowOfButton"
-				android:layout_toRightOf="@id/mainSignumButton"
-				android:layout_toEndOf="@id/mainSignumButton"
+				android:layout_toRightOf="@id/mainIsPrimeButton"
+				android:layout_toEndOf="@id/mainIsPrimeButton"
 				android:onClick="sinh"/>
 
 			<Button
@@ -433,7 +433,7 @@
 				android:layout_width="wrap_content"
 				android:id="@+id/mainCoshButton"
 				android:layout_marginTop="5dp"
-				android:layout_below="@id/mainSignumButton"
+				android:layout_below="@id/mainIsPrimeButton"
 				android:onClick="cosh"/>
 
 			<Button
