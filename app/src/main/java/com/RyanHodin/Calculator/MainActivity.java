@@ -55,7 +55,13 @@ public class MainActivity extends Activity
 				return -Math.E; // Return negative e
 			return parseDouble(num.substring(0, num.length()-1))*Math.E;
 		}
-		return Double.parseDouble(num);
+		try {
+			return Double.parseDouble(num);
+		}
+		catch (NumberFormatException ex) {
+			setText("ERROR: Invalid number");
+			return 0;
+		}
 	}
 
 	public String inIntTermsOfPi(double num)
