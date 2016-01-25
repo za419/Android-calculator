@@ -60,6 +60,9 @@ public class MainActivity extends Activity
 		}
 		catch (NumberFormatException ex) {
 			setText("ERROR: Invalid number");
+			View v=findViewById(R.id.mainCalculateButton);
+			v.setOnClickListener(null); // Cancel existing computation
+			v.setVisibility(View.GONE); // Remove the button
 			return 0;
 		}
 	}
