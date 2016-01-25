@@ -33,8 +33,12 @@ public class MainActivity extends Activity
 
 	public double parseDouble(String num)
 	{
-		if (num.indexOf("Error", 0)==0 || num.indexOf("ERROR", 0)==0)
+		if (num==null || num.indexOf("Error", 0)==0 || num.indexOf("ERROR", 0)==0)
 			return 0;
+		if ("Not prime".equals(num) || "Not prime or composite".equals(num))
+			return 0;
+		if ("Prime".equals(num))
+			return 1;
 		if (num.charAt(num.length()-1)=='\u03C0')
 		{
 			if (num.length()==1)
