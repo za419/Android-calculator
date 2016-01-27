@@ -315,7 +315,7 @@ public class MainActivity extends Activity
 				else
 					setText(inIntTermsOfAny(Math.round(currentValue)%Math.round(tmp)), ev);
 			}
-		});
+		}, 1);
 	}
 
 	public void remainder2(View v)
@@ -343,7 +343,7 @@ public class MainActivity extends Activity
 				else
 					setText(inIntTermsOfAny(Math.round(tmp) % Math.round(currentValue)), ev);
 			}
-		});
+		}, 1);
 	}
 
 	public void e(View v)
