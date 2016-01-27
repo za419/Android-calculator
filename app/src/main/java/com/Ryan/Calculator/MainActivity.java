@@ -262,7 +262,7 @@ public class MainActivity extends Activity
 					setText(inIntTermsOfAny(currentValue/n), ev);
 				v.setVisibility(View.GONE);
 			}
-		});
+		}, 1);
 	}
 
 	public void divide2(View v)
