@@ -285,7 +285,7 @@ public class MainActivity extends Activity
 					setText(inIntTermsOfAny(n/currentValue), ev);
 				v.setVisibility(View.GONE);
 			}
-		});
+		}, 1);
 	}
 
 	public void remainder(View v)
