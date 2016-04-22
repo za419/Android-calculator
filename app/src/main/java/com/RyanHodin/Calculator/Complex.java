@@ -177,7 +177,7 @@ public class Complex
 		return this;
 	}
 
-	public Complex subtractTo (Complex target) // This name doesnt make sense, but none do. In addition, operationTo will be defined for all binary operators,for consistency
+	public Complex subtractTo (Complex target) // This name doesn't make sense, but none do. In addition, operationTo will be defined for all binary operators,for consistency
 	{
 		real-=target.real;
 		imaginary-=target.imaginary;
