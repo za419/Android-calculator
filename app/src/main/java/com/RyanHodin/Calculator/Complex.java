@@ -132,7 +132,7 @@ public class Complex
 
 	private boolean epsilonEqualTo(double lhs, double rhs)
 	{
-		return lhs==rhs ? true : Math.abs(lhs-rhs)<epsilon;
+		return lhs == rhs || Math.abs(lhs - rhs) < epsilon;
 	}
 
 	private boolean epsilonNotEqualTo(double lhs, double rhs)

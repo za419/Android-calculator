@@ -9,7 +9,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="734fe66e-8d23-4b3e-961a-765368f3a70c" name="Default" comment="I can't spell&#10;&#10;Also, include updated files from updates to Android Studio">
+    <list default="true" id="734fe66e-8d23-4b3e-961a-765368f3a70c" name="Default" comment="Correct value of the i constant">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/RyanHodin/Calculator/Complex.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/RyanHodin/Calculator/Complex.java" />
     </list>
@@ -43,8 +43,8 @@
       <file leaf-file-name="Complex.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/RyanHodin/Calculator/Complex.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.20695652">
-              <caret line="13" column="49" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.41391304">
+              <caret line="134" column="30" selection-start-line="134" selection-start-column="30" selection-end-line="134" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -1805,7 +1805,13 @@
       <option name="project" value="LOCAL" />
       <updated>1461299749110</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Correct value of the i constant">
+      <created>1461302449740</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1461302449740</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1862,7 +1868,8 @@
     <MESSAGE value="Fix a build breaking issue&#10;Also update project data" />
     <MESSAGE value="Add divide by zeros and fix some error checking" />
     <MESSAGE value="I can't spell&#10;&#10;Also, include updated files from updates to Android Studio" />
-    <option name="LAST_COMMIT_MESSAGE" value="I can't spell&#10;&#10;Also, include updated files from updates to Android Studio" />
+    <MESSAGE value="Correct value of the i constant" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correct value of the i constant" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -2202,8 +2209,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/RyanHodin/Calculator/Complex.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20695652">
-          <caret line="13" column="49" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.41391304">
+          <caret line="134" column="30" selection-start-line="134" selection-start-column="30" selection-end-line="134" selection-end-column="30" />
           <folding />
         </state>
       </provider>
