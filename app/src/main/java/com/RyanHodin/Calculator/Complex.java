@@ -11,7 +11,7 @@ public class Complex
 	static public double default_epsilon = 1E-6; // The default tolerance for all new Complex's. Can be changed if all or most will need a different epsilon. Defaults to a reasonable value
 
 	// CONSTANTS
-	final static public Complex I=new Complex(0, -1);
+	final static public Complex I=new Complex(0, 1);
 	final static public Complex PI=new Complex(Math.PI);
 	final static public Complex E=new Complex(Math.E);
 	final static public Complex ERROR=new Complex(Double.NaN, Double.NaN); // Signifies an invalid operation
