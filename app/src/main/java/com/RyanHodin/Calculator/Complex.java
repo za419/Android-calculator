@@ -109,7 +109,7 @@ public class Complex
 		return new Complex(real, imaginary);
 	}
 
-	public String toNaiveString() // Ignores any special valyes and always returns a+bi, even when that makes no sense. Useful mostly with parseNaiveString()
+	public String toNaiveString() // Ignores any special values and always returns a+bi, even when that makes no sense. Useful mostly with parseNaiveString()
 	{
 		StringBuilder out=new StringBuilder();
 		out.append(real);
