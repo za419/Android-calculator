@@ -32,4 +32,4 @@ proguard/
 *.*~
 
 # The annoying file
-.idea/workspace.xml
+.idea
