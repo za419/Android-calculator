@@ -372,26 +372,28 @@ public class MainActivity extends Activity
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
 		currentValue=getValue(ev);
-		if (Math.round(currentValue)!=currentValue)
+		if (!Complex.round(currentValue).equals(currentValue))
 		{
 			setText("Error: Parameter is not an integer: "+ev.getText(), ev);
 			return;
 		}
-		doCalculate(ev, new OnClickListener() {
+		doCalculate(ev, new OnClickListener()
+		{
 			@Override
-			public void onClick(View v) {
+			public void onClick(View v)
+			{
 				v.setOnClickListener(null);
-				String num = ev.getText().toString().trim();
+				String num=ev.getText().toString().trim();
 				if ("".equals(num))
 					return;
 				v.setVisibility(View.GONE);
-				double tmp = parseDouble(num);
-				if (Math.round(tmp) != tmp)
-					setText("Error: Parameter is not an integer: " + num, ev);
-				else if (Math.round(currentValue) == 0)
+				Complex tmp=parseComplex(num);
+				if (!Complex.round(tmp).equals(tmp))
+					setText("Error: Parameter is not an integer: "+num, ev);
+				else if (Complex.round(currentValue).equals(Complex.ZERO))
 					setText("Error: Divide by zero.");
 				else
-					setText(inIntTermsOfAny(Math.round(tmp) % Math.round(currentValue)), ev);
+					setText(inIntTermsOfAny(Complex.round(tmp).modulo(Complex.round(currentValue))), ev);
 			}
 		}, 1);
 	}
