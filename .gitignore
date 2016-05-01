@@ -30,3 +30,6 @@ proguard/
 *.blend1
 *.bak
 *.*~
+
+# The annoying file
+.idea/workspace.xml

@@ -1,89 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_height="wrap_content"
+	android:layout_height="match_parent"
 	android:layout_width="match_parent"
-	android:orientation="vertical"
+	android:orientation="horizontal"
 	android:animateLayoutChanges="true"
-	android:layoutAnimation="@anim/fadein">
-
-	<HorizontalScrollView
-		android:layout_height="wrap_content"
-		android:layout_width="wrap_content"
-		android:layout_marginBottom="5dp">
-
-		<LinearLayout
-			android:layout_height="wrap_content"
-			android:layout_width="wrap_content"
-			android:orientation="horizontal"
-			android:id="@+id/mainCalculateLayout"
-			android:visibility="visible"
-			android:measureWithLargestChild="true"
-			android:animateLayoutChanges="true"
-			android:layoutAnimation="@anim/slideinright">
-
-			<Button
-				android:layout_height="wrap_content"
-				android:text="Calculate"
-				android:layout_width="match_parent"
-				android:id="@+id/mainCalculateButton"
-				android:textColor="#00FF00"
-				android:textAppearance="?android:attr/textAppearanceLarge"
-				android:layout_gravity="center"
-				android:layout_weight="1.0"
-				android:visibility="gone"/>
-
-			<Button
-				android:layout_height="wrap_content"
-				android:text="Zero"
-				android:layout_width="match_parent"
-				android:layout_marginLeft="5dp"
-				android:id="@+id/mainZeroButton"
-				android:layout_weight="1.0"
-				android:onClick="zero"/>
-
-			<Button
-				android:layout_height="wrap_content"
-				android:text="Approximation"
-				android:layout_width="match_parent"
-				android:layout_marginLeft="5dp"
-				android:id="@+id/mainInDecimal"
-				android:layout_weight="1.0"
-				android:onClick="decimal"/>
-
-			<Button
-				android:layout_height="wrap_content"
-				android:text="Accurate"
-				android:layout_width="match_parent"
-				android:id="@+id/mainTermsButton"
-				android:layout_marginLeft="5dp"
-				android:layout_weight="1.0"
-				android:onClick="terms"/>
-
-		</LinearLayout>
-
-	</HorizontalScrollView>
+	android:layoutAnimation="@anim/fadein"
+	android:baselineAligned="false">
 
 	<ScrollView
 		android:layout_height="match_parent"
-		android:layout_width="match_parent">
+		android:layout_width="360dp">
 
 		<RelativeLayout
 			android:layout_height="match_parent"
-			android:layout_width="match_parent"
+			android:layout_width="360dp"
 			android:id="@+id/mainLayout">
 
 			<EditText
 				android:layout_height="wrap_content"
+				android:layout_width="360dp"
 				android:inputType="number|numberDecimal|numberSigned"
 				android:ems="10"
-				android:layout_width="match_parent"
 				android:id="@+id/mainTextField"
 				android:background="#FFFFFF"
 				android:textColor="#000000"
 				android:layout_marginBottom="10dp"
 				android:singleLine="false"
 				android:hint="Input number"
+				android:gravity="end"
 				android:textAlignment="viewEnd"
 				android:textColorHighlight="#FFFFFF"/>
 
@@ -100,6 +45,7 @@
 				android:text="Subtract"
 				android:layout_width="wrap_content"
 				android:id="@+id/mainSubtractButton"
+				android:layout_toRightOf="@id/mainAddButton"
 				android:layout_toEndOf="@id/mainAddButton"
 				android:layout_below="@id/mainTextField"
 				android:layout_marginLeft="5dp"
@@ -111,6 +57,7 @@
 				android:layout_width="wrap_content"
 				android:id="@+id/mainMultiplyButton"
 				android:layout_below="@id/mainTextField"
+				android:layout_toRightOf="@id/mainSubtractButton"
 				android:layout_toEndOf="@id/mainSubtractButton"
 				android:layout_marginLeft="5dp"
 				android:onClick="multiply"/>
@@ -123,6 +70,7 @@
 				android:layout_marginLeft="5dp"
 				android:layout_below="@id/mainTextField"
 				android:layout_toEndOf="@id/mainMultiplyButton"
+				android:layout_toRightOf="@id/mainMultiplyButton"
 				android:onClick="divide"/>
 
 			<Button
@@ -142,6 +90,7 @@
 				android:layout_marginLeft="5dp"
 				android:layout_marginTop="5dp"
 				android:layout_below="@id/mainSubtractButton"
+				android:layout_toRightOf="@id/mainRemainderButton"
 				android:layout_toEndOf="@id/mainRemainderButton"
 				android:onClick="subtract2"/>
 
@@ -161,6 +110,7 @@
 				android:id="@+id/mainRemainderFromButton"
 				android:layout_below="@id/mainSubtractFromButton"
 				android:layout_marginTop="5dp"
+				android:layout_toRightOf="@id/mainDivideFromButton"
 				android:layout_toEndOf="@id/mainDivideFromButton"
 				android:layout_marginLeft="5dp"
 				android:onClick="remainder2"/>
@@ -182,6 +132,7 @@
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="5dp"
 				android:layout_below="@id/mainSubtractFromButton"
+				android:layout_toRightOf="@id/mainRemainderFromButton"
 				android:layout_toEndOf="@id/mainRemainderFromButton"
 				android:onClick="pi"/>
 
@@ -193,6 +144,7 @@
 				android:layout_below="@id/mainDivideButton"
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="5dp"
+				android:layout_toRightOf="@id/mainSubtractFromButton"
 				android:layout_toEndOf="@id/mainSubtractFromButton"
 				android:onClick="e"/>
 
@@ -204,6 +156,7 @@
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="10dp"
 				android:layout_below="@id/mainDivideFromButton"
+				android:layout_toRightOf="@id/mainSwitchSignButton"
 				android:layout_toEndOf="@id/mainSwitchSignButton"
 				android:onClick="sin"/>
 
@@ -215,6 +168,7 @@
 				android:layout_marginLeft="10dp"
 				android:layout_marginTop="5dp"
 				android:layout_below="@id/mainRemainderFromButton"
+				android:layout_toRightOf="@id/mainSinButton"
 				android:layout_toEndOf="@id/mainSinButton"
 				android:onClick="cos"/>
 
@@ -226,6 +180,7 @@
 				android:layout_marginLeft="10dp"
 				android:layout_marginTop="5dp"
 				android:layout_below="@id/mainRemainderFromButton"
+				android:layout_toRightOf="@id/mainCosButton"
 				android:layout_toEndOf="@id/mainCosButton"
 				android:onClick="tan"/>
 
@@ -244,6 +199,7 @@
 				android:layout_width="wrap_content"
 				android:id="@+id/mainArccosButton"
 				android:layout_marginLeft="5dp"
+				android:layout_toRightOf="@id/mainArcsinButton"
 				android:layout_toEndOf="@id/mainArcsinButton"
 				android:layout_below="@id/mainSinButton"
 				android:layout_marginTop="5dp"
@@ -257,6 +213,7 @@
 				android:layout_marginLeft="5dp"
 				android:layout_marginTop="5dp"
 				android:layout_below="@id/mainCosButton"
+				android:layout_toRightOf="@id/mainArccosButton"
 				android:layout_toEndOf="@id/mainArccosButton"
 				android:onClick="arctan"/>
 
@@ -268,6 +225,7 @@
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="5dp"
 				android:layout_below="@id/mainTanButton"
+				android:layout_toRightOf="@id/mainArctanButton"
 				android:layout_toEndOf="@id/mainArctanButton"
 				android:onClick="exp"/>
 
@@ -287,6 +245,7 @@
 				android:id="@+id/mainToRadiansAbsoluteButton"
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="5dp"
+				android:layout_toRightOf="@id/mainToDegreesButton"
 				android:layout_toEndOf="@id/mainToDegreesButton"
 				android:layout_below="@id/mainArccosButton"
 				android:onClick="radians"/>
@@ -299,6 +258,7 @@
 				android:layout_marginLeft="5dp"
 				android:id="@+id/mainToRadiansButton"
 				android:layout_below="@id/mainArctanButton"
+				android:layout_toRightOf="@id/mainToRadiansAbsoluteButton"
 				android:layout_toEndOf="@id/mainToRadiansAbsoluteButton"
 				android:onClick="radians2"/>
 
@@ -318,6 +278,7 @@
 				android:id="@+id/mainLogButton"
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="5dp"
+				android:layout_toRightOf="@id/mainLnButton"
 				android:layout_toEndOf="@id/mainLnButton"
 				android:layout_below="@id/mainToRadiansAbsoluteButton"
 				android:onClick="log"/>
@@ -330,6 +291,7 @@
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="5dp"
 				android:layout_below="@id/mainToRadiansAbsoluteButton"
+				android:layout_toRightOf="@id/mainLogButton"
 				android:layout_toEndOf="@id/mainLogButton"
 				android:onClick="logb"/>
 
@@ -350,6 +312,7 @@
 				android:layout_marginLeft="5dp"
 				android:layout_marginTop="5dp"
 				android:layout_below="@id/mainToRadiansButton"
+				android:layout_toRightOf="@id/mainLogBaseButton"
 				android:layout_toEndOf="@id/mainLogBaseButton"
 				android:onClick="round"/>
 
@@ -360,6 +323,7 @@
 				android:id="@+id/mainSquareRootButton"
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="5dp"
+				android:layout_toRightOf="@id/mainLogInBaseButton"
 				android:layout_toEndOf="@id/mainLogInBaseButton"
 				android:layout_below="@id/mainLogButton"
 				android:onClick="sqrt"/>
@@ -372,6 +336,7 @@
 				android:layout_marginLeft="5dp"
 				android:layout_marginTop="5dp"
 				android:layout_below="@id/mainLogBaseButton"
+				android:layout_toRightOf="@id/mainSquareRootButton"
 				android:layout_toEndOf="@id/mainSquareRootButton"
 				android:onClick="cbrt"/>
 
@@ -391,6 +356,7 @@
 				android:id="@+id/mainFloorButton"
 				android:layout_marginLeft="5dp"
 				android:layout_marginTop="5dp"
+				android:layout_toRightOf="@id/mainCeilButton"
 				android:layout_toEndOf="@id/mainCeilButton"
 				android:layout_below="@id/mainSquareRootButton"
 				android:onClick="floor"/>
@@ -402,6 +368,7 @@
 				android:id="@+id/mainPowButton"
 				android:layout_marginLeft="5dp"
 				android:layout_marginTop="5dp"
+				android:layout_toRightOf="@id/mainFloorButton"
 				android:layout_toEndOf="@id/mainFloorButton"
 				android:layout_below="@id/mainCubeRootButton"
 				android:onClick="pow"/>
@@ -422,6 +389,7 @@
 				android:id="@+id/mainAbsButton"
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="10dp"
+				android:layout_toRightOf="@id/mainPowOfButton"
 				android:layout_toEndOf="@id/mainPowOfButton"
 				android:layout_below="@id/mainFloorButton"
 				android:onClick="abs"/>
@@ -443,6 +411,7 @@
 				android:layout_marginLeft="7dp"
 				android:layout_marginTop="5dp"
 				android:layout_below="@id/mainPowOfButton"
+				android:layout_toRightOf="@id/mainIsPrimeButton"
 				android:layout_toEndOf="@id/mainIsPrimeButton"
 				android:onClick="sinh"/>
 
@@ -454,6 +423,7 @@
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="7dp"
 				android:layout_below="@id/mainAbsButton"
+				android:layout_toRightOf="@id/mainSinhButton"
 				android:layout_toEndOf="@id/mainSinhButton"
 				android:onClick="expm"/>
 
@@ -473,6 +443,7 @@
 				android:id="@+id/mainTanhButton"
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="10dp"
+				android:layout_toRightOf="@id/mainCoshButton"
 				android:layout_toEndOf="@id/mainCoshButton"
 				android:layout_below="@id/mainSinhButton"
 				android:onClick="tanh"/>
@@ -492,6 +463,7 @@
 				android:layout_width="wrap_content"
 				android:layout_marginTop="5dp"
 				android:id="@+id/mainSquareButton"
+				android:layout_toRightOf="@id/mainLnpButton"
 				android:layout_toEndOf="@id/mainLnpButton"
 				android:layout_below="@id/mainCoshButton"
 				android:layout_marginLeft="7dp"
@@ -505,6 +477,7 @@
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="7dp"
 				android:layout_below="@id/mainTanhButton"
+				android:layout_toRightOf="@id/mainSquareButton"
 				android:layout_toEndOf="@id/mainSquareButton"
 				android:onClick="cube"/>
 
@@ -515,6 +488,7 @@
 				android:id="@+id/mainTwoToButton"
 				android:layout_marginTop="5dp"
 				android:layout_marginLeft="7dp"
+				android:layout_toRightOf="@id/mainCubeButton"
 				android:layout_toEndOf="@id/mainCubeButton"
 				android:layout_below="@id/mainTanhButton"
 				android:onClick="raise2"/>
@@ -522,6 +496,57 @@
 		</RelativeLayout>
 
 	</ScrollView>
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="0dp"
+		android:layout_weight="1"
+		android:orientation="vertical"
+		android:id="@+id/mainCalculateLayout"
+		android:visibility="visible"
+		android:measureWithLargestChild="true"
+		android:animateLayoutChanges="true"
+		android:layoutAnimation="@anim/slideinright">
+
+		<Button
+			android:layout_height="wrap_content"
+			android:text="Calculate"
+			android:layout_width="match_parent"
+			android:id="@+id/mainCalculateButton"
+			android:textColor="#00FF00"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:layout_gravity="center"
+			android:layout_weight="1.0"
+			android:visibility="gone"/>
+
+		<Button
+			android:layout_height="wrap_content"
+			android:text="Zero"
+			android:layout_width="match_parent"
+			android:layout_marginLeft="5dp"
+			android:id="@+id/mainZeroButton"
+			android:layout_weight="1.0"
+			android:onClick="zero"/>
+
+		<Button
+			android:layout_height="wrap_content"
+			android:text="Approximation"
+			android:layout_width="match_parent"
+			android:layout_marginLeft="5dp"
+			android:id="@+id/mainInDecimal"
+			android:layout_weight="1.0"
+			android:onClick="decimal"/>
+
+		<Button
+			android:layout_height="wrap_content"
+			android:text="Accurate"
+			android:layout_width="match_parent"
+			android:id="@+id/mainTermsButton"
+			android:layout_marginLeft="5dp"
+			android:layout_weight="1.0"
+			android:onClick="terms"/>
+
+	</LinearLayout>
 
 </LinearLayout>
 

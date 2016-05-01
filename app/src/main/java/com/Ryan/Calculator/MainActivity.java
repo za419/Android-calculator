@@ -1,4 +1,4 @@
-package com.RyanHodin.Calculator;
+package com.Ryan.Calculator;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -33,8 +33,12 @@ public class MainActivity extends Activity
 
 	public double parseDouble(String num)
 	{
-		if (num.indexOf("Error", 0)==0 || num.indexOf("ERROR", 0)==0)
+		if (num==null || num.indexOf("Error", 0)==0 || num.indexOf("ERROR", 0)==0)
 			return 0;
+		if ("Not prime".equals(num) || "Not prime or composite".equals(num))
+			return 0;
+		if ("Prime".equals(num))
+			return 1;
 		if (num.charAt(num.length()-1)=='\u03C0')
 		{
 			if (num.length()==1)
@@ -51,7 +55,16 @@ public class MainActivity extends Activity
 				return -Math.E; // Return negative e
 			return parseDouble(num.substring(0, num.length()-1))*Math.E;
 		}
-		return Double.parseDouble(num);
+		try {
+			return Double.parseDouble(num);
+		}
+		catch (NumberFormatException ex) {
+			setText("ERROR: Invalid number");
+			View v=findViewById(R.id.mainCalculateButton);
+			v.setOnClickListener(null); // Cancel existing computation
+			v.setVisibility(View.GONE); // Remove the button
+			return 0;
+		}
 	}
 
 	public String inIntTermsOfPi(double num)
@@ -88,6 +101,10 @@ public class MainActivity extends Activity
 
 	public String inIntTermsOfAny(double num)
 	{
+		if (Double.isNaN(num)) // "Last-resort" check
+			return "ERROR: Nonreal or non-numeric result."; // Trap NaN and return a generic error for it.
+		// Because of that check, we can guarantee that NaN's will not be floating around for more than one expression.
+
 		String out=inIntTermsOfPi(num);
 		if (!out.equals(Double.toString(num)))
 			return out;
@@ -118,7 +135,7 @@ public class MainActivity extends Activity
 
 	public void setText(String n)
 	{
-		setText(n, (EditText)findViewById(R.id.mainTextField));
+		setText(n, (EditText) findViewById(R.id.mainTextField));
 	}
 
 	public void terms(View v)
@@ -145,7 +162,7 @@ public class MainActivity extends Activity
 
 	public void doCalculate(final EditText ev, OnClickListener ocl, double n) // Common code for buttons that use the mainCalculateButton, setting the default value to n rather than zero.
 	{
-		setText(Double.toString(n), ev);
+		setText(inIntTermsOfAny(n), ev);
 		final Button b=(Button)findViewById(R.id.mainCalculateButton);
 		b.setVisibility(View.VISIBLE);
 		b.setOnClickListener(ocl);
@@ -155,16 +172,14 @@ public class MainActivity extends Activity
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
 		currentValue=getValue(ev);
-		doCalculate(ev, new OnClickListener()
-		{
+		doCalculate(ev, new OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				v.setOnClickListener(null);
-				String num=ev.getText().toString().trim();
-				if (num==null || "".equals(num))
+				String num = ev.getText().toString().trim();
+				if ("".equals(num))
 					return;
-				setText(inIntTermsOfAny(currentValue+parseDouble(num)), ev);
+				setText(inIntTermsOfAny(currentValue + parseDouble(num)), ev);
 				v.setVisibility(View.GONE);
 			}
 		});
@@ -181,7 +196,7 @@ public class MainActivity extends Activity
 			{
 				v.setOnClickListener(null);
 				String num=ev.getText().toString().trim();
-				if (num==null || "".equals(num))
+				if ("".equals(num))
 					return;
 				setText(inIntTermsOfAny(currentValue-parseDouble(num)), ev);
 				v.setVisibility(View.GONE);
@@ -200,7 +215,7 @@ public class MainActivity extends Activity
 			{
 				v.setOnClickListener(null);
 				String num=ev.getText().toString().trim();
-				if (num==null || "".equals(num))
+				if ("".equals(num))
 					return;
 				setText(inIntTermsOfAny(parseDouble(num)-currentValue), ev);
 				v.setVisibility(View.GONE);
@@ -219,7 +234,7 @@ public class MainActivity extends Activity
 			{
 				v.setOnClickListener(null);
 				String num=ev.getText().toString().trim();
-				if (num==null || "".equals(num))
+				if ("".equals(num))
 					return;
 				setText(inIntTermsOfAny(currentValue*parseDouble(num)), ev);
 				v.setVisibility(View.GONE);
@@ -238,17 +253,16 @@ public class MainActivity extends Activity
 			{
 				v.setOnClickListener(null);
 				String num=ev.getText().toString().trim();
-				if (num==null || "".equals(num))
+				if ("".equals(num))
 					return;
 				double n=parseDouble(num);
-				if (n==0) {
+				if (n==0)
 					setText("Error: Divide by zero.");
-					return;
-				}
-				setText(inIntTermsOfAny(currentValue/n), ev);
+				else
+					setText(inIntTermsOfAny(currentValue/n), ev);
 				v.setVisibility(View.GONE);
 			}
-		});
+		}, 1);
 	}
 
 	public void divide2(View v)
@@ -262,17 +276,16 @@ public class MainActivity extends Activity
 			{
 				v.setOnClickListener(null);
 				String num=ev.getText().toString().trim();
-				if (num==null || "".equals(num))
+				if ("".equals(num))
 					return;
 				double n=parseDouble(num);
-				if (n==0) {
+				if (n==0)
 					setText("Error: Divide by zero.");
-					return;
-				}
-				setText(inIntTermsOfAny(n/currentValue), ev);
+				else
+					setText(inIntTermsOfAny(n/currentValue), ev);
 				v.setVisibility(View.GONE);
 			}
-		});
+		}, 1);
 	}
 
 	public void remainder(View v)
@@ -291,23 +304,18 @@ public class MainActivity extends Activity
 			{
 				v.setOnClickListener(null);
 				String num=ev.getText().toString().trim();
-				if (num==null || "".equals(num))
+				if ("".equals(num))
 					return;
 				v.setVisibility(View.GONE);
 				double tmp=parseDouble(num);
 				if (Math.round(tmp)!=tmp)
-				{
 					setText("Error: Parameter is not an integer: "+num, ev);
-					return;
-				}
-				if (Math.round(tmp)==0)
-				{
+				else if (Math.round(tmp)==0)
 					setText("Error: Divide by zero.");
-					return;
-				}
-				setText(inIntTermsOfAny(Math.round(currentValue)%Math.round(tmp)), ev);
+				else
+					setText(inIntTermsOfAny(Math.round(currentValue)%Math.round(tmp)), ev);
 			}
-		});
+		}, 1);
 	}
 
 	public void remainder2(View v)
@@ -324,21 +332,18 @@ public class MainActivity extends Activity
 			public void onClick(View v) {
 				v.setOnClickListener(null);
 				String num = ev.getText().toString().trim();
-				if (num == null || "".equals(num))
+				if ("".equals(num))
 					return;
 				v.setVisibility(View.GONE);
 				double tmp = parseDouble(num);
-				if (Math.round(tmp) != tmp) {
+				if (Math.round(tmp) != tmp)
 					setText("Error: Parameter is not an integer: " + num, ev);
-					return;
-				}
-				if (Math.round(currentValue) == 0) {
+				else if (Math.round(currentValue) == 0)
 					setText("Error: Divide by zero.");
-					return;
-				}
-				setText(inIntTermsOfAny(Math.round(tmp) % Math.round(currentValue)), ev);
+				else
+					setText(inIntTermsOfAny(Math.round(tmp) % Math.round(currentValue)), ev);
 			}
-		});
+		}, 1);
 	}
 
 	public void e(View v)
@@ -435,19 +440,17 @@ public class MainActivity extends Activity
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
 		currentValue=parseDouble(ev.getText().toString());
-		doCalculate(ev,new OnClickListener()
-		{
+		doCalculate(ev, new OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				v.setOnClickListener(null);
-				String num=ev.getText().toString();
-				if (num==null || "".equals(num))
+				String num = ev.getText().toString();
+				if ("".equals(num))
 					return;
-				setText(inIntTermsOfAny(Math.log(currentValue)/Math.log(parseDouble(num))), ev);
+				setText(inIntTermsOfAny(Math.log(currentValue) / Math.log(parseDouble(num))), ev);
 				v.setVisibility(View.GONE);
 			}
-		},10);
+		}, 10);
 	}
 
 	public void logb2(View v)
@@ -461,7 +464,7 @@ public class MainActivity extends Activity
 			{
 				v.setOnClickListener(null);
 				String num=ev.getText().toString();
-				if (num==null || "".equals(num))
+				if ("".equals(num))
 					return;
 				setText(inIntTermsOfAny(Math.log(parseDouble(num))/Math.log(currentValue)), ev);
 				v.setVisibility(View.GONE);
@@ -478,7 +481,11 @@ public class MainActivity extends Activity
 	public void sqrt(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfAny(Math.sqrt(parseDouble(ev.getText().toString()))), ev);
+		double n=parseDouble(ev.getText().toString());
+		if (n<0)
+			setText("ERROR: Complex result.");
+		else
+			setText(inIntTermsOfAny(Math.sqrt(n)), ev);
 	}
 
 	public void cbrt(View v)
@@ -490,7 +497,7 @@ public class MainActivity extends Activity
 	public void ceil(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(Long.toString((long)Math.ceil(parseDouble(ev.getText().toString()))), ev);
+		setText(Long.toString((long) Math.ceil(parseDouble(ev.getText().toString()))), ev);
 	}
 
 	public void floor(View v)
@@ -503,16 +510,13 @@ public class MainActivity extends Activity
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
 		currentValue=parseDouble(ev.getText().toString());
-		doCalculate(ev, new OnClickListener()
-		{
+		doCalculate(ev, new OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				v.setOnClickListener(null);
-				String num=ev.getText().toString();
-				if ("".equals(num))
-					return;
-				setText(inIntTermsOfAny(Math.pow(currentValue, parseDouble(num))), ev);
+				String num = ev.getText().toString();
+				if (!"".equals(num))
+					setText(inIntTermsOfAny(Math.pow(currentValue, parseDouble(num))), ev);
 				v.setVisibility(View.GONE);
 			}
 		}, currentValue);
@@ -529,9 +533,8 @@ public class MainActivity extends Activity
 			{
 				v.setOnClickListener(null);
 				String num=ev.getText().toString();
-				if (num==null || "".equals(num))
-					return;
-				setText(inIntTermsOfAny(Math.pow(parseDouble(num), currentValue)), ev);
+				if (!"".equals(num))
+					setText(inIntTermsOfAny(Math.pow(parseDouble(num), currentValue)), ev);
 				v.setVisibility(View.GONE);
 			}
 		}, currentValue);
@@ -541,12 +544,6 @@ public class MainActivity extends Activity
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		setText(inIntTermsOfAny(Math.abs(parseDouble(ev.getText().toString()))), ev);
-	}
-
-	public void signum(View v)
-	{
-		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(Long.toString((long)Math.signum(parseDouble(ev.getText().toString()))), ev);
 	}
 
 	public void sinh(View v)
@@ -591,6 +588,31 @@ public class MainActivity extends Activity
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		double num=parseDouble(ev.getText().toString());
 		setText(inIntTermsOfAny(num*num*num), ev);
+	}
+
+	public void isPrime(View v) {
+		EditText ev=(EditText)findViewById(R.id.mainTextField);
+		double num=parseDouble(ev.getText().toString());
+		int n=(int)Math.floor(num);
+		if (n!=num || n<1 || isDivisible(n,2)) {
+			setText("Not prime");
+			return;
+		}
+		if (n==1) {
+			setText("Not prime or composite");
+			return;
+		}
+		for (int i=3; i<=Math.sqrt(n); i+=2) {
+			if (isDivisible(n, i)) {
+				setText("Not prime");
+				return;
+			}
+		}
+		setText("Prime");
+	}
+
+	public boolean isDivisible(int num, int den) {
+		return num%den==0;
 	}
 
 	public double fastPow(double val, int power)
