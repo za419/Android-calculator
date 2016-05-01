@@ -224,6 +224,8 @@ public class Complex
 		imaginary-=(real*target.imaginary);
 
 		double fac=(target.real*target.real)-(target.imaginary*target.imaginary);
+		if (fac==0) // Divide-by-zero check
+			return ERROR;
 		real/=fac;
 		imaginary/=fac;
 
@@ -305,5 +307,59 @@ public class Complex
 	{
 		Complex out =new Complex (rhs, default_epsilon); // Reset epsilon
 		return out.negate();
+	}
+
+	public Complex round()
+	{
+		real=Math.round(real);
+		imaginary=Math.round(imaginary);
+		return this;
+	}
+
+	public static Complex round(Complex val)
+	{
+		Complex out=new Complex(val, default_epsilon); // Reset epsilon
+		return out.round();
+	}
+
+	public Complex rounded()
+	{
+		return round(this);
+	}
+
+	public Complex floor()
+	{
+		real=Math.floor(real);
+		imaginary=Math.floor(imaginary);
+		return this;
+	}
+
+	public static Complex floor(Complex val)
+	{
+		Complex out=new Complex(val, default_epsilon); // Reset epsilon
+		return out.floor();
+	}
+
+	public Complex floored()
+	{
+		return floor(this);
+	}
+
+	public Complex ceil()
+	{
+		real=Math.ceil(real);
+		imaginary=Math.ceil(imaginary);
+		return this;
+	}
+
+	public static Complex ceil(Complex val)
+	{
+		Complex out=new Complex(val, default_epsilon); // Reset epsilon
+		return out.ceil();
+	}
+
+	public Complex ceiled() // This is a fantastic name for this. Definitely.
+	{
+		return ceil(this);
 	}
 }
