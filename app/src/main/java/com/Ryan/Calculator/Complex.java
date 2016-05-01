@@ -111,12 +111,10 @@ public class Complex
 
 	public String toNaiveString() // Ignores any special values and always returns a+bi, even when that makes no sense. Useful mostly with parseNaiveString()
 	{
-		StringBuilder out=new StringBuilder();
-		out.append(real);
-		out.append('+');
-		out.append(imaginary);
-		out.append('i');
-		return out.toString();
+		return String.valueOf(real) +
+				'+' +
+				imaginary +
+				'i';
 	}
 
 	public static Complex parseNaiveString(String str) // Create a complex based on the format used above. Much faster than parseString(), but does not play well with differently formatted inputs
