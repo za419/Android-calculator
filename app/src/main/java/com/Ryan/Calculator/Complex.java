@@ -362,4 +362,28 @@ public class Complex
 	{
 		return ceil(this);
 	}
+
+	public Complex modulo (Complex target) // Doesn't modify the current instance
+	{
+		// Extension of the algorithm for general real modulo
+		return subtract(this, multiply(floor(divide(this, target)), target));
+	}
+
+	public Complex moduloTo (Complex target) // Does modify the current instance
+	{
+		Complex result=modulo(target);
+		real=result.real;
+		imaginary=result.imaginary;
+		return this;
+	}
+
+	public Complex moduloWith (Complex target) // For sanity
+	{
+		return moduloTo(target);
+	}
+
+	public static Complex modulo (Complex lhs, Complex rhs) // Static wrapper
+	{
+		return lhs.modulo(rhs);
+	}
 }
