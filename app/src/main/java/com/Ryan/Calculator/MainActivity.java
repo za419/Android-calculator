@@ -229,7 +229,7 @@ public class MainActivity extends Activity
 				String num = ev.getText().toString().trim();
 				if ("".equals(num))
 					return;
-				setText(inIntTermsOfAny(currentValue + parseDouble(num)), ev);
+				setText(inIntTermsOfAny(currentValue.addTo(parseComplex(num))), ev);
 				v.setVisibility(View.GONE);
 			}
 		});
@@ -248,7 +248,7 @@ public class MainActivity extends Activity
 				String num=ev.getText().toString().trim();
 				if ("".equals(num))
 					return;
-				setText(inIntTermsOfAny(currentValue-parseDouble(num)), ev);
+				setText(inIntTermsOfAny(currentValue.subtractTo(parseComplex(num))), ev);
 				v.setVisibility(View.GONE);
 			}
 		});
@@ -267,7 +267,7 @@ public class MainActivity extends Activity
 				String num=ev.getText().toString().trim();
 				if ("".equals(num))
 					return;
-				setText(inIntTermsOfAny(parseDouble(num)-currentValue), ev);
+				setText(inIntTermsOfAny(parseComplex(num).subtractTo(currentValue)), ev);
 				v.setVisibility(View.GONE);
 			}
 		});
@@ -286,7 +286,7 @@ public class MainActivity extends Activity
 				String num=ev.getText().toString().trim();
 				if ("".equals(num))
 					return;
-				setText(inIntTermsOfAny(currentValue*parseDouble(num)), ev);
+				setText(inIntTermsOfAny(currentValue.multiplyTo(parseComplex(num))), ev);
 				v.setVisibility(View.GONE);
 			}
 		});
@@ -305,11 +305,11 @@ public class MainActivity extends Activity
 				String num=ev.getText().toString().trim();
 				if ("".equals(num))
 					return;
-				double n=parseDouble(num);
-				if (n==0)
+				Complex n=parseComplex(num);
+				if (n.equals(Complex.ZERO))
 					setText("Error: Divide by zero.");
 				else
-					setText(inIntTermsOfAny(currentValue/n), ev);
+					setText(inIntTermsOfAny(currentValue.divideTo(n)), ev);
 				v.setVisibility(View.GONE);
 			}
 		}, 1);
@@ -328,11 +328,11 @@ public class MainActivity extends Activity
 				String num=ev.getText().toString().trim();
 				if ("".equals(num))
 					return;
-				double n=parseDouble(num);
-				if (n==0)
+				Complex n=parseComplex(num);
+				if (n.equals(Complex.ZERO))
 					setText("Error: Divide by zero.");
 				else
-					setText(inIntTermsOfAny(n/currentValue), ev);
+					setText(inIntTermsOfAny(n.divideTo(currentValue)), ev);
 				v.setVisibility(View.GONE);
 			}
 		}, 1);
