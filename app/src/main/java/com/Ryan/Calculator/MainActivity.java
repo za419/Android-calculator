@@ -88,6 +88,19 @@ public class MainActivity extends Activity
 			return Double.toString(num);
 	}
 
+	public String inIntTermsOfPi(Complex num)
+	{
+		if (num.isReal())
+			return inIntTermsOfPi(num.real);
+		if (num.isImaginary())
+			return inIntTermsOfPi(num.imaginary)+'i';
+		String out=inIntTermsOfPi(num.real);
+		if (num.imaginary>0)
+			out+="+";
+		out+=inIntTermsOfPi(num.imaginary)+'i';
+		return out;
+	}
+
 	public String inIntTermsOfE(double num)
 	{
 		if (num==0)
@@ -102,6 +115,19 @@ public class MainActivity extends Activity
 		}
 		else
 			return Double.toString(num);
+	}
+
+	public String inIntTermsOfE(Complex num)
+	{
+		if (num.isReal())
+			return inIntTermsOfE(num.real);
+		if (num.isImaginary())
+			return inIntTermsOfE(num.imaginary)+'i';
+		String out=inIntTermsOfE(num.real);
+		if (num.imaginary>0)
+			out+="+";
+		out+=inIntTermsOfE(num.imaginary)+'i';
+		return out;
 	}
 
 	public String inIntTermsOfAny(double num)
