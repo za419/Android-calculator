@@ -1,4 +1,4 @@
-package com.RyanHodin.Calculator;
+package com.Ryan.Calculator;
 
 public class Complex
 {
