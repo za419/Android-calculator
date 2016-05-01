@@ -90,6 +90,8 @@ public class MainActivity extends Activity
 
 	public String inIntTermsOfPi(Complex num)
 	{
+		if (num.equals(Complex.ZERO)) // Special case: Prevents "0+0i"
+			return "0";
 		if (num.isReal())
 			return inIntTermsOfPi(num.real);
 		if (num.isImaginary())
@@ -119,6 +121,8 @@ public class MainActivity extends Activity
 
 	public String inIntTermsOfE(Complex num)
 	{
+		if (num.equals(Complex.ZERO)) // Special case: Prevents "0+0i"
+			return "0";
 		if (num.isReal())
 			return inIntTermsOfE(num.real);
 		if (num.isImaginary())
