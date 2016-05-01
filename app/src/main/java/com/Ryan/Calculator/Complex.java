@@ -11,6 +11,8 @@ public class Complex
 	static public double default_epsilon = 1E-6; // The default tolerance for all new Complex's. Can be changed if all or most will need a different epsilon. Defaults to a reasonable value
 
 	// CONSTANTS
+	final static public Complex ZERO=new Complex(0);
+	final static public Complex ONE=new Complex(1);
 	final static public Complex I=new Complex(0, 1);
 	final static public Complex PI=new Complex(Math.PI);
 	final static public Complex E=new Complex(Math.E);
@@ -87,7 +89,7 @@ public class Complex
 	public static Complex parseString(String str) // Parses a string from the format used above to return a Complex
 	{
 		if (str.equals("0")) // Special case, for simplicity
-			return new Complex(0);
+			return ZERO;
 
 		double real=Double.parseDouble(str);
 		double imaginary=0;
@@ -275,5 +277,18 @@ public class Complex
 	public Complex rationalized()
 	{
 		return multiply(this, conjugate());
+	}
+
+	public Complex negate()
+	{
+		real=-real;
+		imaginary=-imaginary;
+		return this;
+	}
+
+	public static Complex negate (Complex rhs)
+	{
+		Complex out =new Complex (rhs, default_epsilon); // Reset epsilon
+		return out.negate();
 	}
 }

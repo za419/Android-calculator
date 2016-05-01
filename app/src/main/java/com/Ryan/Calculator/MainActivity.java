@@ -13,7 +13,7 @@ import java.math.BigInteger;
 
 public class MainActivity extends Activity
 {
-	public double currentValue=0;
+	public Complex currentValue=Complex.ZERO;
 
 	/** Called when the activity is first created. */
 	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
@@ -31,39 +31,44 @@ public class MainActivity extends Activity
 		setZero();
 	}
 
-	public double parseDouble(String num)
+	public Complex parseComplex(String num)
 	{
 		if (num==null || num.indexOf("Error", 0)==0 || num.indexOf("ERROR", 0)==0)
-			return 0;
+			return Complex.ZERO;
 		if ("Not prime".equals(num) || "Not prime or composite".equals(num))
-			return 0;
+			return Complex.ZERO;
 		if ("Prime".equals(num))
-			return 1;
+			return Complex.ONE;
 		if (num.charAt(num.length()-1)=='\u03C0')
 		{
 			if (num.length()==1)
-				return Math.PI;
+				return Complex.PI;
 			else if (num.length()==2 && num.charAt(0)=='-') // If the string is two long and the first character is a negation
-				return -Math.PI; // Return negative pi
-			return parseDouble(num.substring(0, num.length()-1))*Math.PI;
+				return Complex.negate(Complex.PI); // Return negative pi
+			return Complex.multiply(parseComplex(num.substring(0, num.length()-1)), Complex.PI);
 		}
 		if (num.charAt(num.length()-1)=='e')
 		{
 			if (num.length()==1)
-				return Math.E;
+				return Complex.E;
 			else if (num.length()==2 && num.charAt(0)=='-') // If the string is two long and the first character is a negation
-				return -Math.E; // Return negative e
-			return parseDouble(num.substring(0, num.length()-1))*Math.E;
+				return Complex.negate(Complex.E); // Return negative e
+			return Complex.multiply(parseComplex(num.substring(0, num.length()-1)), Complex.E);
 		}
 		try {
-			return Double.parseDouble(num);
+			return Complex.parseNaiveString(num);
 		}
 		catch (NumberFormatException ex) {
-			setText("ERROR: Invalid number");
-			View v=findViewById(R.id.mainCalculateButton);
-			v.setOnClickListener(null); // Cancel existing computation
-			v.setVisibility(View.GONE); // Remove the button
-			return 0;
+			try {
+				return Complex.parseString(num);
+			}
+			catch (NumberFormatException e) {
+				setText("ERROR: Invalid number");
+				View v=findViewById(R.id.mainCalculateButton);
+				v.setOnClickListener(null); // Cancel existing computation
+				v.setVisibility(View.GONE); // Remove the button
+				return Complex.ZERO;
+			}
 		}
 	}
 
