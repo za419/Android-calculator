@@ -86,6 +86,21 @@ public class Complex
 		return c.toString();
 	}
 
+	@Override
+	public boolean equals(Object o)
+	{
+		if (o instanceof Complex)
+		{
+			Complex c=(Complex)o;
+			return epsilonEqualTo(c.real, real) && epsilonEqualTo(c.imaginary, imaginary);
+		}
+		else if (o instanceof Double)
+			return epsilonEqualTo(real, (double)o);
+		else if (o instanceof Integer)
+			return epsilonEqualTo(real, (double)o);
+		return super.equals(o);
+	}
+
 	public static Complex parseString(String str) // Parses a string from the format used above to return a Complex
 	{
 		if (str.equals("0")) // Special case, for simplicity
