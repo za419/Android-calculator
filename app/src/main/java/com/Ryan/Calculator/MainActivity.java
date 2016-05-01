@@ -408,10 +408,12 @@ public class MainActivity extends Activity
 		setText("\u03C0");
 	}
 
+	public void i(View v) { setText("i"); }
+
 	public void negate(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfAny(-1 * parseDouble(ev.getText().toString())), ev);
+		setText(inIntTermsOfAny(Complex.negate(Complex.ONE).multiplyTo(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void sin(View v)
