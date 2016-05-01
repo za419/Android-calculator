@@ -191,18 +191,18 @@ public class MainActivity extends Activity
 	public void terms(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfAny(parseDouble(ev.getText().toString())), ev);
+		setText(inIntTermsOfAny(parseComplex(ev.getText().toString())), ev);
 	}
 
 	public void decimal(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(Double.toString(parseDouble(ev.getText().toString())), ev);
+		setText(Complex.toString(parseComplex(ev.getText().toString())), ev);
 	}
 
-	public double getValue(final EditText ev) // Parses the content of ev into a double.
+	public Complex getValue(final EditText ev) // Parses the content of ev into a double.
 	{
-		return parseDouble(ev.getText().toString().trim());
+		return parseComplex(ev.getText().toString().trim());
 	}
 
 	public void doCalculate(final EditText ev, OnClickListener ocl) // Common code for buttons that use the mainCalculateButton.
