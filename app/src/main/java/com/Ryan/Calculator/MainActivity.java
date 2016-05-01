@@ -147,6 +147,21 @@ public class MainActivity extends Activity
 			return inIntTermsOfE(num);
 	}
 
+	public String inIntTermsOfAny(Complex num)
+	{
+		if (num.equals(Complex.ZERO)) // Special case: Prevents "0+0i"
+			return "0";
+		if (num.isReal())
+			return inIntTermsOfAny(num.real);
+		if (num.isImaginary())
+			return inIntTermsOfAny(num.imaginary)+'i';
+		String out=inIntTermsOfAny(num.real);
+		if (num.imaginary>0)
+			out+="+";
+		out+=inIntTermsOfAny(num.imaginary)+'i';
+		return out;
+	}
+
 	public void zero(View v)
 	{
 		setZero();
