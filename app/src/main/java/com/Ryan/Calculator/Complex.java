@@ -593,6 +593,16 @@ public class Complex
 		return pow(out, new Complex(0.5));
 	}
 
+	public Complex cbrt() // More syntactic sugar that should be improved later
+	{
+		return pow(new Complex(1/3));
+	}
+
+	public static Complex cbrt(Complex out)
+	{
+		return pow(out, new Complex(1/3));
+	}
+
 	public Complex square()
 	{
 		return multiply(this, this);
