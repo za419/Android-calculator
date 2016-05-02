@@ -481,13 +481,13 @@ public class MainActivity extends Activity
 	public void ln(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfE(Math.log(parseDouble(ev.getText().toString()))), ev);
+		setText(inIntTermsOfE(Complex.ln(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void log(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfAny(Math.log10(parseDouble(ev.getText().toString()))), ev);
+		setText(inIntTermsOfAny(Complex.log10(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void logb(View v)
