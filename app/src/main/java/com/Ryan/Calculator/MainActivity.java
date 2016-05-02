@@ -600,7 +600,7 @@ public class MainActivity extends Activity
 	public void sinh(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfAny(Math.sinh(parseDouble(ev.getText().toString()))), ev);
+		setText(inIntTermsOfAny(Complex.sinh(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void expm(View v)
