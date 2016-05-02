@@ -401,4 +401,19 @@ public class Complex
 	{
 		return new Complex (Math.toDegrees(Math.atan2(imaginary, real)));
 	}
+
+	public Complex ln() // Natural log
+	{
+		return new Complex(Math.log(magnitude().real), argument().real);
+	}
+
+	public Complex log(Complex base) // Log in arbitrary base
+	{
+		return Complex.divide(ln(), base.ln());
+	}
+
+	public Complex log10() // Common (base 10) log
+	{
+		return log(new Complex(10));
+	}
 }
