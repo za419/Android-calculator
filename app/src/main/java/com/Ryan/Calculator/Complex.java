@@ -516,6 +516,23 @@ public class Complex
 		return target.tand();
 	}
 
+	public static Complex exp (Complex exponent)
+	{
+		// Slight extension of deMoivre's formula
+		// Derived using the standard rules of real exponentiation
+		return multiply(new Complex(Math.exp(exponent.real)),
+				new Complex(Math.cos(exponent.imaginary), Math.sin(exponent.imaginary)));
+	}
+
+	public static Complex pow (double base, Complex exponent) // Necessary overload for the next function
+	{
+		// Slight extension of the last slight extension
+		// Derived by representing base as e^ln(base)
+		return multiply(new Complex(Math.pow(base, exponent.real)),
+				new Complex(Math.cos(exponent.imaginary*Math.log(base)),
+						Math.sin(exponent.imaginary*Math.log(base))));
+	}
+
 	public Complex pow(Complex exponent)
 	{
 		// We start with special cases that are easier to compute
