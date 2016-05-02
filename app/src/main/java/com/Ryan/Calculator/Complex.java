@@ -386,4 +386,9 @@ public class Complex
 	{
 		return lhs.modulo(rhs);
 	}
+
+	public Complex magnitude()
+	{
+		return new Complex(Math.sqrt((real*real)+(imaginary*imaginary)));
+	}
 }
