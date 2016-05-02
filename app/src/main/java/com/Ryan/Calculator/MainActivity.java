@@ -455,7 +455,7 @@ public class MainActivity extends Activity
 	public void exp(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfE(Math.exp(parseDouble(ev.getText().toString()))), ev);
+		setText(inIntTermsOfE(Complex.exp(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void degrees(View v)
