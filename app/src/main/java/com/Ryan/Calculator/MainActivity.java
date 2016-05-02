@@ -493,7 +493,7 @@ public class MainActivity extends Activity
 	public void logb(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString());
+		currentValue=parseComplex(ev.getText().toString());
 		doCalculate(ev, new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -501,7 +501,7 @@ public class MainActivity extends Activity
 				String num = ev.getText().toString();
 				if ("".equals(num))
 					return;
-				setText(inIntTermsOfAny(Math.log(currentValue) / Math.log(parseDouble(num))), ev);
+				setText(inIntTermsOfAny(Complex.log(currentValue, parseComplex(num))), ev);
 				v.setVisibility(View.GONE);
 			}
 		}, 10);
@@ -510,7 +510,7 @@ public class MainActivity extends Activity
 	public void logb2(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString());
+		currentValue=parseComplex(ev.getText().toString());
 		doCalculate(ev,new OnClickListener()
 		{
 			@Override
@@ -520,7 +520,7 @@ public class MainActivity extends Activity
 				String num=ev.getText().toString();
 				if ("".equals(num))
 					return;
-				setText(inIntTermsOfAny(Math.log(parseDouble(num))/Math.log(currentValue)), ev);
+				setText(inIntTermsOfAny(Complex.log(parseComplex(num), currentValue)), ev);
 				v.setVisibility(View.GONE);
 			}
 		}, 10);
