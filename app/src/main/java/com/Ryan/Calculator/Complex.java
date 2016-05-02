@@ -416,4 +416,19 @@ public class Complex
 	{
 		return log(new Complex(10));
 	}
+
+	public static Complex ln(Complex target) // Syntactic sugar
+	{
+		return target.ln();
+	}
+
+	public static Complex log10(Complex target) // More syntactic sugar
+	{
+		return target.log10();
+	}
+
+	public static Complex log(Complex target, Complex base) // Syntactic aspartame
+	{
+		return target.log(base);
+	}
 }
