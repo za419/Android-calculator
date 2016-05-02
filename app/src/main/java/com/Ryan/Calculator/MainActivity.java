@@ -312,7 +312,7 @@ public class MainActivity extends Activity
 					setText(inIntTermsOfAny(currentValue.divideTo(n)), ev);
 				v.setVisibility(View.GONE);
 			}
-		}, 1);
+		}, Complex.ONE);
 	}
 
 	public void divide2(View v)
@@ -335,7 +335,7 @@ public class MainActivity extends Activity
 					setText(inIntTermsOfAny(n.divideTo(currentValue)), ev);
 				v.setVisibility(View.GONE);
 			}
-		}, 1);
+		}, Complex.ONE);
 	}
 
 	public void remainder(View v)
@@ -365,7 +365,7 @@ public class MainActivity extends Activity
 				else
 					setText(inIntTermsOfAny(Complex.round(currentValue).modulo(Complex.round(tmp))), ev);
 			}
-		}, 1);
+		}, Complex.ONE);
 	}
 
 	public void remainder2(View v)
@@ -395,7 +395,7 @@ public class MainActivity extends Activity
 				else
 					setText(inIntTermsOfAny(Complex.round(tmp).modulo(Complex.round(currentValue))), ev);
 			}
-		}, 1);
+		}, Complex.ONE);
 	}
 
 	public void e(View v)
