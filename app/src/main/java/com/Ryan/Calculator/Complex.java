@@ -510,7 +510,7 @@ public class Complex
 				{
 					Complex[] states = new Complex[] // The results of raising I to powers
 							{
-									1, I, -1, negate(I)
+									ONE, I, negate(ONE), negate(I)
 							};
 					return multiply(states[((int)exponent.real)%4], new Complex(coefficient));
 				}
