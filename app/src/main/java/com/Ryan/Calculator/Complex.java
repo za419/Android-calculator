@@ -531,6 +531,18 @@ public class Complex
 		return exp(this);
 	}
 
+	public static Complex expm1 (Complex exponent)
+	{
+		// This doesn't make a ton of sense, but it was at least very easy to implement
+		return multiply(new Complex(Math.expm1(exponent.real)),
+				new Complex(Math.cos(exponent.imaginary), Math.sin(exponent.imaginary)));
+	}
+
+	public Complex expm1()
+	{
+		return expm1(this);
+	}
+
 	public static Complex pow (double base, Complex exponent) // Necessary overload for the next function
 	{
 		// Slight extension of the last slight extension
