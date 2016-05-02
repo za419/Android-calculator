@@ -461,21 +461,21 @@ public class MainActivity extends Activity
 	public void degrees(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(((Double)Math.toDegrees(parseDouble(ev.getText().toString()))).toString(), ev);
+		setText((Complex.toDegrees(parseComplex(ev.getText().toString()))).toString(), ev);
 	}
 
 	public void radians(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfPi(Math.toRadians(parseDouble(ev.getText().toString()))), ev);
+		setText(inIntTermsOfPi(Complex.toRadians(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void radians2(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		double tmp=parseDouble(ev.getText().toString());
-		tmp/=180;
-		setText(Double.toString(tmp)+'\u03C0', ev);
+		Complex tmp=parseComplex(ev.getText().toString());
+		tmp=Complex.divide(tmp, new Complex(180));
+		setText(Complex.toString(tmp)+'\u03C0', ev);
 	}
 
 	public void ln(View v)
