@@ -658,4 +658,34 @@ public class Complex
 	{
 		return target.tanh();
 	}
+
+	public Complex asinh()
+	{
+		return ln(add(this, sqrt(add(square(this), ONE))));
+	}
+
+	public static Complex asinh(Complex target)
+	{
+		return target.asinh();
+	}
+
+	public Complex acosh()
+	{
+		return ln(add(this, sqrt(subtract(square(this), ONE))));
+	}
+
+	public static Complex acosh(Complex target)
+	{
+		return target.acosh();
+	}
+
+	public Complex atanh()
+	{
+		return divide(subtract(ln(add(ONE, this)), ln(subtract(ONE, this))), new Complex(2));
+	}
+
+	public static Complex atanh(Complex target)
+	{
+		return target.atanh();
+	}
 }
