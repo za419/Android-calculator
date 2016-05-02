@@ -437,19 +437,19 @@ public class MainActivity extends Activity
 	public void arcsin(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfPi(Math.asin(parseDouble(ev.getText().toString()))), ev);
+		setText(inIntTermsOfPi(Complex.asin(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void arccos(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfPi(Math.acos(parseDouble(ev.getText().toString()))), ev);
+		setText(inIntTermsOfPi(Complex.acos(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void arctan(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfPi(Math.atan(parseDouble(ev.getText().toString()))), ev);
+		setText(inIntTermsOfPi(Complex.atan(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void exp(View v)
