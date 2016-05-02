@@ -612,13 +612,13 @@ public class MainActivity extends Activity
 	public void cosh(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfAny(Math.cosh(parseDouble(ev.getText().toString()))), ev);
+		setText(inIntTermsOfAny(Complex.cosh(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void tanh(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfAny(Math.tanh(parseDouble(ev.getText().toString()))), ev);
+		setText(inIntTermsOfAny(Complex.tanh(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void lnp(View v)
