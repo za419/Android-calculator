@@ -461,4 +461,34 @@ public class Complex
 	{
 		return target.tan();
 	}
+
+	public Complex sind()
+	{
+		return new Complex(Math.toRadians(real), Math.toRadians(imaginary)).sin();
+	}
+
+	public Complex cosd()
+	{
+		return new Complex(Math.toRadians(real), Math.toRadians(imaginary)).cos();
+	}
+
+	public Complex tand()
+	{
+		return new Complex(Math.toRadians(real), Math.toRadians(imaginary)).tan();
+	}
+
+	public static Complex sind(Complex target)
+	{
+		return target.sind();
+	}
+
+	public static Complex cosd(Complex target)
+	{
+		return target.cosd();
+	}
+
+	public static Complex tand(Complex target)
+	{
+		return target.tand();
+	}
 }
