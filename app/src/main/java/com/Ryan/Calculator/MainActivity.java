@@ -535,11 +535,8 @@ public class MainActivity extends Activity
 	public void sqrt(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		double n=parseDouble(ev.getText().toString());
-		if (n<0)
-			setText("ERROR: Complex result.");
-		else
-			setText(inIntTermsOfAny(Math.sqrt(n)), ev);
+		Complex n=parseComplex(ev.getText().toString());
+		setText(inIntTermsOfAny(Complex.sqrt(n)), ev);
 	}
 
 	public void cbrt(View v)
