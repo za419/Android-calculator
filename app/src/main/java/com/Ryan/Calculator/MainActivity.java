@@ -504,7 +504,7 @@ public class MainActivity extends Activity
 				setText(inIntTermsOfAny(Complex.log(currentValue, parseComplex(num))), ev);
 				v.setVisibility(View.GONE);
 			}
-		}, 10);
+		}, new Complex(10));
 	}
 
 	public void logb2(View v)
@@ -523,7 +523,7 @@ public class MainActivity extends Activity
 				setText(inIntTermsOfAny(Complex.log(parseComplex(num), currentValue)), ev);
 				v.setVisibility(View.GONE);
 			}
-		}, 10);
+		}, new Complex(10));
 	}
 
 	public void round(View v)
