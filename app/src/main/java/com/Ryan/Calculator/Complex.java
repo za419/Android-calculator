@@ -431,4 +431,34 @@ public class Complex
 	{
 		return target.log(base);
 	}
+
+	public Complex sin()
+	{
+		return new Complex(Math.sin(real)*Math.cosh(imaginary), Math.cos(real)*Math.sinh(imaginary));
+	}
+
+	public Complex cos()
+	{
+		return new Complex(Math.cos(real)*Math.cosh(imaginary), -(Math.sin(real)*Math.sinh(imaginary)));
+	}
+
+	public Complex tan()
+	{
+		return divide(sin(), cos());
+	}
+
+	public static Complex sin(Complex target)
+	{
+		return target.sin();
+	}
+
+	public static Complex cos(Complex target)
+	{
+		return target.cos();
+	}
+
+	public static Complex tan(Complex target)
+	{
+		return target.tan();
+	}
 }
