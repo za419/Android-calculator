@@ -391,4 +391,14 @@ public class Complex
 	{
 		return new Complex(Math.sqrt((real*real)+(imaginary*imaginary)));
 	}
+
+	public Complex argument() // Result in radians
+	{
+		return new Complex (Math.atan2(imaginary, real));
+	}
+
+	public Complex argumentd() // Result in degrees
+	{
+		return new Complex (Math.toDegrees(Math.atan2(imaginary, real)));
+	}
 }
