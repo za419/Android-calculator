@@ -692,4 +692,24 @@ public class Complex
 	{
 		return target.atanh();
 	}
+
+	public Complex toDegrees()
+	{
+		return new Complex (Math.toDegrees(real), Math.toDegrees(imaginary));
+	}
+
+	public static Complex toDegrees(Complex target)
+	{
+		return target.toDegrees();
+	}
+
+	public Complex toRadians()
+	{
+		return new Complex(Math.toRadians(real), Math.toRadians(imaginary));
+	}
+
+	public static Complex toRadians(Complex target)
+	{
+		return target.toRadians();
+	}
 }
