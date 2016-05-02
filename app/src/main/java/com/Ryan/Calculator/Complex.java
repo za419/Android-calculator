@@ -508,11 +508,12 @@ public class Complex
 				double coefficient=Math.pow(imaginary, exponent.real);
 				if (Math.round(exponent.real)==exponent.real)
 				{
-					Complex[] states = new Complex[] // The results of raising I to powers
+					Complex[] results = new Complex[] // The results of raising I to powers
 							{
-									ONE, I, negate(ONE), negate(I)
+									new Complex(coefficient), new Complex(0, coefficient),
+									new Complex(-coefficient), new Complex(0, -coefficient)
 							};
-					return multiply(states[((int)exponent.real)%4], new Complex(coefficient));
+					return results [((int)exponent.real)%4];
 				}
 			}
 		}
