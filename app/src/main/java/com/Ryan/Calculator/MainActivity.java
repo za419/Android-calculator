@@ -207,10 +207,10 @@ public class MainActivity extends Activity
 
 	public void doCalculate(final EditText ev, OnClickListener ocl) // Common code for buttons that use the mainCalculateButton.
 	{
-		doCalculate(ev, ocl, 0);
+		doCalculate(ev, ocl, Complex.ZERO);
 	}
 
-	public void doCalculate(final EditText ev, OnClickListener ocl, double n) // Common code for buttons that use the mainCalculateButton, setting the default value to n rather than zero.
+	public void doCalculate(final EditText ev, OnClickListener ocl, Complex n) // Common code for buttons that use the mainCalculateButton, setting the default value to n rather than zero.
 	{
 		setText(inIntTermsOfAny(n), ev);
 		final Button b=(Button)findViewById(R.id.mainCalculateButton);
@@ -560,14 +560,14 @@ public class MainActivity extends Activity
 	public void pow(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString());
+		currentValue=parseComplex(ev.getText().toString());
 		doCalculate(ev, new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				v.setOnClickListener(null);
 				String num = ev.getText().toString();
 				if (!"".equals(num))
-					setText(inIntTermsOfAny(Math.pow(currentValue, parseDouble(num))), ev);
+					setText(inIntTermsOfAny(Complex.pow(currentValue, parseComplex(num))), ev);
 				v.setVisibility(View.GONE);
 			}
 		}, currentValue);
