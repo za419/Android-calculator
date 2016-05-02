@@ -491,4 +491,30 @@ public class Complex
 	{
 		return target.tand();
 	}
+
+	public Complex pow(Complex exponent)
+	{
+		// We start with special cases that are easier to compute
+		if (equals(ZERO))
+			return ZERO; // Zero to the anything is zero
+		if (exponent.equals(ZERO))
+			return ONE; // Anything to the zeroth is one
+		if (exponent.isReal())
+		{
+			if (isReal())
+				return new Complex(Math.pow(real, exponent.real));
+			if (isImaginary())
+			{
+				double coefficient=Math.pow(imaginary, exponent.real);
+				if (Math.round(exponent.real)==exponent.real)
+				{
+					Complex[] states = new Complex[] // The results of raising I to powers
+							{
+									1, I, -1, negate(I)
+							};
+					return multiply(states[((int)exponent.real)%4], new Complex(coefficient));
+				}
+			}
+		}
+	}
 }
