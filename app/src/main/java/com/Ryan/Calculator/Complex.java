@@ -628,4 +628,34 @@ public class Complex
 	{
 		return target.atan();
 	}
+
+	public Complex sinh()
+	{
+		return new Complex(Math.sinh(real)*Math.cos(imaginary), Math.cosh(real)*Math.sin(imaginary));
+	}
+
+	public static Complex sinh(Complex target)
+	{
+		return target.sinh();
+	}
+
+	public Complex cosh()
+	{
+		return new Complex(Math.cosh(real)*Math.cos(imaginary), Math.sinh(real)*Math.sin(imaginary));
+	}
+
+	public static Complex cosh(Complex target)
+	{
+		return target.cosh();
+	}
+
+	public Complex tanh()
+	{
+		return divide(sinh(), cosh());
+	}
+
+	public static Complex tanh(Complex target)
+	{
+		return target.tanh();
+	}
 }
