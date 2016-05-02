@@ -387,24 +387,24 @@ public class Complex
 		return lhs.modulo(rhs);
 	}
 
-	public Complex magnitude()
+	public double magnitude()
 	{
-		return new Complex(Math.sqrt((real*real)+(imaginary*imaginary)));
+		return Math.sqrt((real*real)+(imaginary*imaginary));
 	}
 
-	public Complex argument() // Result in radians
+	public double argument() // Result in radians
 	{
-		return new Complex (Math.atan2(imaginary, real));
+		return Math.atan2(imaginary, real);
 	}
 
-	public Complex argumentd() // Result in degrees
+	public double argumentd() // Result in degrees
 	{
-		return new Complex (Math.toDegrees(Math.atan2(imaginary, real)));
+		return Math.toDegrees(Math.atan2(imaginary, real));
 	}
 
 	public Complex ln() // Natural log
 	{
-		return new Complex(Math.log(magnitude().real), argument().real);
+		return new Complex(Math.log(magnitude()), argument());
 	}
 
 	public Complex log(Complex base) // Log in arbitrary base
