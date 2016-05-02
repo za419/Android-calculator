@@ -529,7 +529,7 @@ public class MainActivity extends Activity
 	public void round(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(Long.toString(Math.round(parseDouble(ev.getText().toString()))));
+		setText(Complex.toString(Complex.round(parseComplex(ev.getText().toString()))));
 	}
 
 	public void sqrt(View v)
