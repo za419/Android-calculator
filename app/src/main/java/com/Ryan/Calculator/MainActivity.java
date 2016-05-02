@@ -606,7 +606,7 @@ public class MainActivity extends Activity
 	public void expm(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfAny(Math.expm1(parseDouble(ev.getText().toString()))), ev);
+		setText(inIntTermsOfAny(Complex.expm1(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void cosh(View v)
