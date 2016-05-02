@@ -380,6 +380,10 @@ public class Complex
 		return moduloTo(target);
 	}
 
+	// All functions below here do not modify the object they're called on
+	// I've changed my mind. Complex will now be immutable unless its data is directly touched
+	// TODO: Make it so that this comment is at the top of the file, then delete it.
+
 	public static Complex modulo (Complex lhs, Complex rhs) // Static wrapper
 	{
 		return lhs.modulo(rhs);
