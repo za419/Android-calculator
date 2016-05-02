@@ -94,9 +94,7 @@ public class Complex
 			Complex c=(Complex)o;
 			return epsilonEqualTo(c.real, real) && epsilonEqualTo(c.imaginary, imaginary);
 		}
-		else if (o instanceof Double)
-			return epsilonEqualTo(real, (double)o);
-		else if (o instanceof Integer)
+		else if (o instanceof Double || o instanceof Integer)
 			return epsilonEqualTo(real, (double)o);
 		return super.equals(o);
 	}
