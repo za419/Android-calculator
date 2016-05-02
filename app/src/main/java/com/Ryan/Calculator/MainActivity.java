@@ -419,19 +419,19 @@ public class MainActivity extends Activity
 	public void sin(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfPi(Math.sin(parseDouble(ev.getText().toString()))), ev);
+		setText(inIntTermsOfPi(Complex.sin(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void cos(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfPi(Math.cos(parseDouble(ev.getText().toString()))), ev);
+		setText(inIntTermsOfPi(Complex.cos(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void tan(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfPi(Math.tan(parseDouble(ev.getText().toString()))), ev);
+		setText(inIntTermsOfPi(Complex.tan(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void arcsin(View v)
