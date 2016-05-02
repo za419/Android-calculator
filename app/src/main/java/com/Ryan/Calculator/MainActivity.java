@@ -576,7 +576,7 @@ public class MainActivity extends Activity
 	public void pow2(View v)
 	{
 		final EditText ev=(EditText)findViewById(R.id.mainTextField);
-		currentValue=parseDouble(ev.getText().toString());
+		currentValue=parseComplex(ev.getText().toString());
 		doCalculate(ev, new OnClickListener()
 		{
 			@Override
@@ -585,7 +585,7 @@ public class MainActivity extends Activity
 				v.setOnClickListener(null);
 				String num=ev.getText().toString();
 				if (!"".equals(num))
-					setText(inIntTermsOfAny(Math.pow(parseDouble(num), currentValue)), ev);
+					setText(inIntTermsOfAny(Complex.pow(parseComplex(num), currentValue)), ev);
 				v.setVisibility(View.GONE);
 			}
 		}, currentValue);
