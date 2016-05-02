@@ -575,7 +575,57 @@ public class Complex
 
 	public static Complex pow(Complex base, Complex exponent)
 	{
-		Complex out=new Complex(base, default_epsilon); // Reset epsilon
+		Complex out = new Complex(base, default_epsilon); // Reset epsilon
 		return out.pow(exponent);
+	}
+
+	public Complex sqrt() // Syntactic sugar. For now at least, I'll probably find a better way to to this.. later
+	{
+		return pow(new Complex(0.5));
+	}
+
+	public static Complex sqrt(Complex out)
+	{
+		return pow(out, new Complex(0.5));
+	}
+
+	public Complex square()
+	{
+		return multiply(this, this);
+	}
+
+	public static Complex square(Complex val)
+	{
+		return val.square();
+	}
+
+	public Complex asin()
+	{
+		return multiply(negate(I), ln(multiply(I, this).addTo(sqrt(subtract(ONE, square())))));
+	}
+
+	public static Complex asin(Complex target)
+	{
+		return target.asin();
+	}
+
+	public Complex acos()
+	{
+		return multiply(negate(I), ln(add(this, sqrt(subtract(ONE, square())))));
+	}
+
+	public static Complex acos(Complex target)
+	{
+		return target.acos();
+	}
+
+	public Complex atan()
+	{
+		return multiply(new Complex(0,.5), ln(add(this, I).divideTo(subtract(I, this))));
+	}
+
+	public static Complex atan(Complex target)
+	{
+		return target.atan();
 	}
 }
