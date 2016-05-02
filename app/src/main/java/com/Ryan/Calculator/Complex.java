@@ -522,6 +522,11 @@ public class Complex
 				new Complex(Math.cos(exponent.imaginary), Math.sin(exponent.imaginary)));
 	}
 
+	public Complex exp()
+	{
+		return exp(this);
+	}
+
 	public static Complex pow (double base, Complex exponent) // Necessary overload for the next function
 	{
 		// Slight extension of the last slight extension
@@ -566,5 +571,11 @@ public class Complex
 									*Math.exp(-exponent.imaginary*argument())),
 						new Complex(Math.cos(fac), Math.sin(fac)));
 		// Yes, I know the indentation is messy. It's used mostly to clarify which expression pairs with which
+	}
+
+	public static Complex pow(Complex base, Complex exponent)
+	{
+		Complex out=new Complex(base, default_epsilon); // Reset epsilon
+		return out.pow(exponent);
 	}
 }
