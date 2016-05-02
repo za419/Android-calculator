@@ -594,7 +594,7 @@ public class MainActivity extends Activity
 	public void abs (View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfAny(Math.abs(parseDouble(ev.getText().toString()))), ev);
+		setText(inIntTermsOfAny(Complex.abs(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void sinh(View v)
