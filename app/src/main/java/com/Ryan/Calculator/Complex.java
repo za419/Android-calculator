@@ -722,4 +722,14 @@ public class Complex
 	{
 		return target.toRadians();
 	}
+
+	public Complex abs()
+	{
+		return new Complex(Math.abs(real), Math.abs(imaginary));
+	}
+
+	public static Complex abs(Complex target)
+	{
+		return target.abs();
+	}
 }
