@@ -723,12 +723,13 @@ public class Complex
 		return target.toRadians();
 	}
 
-	public Complex abs()
+	public double abs()
 	{
-		return new Complex(Math.abs(real), Math.abs(imaginary));
+		// Easy naming overload. The absolute value of a complex number is just its magnitude
+		return magnitude();
 	}
 
-	public static Complex abs(Complex target)
+	public static double abs(Complex target)
 	{
 		return target.abs();
 	}
