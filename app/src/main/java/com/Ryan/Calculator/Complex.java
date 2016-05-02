@@ -402,6 +402,30 @@ public class Complex
 		return Math.toDegrees(Math.atan2(imaginary, real));
 	}
 
+	public static Complex fromPolar(double magnitude, double argument) // Argument in radians
+	{
+		return new Complex(magnitude*Math.cos(argument), magnitude*Math.sin(argument));
+	}
+
+	public static Complex fromPolarDegrees(double magnitude, double argument) // Sugar for argument in degrees
+	{
+		return fromPolar(magnitude, Math.toRadians(argument));
+	}
+
+	public static Complex fromExponential(double magnitude, double argument)
+	{
+		// The values are the same as polar form, just written differently
+		// This just exists to let people forget that fact
+		return fromPolar(magnitude, argument);
+	}
+
+	public static Complex fromExponentialDegrees(double magnitude, double argument)
+	{
+		// The values are the same as polar form, just written differently
+		// This just exists to let people forget that fact
+		return fromPolarDegrees(magnitude, argument);
+	}
+
 	public Complex ln() // Natural log
 	{
 		return new Complex(Math.log(magnitude()), argument());
