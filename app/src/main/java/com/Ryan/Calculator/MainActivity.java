@@ -542,19 +542,19 @@ public class MainActivity extends Activity
 	public void cbrt(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfAny(Math.cbrt(parseDouble(ev.getText().toString()))), ev);
+		setText(inIntTermsOfAny(Complex.cbrt(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void ceil(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(Long.toString((long) Math.ceil(parseDouble(ev.getText().toString()))), ev);
+		setText(Complex.toString(Complex.ceil(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void floor(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(Long.toString((long)Math.floor(parseDouble(ev.getText().toString()))), ev);
+		setText(Complex.toString(Complex.floor(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void pow(View v)
