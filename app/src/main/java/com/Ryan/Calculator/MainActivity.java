@@ -641,9 +641,19 @@ public class MainActivity extends Activity
 		setText(inIntTermsOfAny(Complex.multiply(num.square(), num)), ev);
 	}
 
-	public void isPrime(View v) {
+	public void isPrime(View v) // Standard primality, not Gaussian
+	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		double num=parseDouble(ev.getText().toString());
+		Complex m=parseComplex(ev.getText().toString());
+		if (!m.isReal())
+		{
+			if (!m.isImaginary()) // M is zero
+				setText("Not prime");
+			else
+				setText("Error: Cannot compute standard is prime for complex numbers");
+			return;
+		}
+		double num=m.real;
 		int n=(int)Math.floor(num);
 		if (n!=num || n<1 || isDivisible(n,2)) {
 			setText("Not prime");
@@ -660,6 +670,10 @@ public class MainActivity extends Activity
 			}
 		}
 		setText("Prime");
+	}
+
+	public void isGaussianPrime(View v) // TODO: Write this
+	{
 	}
 
 	public boolean isDivisible(int num, int den) {
