@@ -624,21 +624,21 @@ public class MainActivity extends Activity
 	public void lnp(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfAny(Math.log1p(parseDouble(ev.getText().toString()))), ev);
+		setText(inIntTermsOfAny(Complex.ln1p(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void square(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		double num=parseDouble(ev.getText().toString());
-		setText(inIntTermsOfAny(num*num), ev);
+		Complex num=parseComplex(ev.getText().toString());
+		setText(inIntTermsOfAny(num.square()), ev);
 	}
 
 	public void cube(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		double num=parseDouble(ev.getText().toString());
-		setText(inIntTermsOfAny(num*num*num), ev);
+		Complex num=parseComplex(ev.getText().toString());
+		setText(inIntTermsOfAny(Complex.multiply(num.square(), num)), ev);
 	}
 
 	public void isPrime(View v) {
