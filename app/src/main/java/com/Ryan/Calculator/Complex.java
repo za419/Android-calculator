@@ -443,6 +443,11 @@ public class Complex
 		return log(new Complex(10));
 	}
 
+	public Complex ln1p()
+	{
+		return ln(add(ONE,this)); // There is probably a better way to do this
+	}
+
 	public static Complex ln(Complex target) // Syntactic sugar
 	{
 		return target.ln();
@@ -456,6 +461,11 @@ public class Complex
 	public static Complex log(Complex target, Complex base) // Syntactic aspartame
 	{
 		return target.log(base);
+	}
+
+	public static Complex ln1p(Complex target)
+	{
+		return target.ln1p();
 	}
 
 	public Complex sin()
