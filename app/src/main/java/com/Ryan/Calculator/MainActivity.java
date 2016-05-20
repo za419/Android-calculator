@@ -709,10 +709,10 @@ public class MainActivity extends Activity
 	public void raise2(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		double num=parseDouble(ev.getText().toString());
-		if (Math.round(num)==num) // Integer power. Use the fastpow() and a BigInteger.
-			setText(fastPow((int)Math.round(num)).toString(), ev);
+		Complex num=parseComplex(ev.getText().toString());
+		if (num.isReal() && Math.round(num.real)==num.real) // Integer power. Use the fastpow() and a BigInteger.
+			setText(fastPow((int)Math.round(num.real)).toString(), ev);
 		else
-			setText(Double.toString(Math.pow(2, num)), ev);
+			setText(Complex.toString(Complex.pow(2, num)), ev);
 	}
 }
