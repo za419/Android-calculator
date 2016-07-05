@@ -672,7 +672,7 @@ public class MainActivity extends Activity
 		setText("Prime");
 	}
 
-	public void isGaussianPrime(View v) // TODO: Write this
+	public void isGaussianPrime(View v) // Computes whether a prime number is a Gaussian prime
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		Complex m=parseComplex(ev.getText().toString());
