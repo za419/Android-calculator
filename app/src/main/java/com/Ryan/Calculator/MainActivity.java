@@ -56,19 +56,14 @@ public class MainActivity extends Activity
 			return Complex.multiply(parseComplex(num.substring(0, num.length()-1)), Complex.E);
 		}
 		try {
-			return Complex.parseNaiveString(num);
+			return Complex.parseString(num);
 		}
-		catch (NumberFormatException ex) {
-			try {
-				return Complex.parseString(num);
-			}
-			catch (NumberFormatException e) {
-				setText("ERROR: Invalid number");
-				View v=findViewById(R.id.mainCalculateButton);
-				v.setOnClickListener(null); // Cancel existing computation
-				v.setVisibility(View.GONE); // Remove the button
-				return Complex.ZERO;
-			}
+		catch (NumberFormatException e) {
+			setText("ERROR: Invalid number");
+			View v=findViewById(R.id.mainCalculateButton);
+			v.setOnClickListener(null); // Cancel existing computation
+			v.setVisibility(View.GONE); // Remove the button
+			return Complex.ZERO;
 		}
 	}
 
@@ -645,7 +640,9 @@ public class MainActivity extends Activity
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		Complex m=parseComplex(ev.getText().toString());
-		if (!m.isReal())
+		setText(m.toNaiveString());
+		return;
+		/*if (!m.isReal())
 		{
 			if (!m.isImaginary()) // M is zero
 				setText("Not prime");
@@ -669,7 +666,7 @@ public class MainActivity extends Activity
 				return;
 			}
 		}
-		setText("Prime");
+		setText("Prime");*/
 	}
 
 	public void isGaussianPrime(View v) // Computes whether a prime number is a Gaussian prime
@@ -684,13 +681,17 @@ public class MainActivity extends Activity
 				int n=(int)Math.abs(m.real);
 				if (isDivisible(n-3, 4))
 				{
-					prime=true;
-					for (int i=3; i<=Math.sqrt(n); i+=2) {
-						if (isDivisible(n, i)) {
-							prime=false;
-							break;
+					if (n>9) {
+						prime=true;
+						for (int i = 3; i <= Math.sqrt(n); i += 2) {
+							if (isDivisible(n, i)) {
+								prime = false;
+								break;
+							}
 						}
 					}
+					else
+						prime=(n==3 || n==5 || n==7);
 				}
 			}
 			else if (m.isImaginary())
