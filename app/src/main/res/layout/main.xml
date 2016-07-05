@@ -523,7 +523,7 @@
 			<Button
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="Gaussian Prime?"
+				android:text="Is a Gaussian (complex) Prime?"
 				android:id="@+id/mainGaussianPrimeButton"
 				android:layout_centerHorizontal="true"
 				android:layout_below="@id/mainTwoToButton"
