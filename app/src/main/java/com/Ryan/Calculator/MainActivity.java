@@ -709,8 +709,24 @@ public class MainActivity extends Activity
 			}
 			else
 			{
+				double norm=m.magnitude();
+				int n=(int) Math.floor(norm);
+				if (n==norm)
+				{
+					if (n!=1 && !isDivisible(n, 2))
+					{
+						prime=true;
+						for (int i=3; i<=Math.sqrt(n); i+=2) {
+							if (isDivisible(n, i)) {
+								prime=false;
+								break;
+							}
+						}
+					}
+				}
 			}
 		}
+		setText(prime ? "Gaussian Prime" : "Prime");
 	}
 
 	public boolean isDivisible(int num, int den) {
