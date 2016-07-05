@@ -520,6 +520,15 @@
 				android:layout_below="@id/mainTanhButton"
 				android:onClick="raise2"/>
 
+			<Button
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Gaussian Prime?"
+				android:id="@+id/mainGaussianPrimeButton"
+				android:layout_centerHorizontal="true"
+				android:layout_below="@id/mainTwoToButton"
+				android:onClick="isGaussianPrime"/>
+
 		</RelativeLayout>
 
 	</ScrollView>
