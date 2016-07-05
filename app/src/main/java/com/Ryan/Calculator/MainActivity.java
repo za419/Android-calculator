@@ -674,6 +674,43 @@ public class MainActivity extends Activity
 
 	public void isGaussianPrime(View v) // TODO: Write this
 	{
+		EditText ev=(EditText)findViewById(R.id.mainTextField);
+		Complex m=parseComplex(ev.getText().toString());
+		boolean prime=false;
+		if (Math.floor(m.real)==m.real && Math.floor(m.imaginary)==m.imaginary)
+		{
+			if (m.isReal())
+			{
+				int n=(int)Math.abs(m.real);
+				if (isDivisible(n-3, 4))
+				{
+					prime=true;
+					for (int i=3; i<=Math.sqrt(n); i+=2) {
+						if (isDivisible(n, i)) {
+							prime=false;
+							break;
+						}
+					}
+				}
+			}
+			else if (m.isImaginary())
+			{
+				int n=(int)Math.abs(m.imaginary);
+				if (isDivisible(n-3, 4))
+				{
+					prime=true;
+					for (int i=3; i<=Math.sqrt(n); i+=2) {
+						if (isDivisible(n, i)) {
+							prime=false;
+							break;
+						}
+					}
+				}
+			}
+			else
+			{
+			}
+		}
 	}
 
 	public boolean isDivisible(int num, int den) {
