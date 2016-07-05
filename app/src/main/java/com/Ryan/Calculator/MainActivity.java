@@ -35,9 +35,9 @@ public class MainActivity extends Activity
 	{
 		if (num==null || num.indexOf("Error", 0)==0 || num.indexOf("ERROR", 0)==0)
 			return Complex.ZERO;
-		if ("Not prime".equals(num) || "Not prime or composite".equals(num))
+		if ("Not prime".equals(num) || "Not prime or composite".equals(num) || "Not Gaussian prime".equals(num))
 			return Complex.ZERO;
-		if ("Prime".equals(num))
+		if ("Prime".equals(num) || "Gaussian prime".equals(num))
 			return Complex.ONE;
 		if (num.charAt(num.length()-1)=='\u03C0')
 		{
@@ -726,7 +726,7 @@ public class MainActivity extends Activity
 				}
 			}
 		}
-		setText(prime ? "Gaussian Prime" : "Prime");
+		setText(prime ? "Gaussian prime" : "Not Gaussian prime");
 	}
 
 	public boolean isDivisible(int num, int den) {
