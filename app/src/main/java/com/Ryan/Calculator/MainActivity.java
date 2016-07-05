@@ -413,7 +413,7 @@ public class MainActivity extends Activity
 	public void negate(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfAny(Complex.negate(Complex.ONE).multiplyTo(parseComplex(ev.getText().toString()))), ev);
+		setText(inIntTermsOfAny(Complex.negate(parseComplex(ev.getText().toString()))), ev);
 	}
 
 	public void sin(View v)
