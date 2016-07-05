@@ -84,6 +84,7 @@
 				android:layout_marginBottom="10dp"
 				android:singleLine="false"
 				android:hint="Input number"
+				android:gravity="end"
 				android:textAlignment="viewEnd"
 				android:textColorHighlight="#FFFFFF"/>
 
