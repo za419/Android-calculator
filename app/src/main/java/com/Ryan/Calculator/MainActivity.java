@@ -87,6 +87,8 @@ public class MainActivity extends Activity
 	{
 		if (num.equals(Complex.ZERO)) // Special case: Prevents "0+0i"
 			return "0";
+		if (Double.isNaN(num.real) || Double.isNaN(num.imaginary)) // Trap NaNs
+			return "ERROR: Non-numeric result."; // This avoids repeating the message.
 		if (num.isReal())
 			return inIntTermsOfPi(num.real);
 		if (num.isImaginary()) {
@@ -123,6 +125,8 @@ public class MainActivity extends Activity
 	{
 		if (num.equals(Complex.ZERO)) // Special case: Prevents "0+0i"
 			return "0";
+		if (Double.isNaN(num.real) || Double.isNaN(num.imaginary)) // Trap NaNs
+			return "ERROR: Non-numeric result."; // This avoids repeating the message.
 		if (num.isReal())
 			return inIntTermsOfE(num.real);
 		if (num.isImaginary()) {
@@ -142,7 +146,7 @@ public class MainActivity extends Activity
 	public String inIntTermsOfAny(double num)
 	{
 		if (Double.isNaN(num)) // "Last-resort" check
-			return "ERROR: Nonreal or non-numeric result."; // Trap NaN and return a generic error for it.
+			return "ERROR: Non-numeric result."; // Trap NaN and return a generic error for it.
 		// Because of that check, we can guarantee that NaN's will not be floating around for more than one expression.
 
 		String out=inIntTermsOfPi(num);
@@ -156,6 +160,8 @@ public class MainActivity extends Activity
 	{
 		if (num.equals(Complex.ZERO)) // Special case: Prevents "0+0i"
 			return "0";
+		if (Double.isNaN(num.real) || Double.isNaN(num.imaginary)) // Trap NaNs
+			return "ERROR: Non-numeric result."; // This avoids repeating the message.
 		if (num.isReal())
 			return inIntTermsOfAny(num.real);
 		if (num.isImaginary()) {
