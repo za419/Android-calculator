@@ -148,8 +148,13 @@ public class MainActivity extends Activity
 			return "0";
 		if (num.isReal())
 			return inIntTermsOfAny(num.real);
-		if (num.isImaginary())
-			return inIntTermsOfAny(num.imaginary)+'i';
+		if (num.isImaginary()) {
+			if (num.imaginary==1)
+				return "i";
+			else if (num.imaginary==-1)
+				return "-i";
+			return inIntTermsOfAny(num.imaginary) + 'i';
+		}
 		String out=inIntTermsOfAny(num.real);
 		if (num.imaginary>0)
 			out+="+";
