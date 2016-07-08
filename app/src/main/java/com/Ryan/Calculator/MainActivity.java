@@ -63,7 +63,7 @@ public class MainActivity extends Activity
 			View v=findViewById(R.id.mainCalculateButton);
 			v.setOnClickListener(null); // Cancel existing computation
 			v.setVisibility(View.GONE); // Remove the button
-			return Complex.ZERO;
+			return Complex.ERROR;
 		}
 	}
 
