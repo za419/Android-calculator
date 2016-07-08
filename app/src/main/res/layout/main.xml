@@ -231,6 +231,17 @@
 				android:onClick="tan"/>
 
 			<Button
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="i"
+				android:id="@+id/mainIButton"
+				android:layout_marginLeft="10dp"
+				android:layout_marginTop="5dp"
+				android:layout_below="@id/mainRemainderFromButton"
+				android:layout_toEndOf="@id/mainTanButton"
+				android:onClick="i"/>
+
+			<Button
 				android:layout_height="wrap_content"
 				android:text="arcsin"
 				android:layout_width="wrap_content"
