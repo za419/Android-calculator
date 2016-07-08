@@ -108,6 +108,8 @@ public class Complex
 			return ZERO;
 
 		double real=Double.parseDouble(str);
+		if (str==Double.toString(real)+'i')
+			return new Complex(0, real);
 		double imaginary=0;
 		if (str.contains("i"))
 		{
