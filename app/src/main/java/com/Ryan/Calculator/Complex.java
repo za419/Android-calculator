@@ -214,7 +214,7 @@ public class Complex
 		real-=(imaginary*target.imaginary);
 
 		imaginary*=target.real;
-		imaginary+=(real+target.imaginary);
+		imaginary+=(real*target.imaginary);
 
 		return this;
 	}
