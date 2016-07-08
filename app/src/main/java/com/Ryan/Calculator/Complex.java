@@ -107,6 +107,12 @@ public class Complex
 		if (str.equals("0")) // Special case, for simplicity
 			return ZERO;
 
+		if (str.equals("i")) // Special case...
+			return I;
+
+		if (str.equals("-i")) // ... for simplicity.
+			return new Complex(0, -1);
+
 		double real=Double.parseDouble(str);
 		if (str==Double.toString(real)+'i')
 			return new Complex(0, real);
