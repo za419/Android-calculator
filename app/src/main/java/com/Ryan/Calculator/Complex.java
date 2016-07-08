@@ -67,7 +67,10 @@ public class Complex
 			out.append(real);
 		else if (isImaginary())
 		{
-			out.append(imaginary);
+			if (epsilonNotEqualTo(Math.abs(imaginary), 1))
+				out.append(imaginary);
+			else if (epsilonLessThan(imaginary, 0))
+				out.append('-');
 			out.append('i');
 		}
 		else
