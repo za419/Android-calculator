@@ -89,8 +89,13 @@ public class MainActivity extends Activity
 			return "0";
 		if (num.isReal())
 			return inIntTermsOfPi(num.real);
-		if (num.isImaginary())
-			return inIntTermsOfPi(num.imaginary)+'i';
+		if (num.isImaginary()) {
+			if (num.imaginary==1)
+				return "i";
+			else if (num.imaginary==-1)
+				return "-i";
+			return inIntTermsOfPi(num.imaginary) + 'i';
+		}
 		String out=inIntTermsOfPi(num.real);
 		if (num.imaginary>0)
 			out+="+";
@@ -120,8 +125,13 @@ public class MainActivity extends Activity
 			return "0";
 		if (num.isReal())
 			return inIntTermsOfE(num.real);
-		if (num.isImaginary())
-			return inIntTermsOfE(num.imaginary)+'i';
+		if (num.isImaginary()) {
+			if (num.imaginary==1)
+				return "i";
+			else if (num.imaginary==-1)
+				return "-i";
+			return inIntTermsOfE(num.imaginary) + 'i';
+		}
 		String out=inIntTermsOfE(num.real);
 		if (num.imaginary>0)
 			out+="+";
