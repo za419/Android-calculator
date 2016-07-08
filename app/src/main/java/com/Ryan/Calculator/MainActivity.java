@@ -207,13 +207,17 @@ public class MainActivity extends Activity
 	public void terms(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(inIntTermsOfAny(parseComplex(ev.getText().toString())), ev);
+		setText(inIntTermsOfAny(parseComplex(ev.getText().toString().trim())), ev);
 	}
 
 	public void decimal(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		setText(Complex.toString(parseComplex(ev.getText().toString())), ev);
+		String str=ev.toString().trim();
+		if (str==null || str.indexOf("Error", 0)==0 || str.indexOf("ERROR", 0)==0)
+			setText(Complex.toString(Complex.ZERO));
+		else
+			setText(Complex.toString(parseComplex(str)), ev);
 	}
 
 	public Complex getValue(final EditText ev) // Parses the content of ev into a double.
