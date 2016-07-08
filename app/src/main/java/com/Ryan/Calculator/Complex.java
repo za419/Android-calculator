@@ -571,8 +571,11 @@ public class Complex
 			return ONE; // Anything to the zeroth is one
 		if (exponent.isReal())
 		{
-			if (isReal())
+			if (isReal()) {
+				if (Math.pow(exponent.real, -1)%2==0 && real<0) // If our computation will generate a true complex...
+					return new Complex(0, Math.pow(-real, exponent.real));
 				return new Complex(Math.pow(real, exponent.real));
+			}
 			if (isImaginary())
 			{
 				double coefficient=Math.pow(imaginary, exponent.real);
