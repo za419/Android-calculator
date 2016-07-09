@@ -213,11 +213,13 @@ public class Complex
 
 	public Complex multiplyTo (Complex target)
 	{
+		double re=real;
+
 		real*=target.real;
 		real-=(imaginary*target.imaginary);
 
 		imaginary*=target.real;
-		imaginary+=(real*target.imaginary);
+		imaginary+=(re*target.imaginary);
 
 		return this;
 	}
