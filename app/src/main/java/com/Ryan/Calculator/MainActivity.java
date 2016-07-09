@@ -213,7 +213,7 @@ public class MainActivity extends Activity
 	public void decimal(View v)
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
-		String str=ev.toString().trim();
+		String str=ev.getText().toString().trim();
 		if (str==null || str.indexOf("Error", 0)==0 || str.indexOf("ERROR", 0)==0)
 			setText(Complex.toString(Complex.ZERO));
 		else
