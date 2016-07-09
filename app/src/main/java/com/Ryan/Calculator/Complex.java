@@ -776,8 +776,13 @@ public class Complex
 	// Helper methods
 	private static double parseDoublePrefix(String str) // Acts like parseDouble, except it will not fail on strings like "2.0i"
 	{
-		StringBuilder proc=new StringBuilder();
-		for (int i=0; i<str.length(); ++i)
+		StringBuilder proc = new StringBuilder();
+		int i = 0;
+		if (str.charAt(i) == '-') {
+			proc.append('-');
+			++i;
+		}
+		for (; i<str.length(); ++i)
 		{
 			Character c=str.charAt(i);
 			if (!(Character.isDigit(c) || c=='.')) // Double in base 10
