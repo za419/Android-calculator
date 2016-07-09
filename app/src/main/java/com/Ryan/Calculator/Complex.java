@@ -150,10 +150,10 @@ public class Complex
 	{
 		double real;
 		double imaginary;
-		real=Double.parseDouble(str);
+		real=parseDoublePrefix(str);
 		int idx=str.indexOf('+');
 		str=str.substring(++idx);
-		imaginary=Double.parseDouble(str);
+		imaginary=parseDoublePrefix(str);
 		return new Complex(real, imaginary);
 	}
 
