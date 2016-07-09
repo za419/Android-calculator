@@ -4,14 +4,11 @@
     android:versionCode="7"
     android:versionName="2.0a-2" >
 
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="19" />
-
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
 		android:hardwareAccelerated="true"
+		android:allowBackup="true"
 		android:installLocation="auto"
 		android:theme="@style/AppTheme">
         <activity
