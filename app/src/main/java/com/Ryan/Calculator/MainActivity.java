@@ -101,7 +101,12 @@ public class MainActivity extends Activity
 		String out=inIntTermsOfPi(num.real);
 		if (num.imaginary>0)
 			out+="+";
-		out+=inIntTermsOfPi(num.imaginary)+'i';
+		if (num.imaginary==1)
+			out+='i';
+		else if (num.imaginary==-1)
+			out+="-i";
+		else
+			out+=inIntTermsOfPi(num.imaginary)+'i';
 		return out;
 	}
 
@@ -139,7 +144,12 @@ public class MainActivity extends Activity
 		String out=inIntTermsOfE(num.real);
 		if (num.imaginary>0)
 			out+="+";
-		out+=inIntTermsOfE(num.imaginary)+'i';
+		if (num.imaginary==1)
+			out+='i';
+		else if (num.imaginary==-1)
+			out+="-i";
+		else
+			out+=inIntTermsOfE(num.imaginary)+'i';
 		return out;
 	}
 
@@ -174,7 +184,12 @@ public class MainActivity extends Activity
 		String out=inIntTermsOfAny(num.real);
 		if (num.imaginary>0)
 			out+="+";
-		out+=inIntTermsOfAny(num.imaginary)+'i';
+		if (num.imaginary==1)
+			out+='i';
+		else if (num.imaginary==-1)
+			out+="-i";
+		else
+			out+=inIntTermsOfAny(num.imaginary)+'i';
 		return out;
 	}
 
