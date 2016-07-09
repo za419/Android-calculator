@@ -131,8 +131,10 @@ public class Complex
 			{
 				if (str.contains("+"))
 					imaginary=parseDoublePrefix(str.substring(str.indexOf('+')+1));
-				else
+				else if (str.contains("-"))
 					imaginary=parseDoublePrefix(str.substring(str.indexOf("-", 1)));
+				else
+					return new Complex(0, real);
 			}
 		}
 		return new Complex(real, imaginary);
