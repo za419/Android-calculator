@@ -104,6 +104,9 @@ public class Complex
 
 	public static Complex parseString(String str) // Parses a string from the format used above to return a Complex
 	{
+		if (str==null)
+			return ERROR;
+
 		if (str.equals("0")) // Special case, for simplicity
 			return ZERO;
 
@@ -114,7 +117,7 @@ public class Complex
 			return new Complex(0, -1);
 
 		double real=Double.parseDouble(str);
-		if (str==Double.toString(real)+'i')
+		if (str.equals(Double.toString(real)+'i'))
 			return new Complex(0, real);
 		double imaginary=0;
 		if (str.contains("i"))
@@ -768,5 +771,19 @@ public class Complex
 	public static double abs(Complex target)
 	{
 		return target.abs();
+	}
+
+	// Helper methods
+	private static double parseDoublePrefix(String str) // Acts like parseDouble, except it will not fail on strings like "2.0i"
+	{
+		StringBuilder proc=new StringBuilder();
+		for (int i=0; i<str.length(); ++i)
+		{
+			Character c=str.charAt(i);
+			if (!(Character.isDigit(c) || c=='.')) // Double in base 10
+				break;
+			proc.append(c);
+		}
+		return Double.parseDouble(proc.toString());
 	}
 }
