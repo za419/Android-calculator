@@ -116,12 +116,12 @@ public class Complex
 		if (str.equals("-i")) // ... for simplicity.
 			return new Complex(0, -1);
 
-		double real=Double.parseDouble(str);
-		if (str.equals(Double.toString(real)+'i'))
-			return new Complex(0, real);
+		double real=parseDoublePrefix(str);
 		double imaginary=0;
 		if (str.contains("i"))
 		{
+			if (str.equals(Double.toString(real)+'i'))
+				return new Complex(0, real);
 			int idx=str.indexOf('i')-1;
 			if (str.charAt(idx)=='+')
 				imaginary=1;
@@ -130,9 +130,9 @@ public class Complex
 			else
 			{
 				if (str.contains("+"))
-					imaginary=Double.parseDouble(str.substring(str.indexOf('+')+1));
+					imaginary=parseDoublePrefix(str.substring(str.indexOf('+')+1));
 				else
-					imaginary=Double.parseDouble(str.substring(str.indexOf("-", 1)));
+					imaginary=parseDoublePrefix(str.substring(str.indexOf("-", 1)));
 			}
 		}
 		return new Complex(real, imaginary);
