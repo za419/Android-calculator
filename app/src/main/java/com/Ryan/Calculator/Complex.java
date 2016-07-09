@@ -231,11 +231,13 @@ public class Complex
 
 	public Complex divideTo (Complex target)
 	{
+		double re=real;
+
 		real*=target.real;
 		real-=(imaginary*target.imaginary);
 
 		imaginary*=target.real;
-		imaginary-=(real*target.imaginary);
+		imaginary-=(re*target.imaginary);
 
 		double fac=(target.real*target.real)-(target.imaginary*target.imaginary);
 		if (fac==0) // Divide-by-zero check
