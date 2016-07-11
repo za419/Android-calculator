@@ -2,8 +2,8 @@ package com.Ryan.Calculator;
 
 public class Complex
 {
-	public double real;
-	public double imaginary;
+	private double real;
+	private double imaginary;
 
 	public double epsilon; // The tolerance for comparisons. Can be changed if a certain Complex is known to need a different epsilon
 	// All instances of Complex created by a method of another will inherit the parent epsilon.
@@ -58,6 +58,16 @@ public class Complex
 		real=c.real;
 		imaginary=c.imaginary;
 		epsilon=Cepsilon;
+	}
+
+	public double real()
+	{
+		return real;
+	}
+
+	public double imaginary()
+	{
+		return imaginary;
 	}
 
 	public String toString()
@@ -401,7 +411,7 @@ public class Complex
 	}
 
 	// All functions below here do not modify the object they're called on
-	// I've changed my mind. Complex will now be immutable unless its data is directly touched
+	// I've changed my mind. Complex will now be immutable.
 	// TODO: Make it so that this comment is at the top of the file, then delete it.
 
 	public static Complex modulo (Complex lhs, Complex rhs) // Static wrapper

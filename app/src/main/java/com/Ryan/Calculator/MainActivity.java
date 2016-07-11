@@ -87,26 +87,26 @@ public class MainActivity extends Activity
 	{
 		if (num.equals(Complex.ZERO)) // Special case: Prevents "0+0i"
 			return "0";
-		if (Double.isNaN(num.real) || Double.isNaN(num.imaginary)) // Trap NaNs
+		if (Double.isNaN(num.real()) || Double.isNaN(num.imaginary())) // Trap NaNs
 			return "ERROR: Non-numeric result."; // This avoids repeating the message.
 		if (num.isReal())
-			return inIntTermsOfPi(num.real);
+			return inIntTermsOfPi(num.real());
 		if (num.isImaginary()) {
-			if (num.imaginary==1)
+			if (num.imaginary()==1)
 				return "i";
-			else if (num.imaginary==-1)
+			else if (num.imaginary()==-1)
 				return "-i";
-			return inIntTermsOfPi(num.imaginary) + 'i';
+			return inIntTermsOfPi(num.imaginary()) + 'i';
 		}
-		String out=inIntTermsOfPi(num.real);
-		if (num.imaginary>0)
+		String out=inIntTermsOfPi(num.real());
+		if (num.imaginary()>0)
 			out+="+";
-		if (num.imaginary==1)
+		if (num.imaginary()==1)
 			out+='i';
-		else if (num.imaginary==-1)
+		else if (num.imaginary()==-1)
 			out+="-i";
 		else
-			out+=inIntTermsOfPi(num.imaginary)+'i';
+			out+=inIntTermsOfPi(num.imaginary())+'i';
 		return out;
 	}
 
@@ -130,26 +130,26 @@ public class MainActivity extends Activity
 	{
 		if (num.equals(Complex.ZERO)) // Special case: Prevents "0+0i"
 			return "0";
-		if (Double.isNaN(num.real) || Double.isNaN(num.imaginary)) // Trap NaNs
+		if (Double.isNaN(num.real()) || Double.isNaN(num.imaginary())) // Trap NaNs
 			return "ERROR: Non-numeric result."; // This avoids repeating the message.
 		if (num.isReal())
-			return inIntTermsOfE(num.real);
+			return inIntTermsOfE(num.real());
 		if (num.isImaginary()) {
-			if (num.imaginary==1)
+			if (num.imaginary()==1)
 				return "i";
-			else if (num.imaginary==-1)
+			else if (num.imaginary()==-1)
 				return "-i";
-			return inIntTermsOfE(num.imaginary) + 'i';
+			return inIntTermsOfE(num.imaginary()) + 'i';
 		}
-		String out=inIntTermsOfE(num.real);
-		if (num.imaginary>0)
+		String out=inIntTermsOfE(num.real());
+		if (num.imaginary()>0)
 			out+="+";
-		if (num.imaginary==1)
+		if (num.imaginary()==1)
 			out+='i';
-		else if (num.imaginary==-1)
+		else if (num.imaginary()==-1)
 			out+="-i";
 		else
-			out+=inIntTermsOfE(num.imaginary)+'i';
+			out+=inIntTermsOfE(num.imaginary())+'i';
 		return out;
 	}
 
@@ -170,26 +170,26 @@ public class MainActivity extends Activity
 	{
 		if (num.equals(Complex.ZERO)) // Special case: Prevents "0+0i"
 			return "0";
-		if (Double.isNaN(num.real) || Double.isNaN(num.imaginary)) // Trap NaNs
+		if (Double.isNaN(num.real()) || Double.isNaN(num.imaginary())) // Trap NaNs
 			return "ERROR: Non-numeric result."; // This avoids repeating the message.
 		if (num.isReal())
-			return inIntTermsOfAny(num.real);
+			return inIntTermsOfAny(num.real());
 		if (num.isImaginary()) {
-			if (num.imaginary==1)
+			if (num.imaginary()==1)
 				return "i";
-			else if (num.imaginary==-1)
+			else if (num.imaginary()==-1)
 				return "-i";
-			return inIntTermsOfAny(num.imaginary) + 'i';
+			return inIntTermsOfAny(num.imaginary()) + 'i';
 		}
-		String out=inIntTermsOfAny(num.real);
-		if (num.imaginary>0)
+		String out=inIntTermsOfAny(num.real());
+		if (num.imaginary()>0)
 			out+="+";
-		if (num.imaginary==1)
+		if (num.imaginary()==1)
 			out+='i';
-		else if (num.imaginary==-1)
+		else if (num.imaginary()==-1)
 			out+="-i";
 		else
-			out+=inIntTermsOfAny(num.imaginary)+'i';
+			out+=inIntTermsOfAny(num.imaginary())+'i';
 		return out;
 	}
 
@@ -688,7 +688,7 @@ public class MainActivity extends Activity
 				setText("Error: Cannot compute standard is prime for complex numbers");
 			return;
 		}
-		double num=m.real;
+		double num=m.real();
 		int n=(int)Math.floor(num);
 		if (n!=num || n<1 || isDivisible(n,2)) {
 			setText("Not prime");
@@ -712,11 +712,11 @@ public class MainActivity extends Activity
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		Complex m=parseComplex(ev.getText().toString());
 		boolean prime=false;
-		if (Math.floor(m.real)==m.real && Math.floor(m.imaginary)==m.imaginary)
+		if (Math.floor(m.real())==m.real() && Math.floor(m.imaginary())==m.imaginary())
 		{
 			if (m.isReal())
 			{
-				int n=(int)Math.abs(m.real);
+				int n=(int)Math.abs(m.real());
 				if (isDivisible(n-3, 4))
 				{
 					prime=true;
@@ -730,7 +730,7 @@ public class MainActivity extends Activity
 			}
 			else if (m.isImaginary())
 			{
-				int n=(int)Math.abs(m.imaginary);
+				int n=(int)Math.abs(m.imaginary());
 				if (isDivisible(n-3, 4))
 				{
 					prime=true;
@@ -798,8 +798,8 @@ public class MainActivity extends Activity
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		Complex num=parseComplex(ev.getText().toString());
-		if (num.isReal() && Math.round(num.real)==num.real) // Integer power. Use the fastpow() and a BigInteger.
-			setText(fastPow((int)Math.round(num.real)).toString(), ev);
+		if (num.isReal() && Math.round(num.real())==num.real()) // Integer power. Use the fastpow() and a BigInteger.
+			setText(fastPow((int)Math.round(num.real())).toString(), ev);
 		else
 			setText(Complex.toString(Complex.pow(2, num)), ev);
 	}
