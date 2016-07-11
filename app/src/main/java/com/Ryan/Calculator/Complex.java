@@ -408,14 +408,29 @@ public class Complex
 		return Math.sqrt((real*real)+(imaginary*imaginary));
 	}
 
+	public static double magnitude(Complex val)
+	{
+		return val.magnitude();
+	}
+
 	public double argument() // Result in radians
 	{
 		return Math.atan2(imaginary, real);
 	}
 
+	public static double argument(Complex val)
+	{
+		return val.argument();
+	}
+
 	public double argumentd() // Result in degrees
 	{
 		return Math.toDegrees(Math.atan2(imaginary, real));
+	}
+
+	public static double argumentd(Complex val)
+	{
+		return val.argumentd();
 	}
 
 	public static Complex fromPolar(double magnitude, double argument) // Argument in radians
