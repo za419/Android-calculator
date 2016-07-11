@@ -592,7 +592,7 @@ public class Complex
 		if (exponent.isReal())
 		{
 			if (isReal()) {
-				if (Math.pow(exponent.real, -1)%2==0 && real<0) // If our computation will generate a true complex...
+				if (Math.pow(exponent.real, -1)%2==0 && real<0) // If our computation will generate an imaginary
 					return new Complex(0, Math.pow(-real, exponent.real));
 				return new Complex(Math.pow(real, exponent.real));
 			}
