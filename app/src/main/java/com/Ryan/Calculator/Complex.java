@@ -2,8 +2,8 @@ package com.Ryan.Calculator;
 
 public class Complex
 {
-	private double real;
-	private double imaginary;
+	private final double real;
+	private final double imaginary;
 
 	public double epsilon; // The tolerance for comparisons. Can be changed if a certain Complex is known to need a different epsilon
 	// All instances of Complex created by a method of another will inherit the parent epsilon.
@@ -211,29 +211,26 @@ public class Complex
 
 	public Complex addTo(Complex target)
 	{
-		real+=target.real;
-		imaginary+=target.imaginary;
-		return this;
+		return new Complex(real+target.real, imaginary+target.imaginary);
 	}
 
 	public Complex subtractTo (Complex target) // This name doesn't make sense, but none do. In addition, operationTo will be defined for all binary operators,for consistency
 	{
-		real-=target.real;
-		imaginary-=target.imaginary;
-		return this;
+		return new Complex(real-target.real, imaginary-target.imaginary);
 	}
 
 	public Complex multiplyTo (Complex target)
 	{
 		double re=real;
+		double im=imaginary;
 
-		real*=target.real;
-		real-=(imaginary*target.imaginary);
+		re*=target.real;
+		re-=(imaginary*target.imaginary);
 
-		imaginary*=target.real;
-		imaginary+=(re*target.imaginary);
+		im*=target.real;
+		im+=(real*target.imaginary);
 
-		return this;
+		return new Complex(re, im);
 	}
 
 	public Complex multiplyWith (Complex target) // Alias, for logic's sake
@@ -244,25 +241,27 @@ public class Complex
 	public Complex divideTo (Complex target)
 	{
 		double re=real;
+		double im=imaginary;
 
-		real*=target.real;
-		real+=(imaginary*target.imaginary);
+		re*=target.real;
+		re+=(imaginary*target.imaginary);
 
-		imaginary*=target.real;
-		imaginary-=(re*target.imaginary);
+		im*=target.real;
+		im-=(real*target.imaginary);
 
 		double fac=(target.real*target.real)+(target.imaginary*target.imaginary);
 		if (fac==0) // Divide-by-zero check
 			return ERROR;
-		real/=fac;
-		imaginary/=fac;
+		re/=fac;
+		im/=fac;
 
-		return this;
+		return new Complex(re, im);
 	}
 
 	/* FOR HISTORY
 	The following function was produced as an alternative to the above one.
-	It is no better, but it is far more clever
+	It is no better, but it is far more clever.
+	This function no longer works with the current class definition, because it modifies the instance.
 
 
 	public Complex divideTo(Complex target)
@@ -315,8 +314,7 @@ public class Complex
 
 	public Complex rationalize()
 	{
-		this.multiplyTo(conjugate());
-		return this;
+		return multiplyTo(conjugate());
 	}
 
 	public Complex rationalized()
@@ -326,22 +324,18 @@ public class Complex
 
 	public Complex negate()
 	{
-		real=-real;
-		imaginary=-imaginary;
-		return this;
+		return new Complex(-real, -imaginary);
 	}
 
 	public static Complex negate (Complex rhs)
 	{
-		Complex out =new Complex (rhs, default_epsilon); // Reset epsilon
+		Complex out=new Complex (rhs, default_epsilon); // Reset epsilon
 		return out.negate();
 	}
 
 	public Complex round()
 	{
-		real=Math.round(real);
-		imaginary=Math.round(imaginary);
-		return this;
+		return new Complex(Math.round(real), Math.round(imaginary));
 	}
 
 	public static Complex round(Complex val)
@@ -357,9 +351,7 @@ public class Complex
 
 	public Complex floor()
 	{
-		real=Math.floor(real);
-		imaginary=Math.floor(imaginary);
-		return this;
+		return new Complex(Math.floor(real), Math.floor(imaginary));
 	}
 
 	public static Complex floor(Complex val)
@@ -375,9 +367,7 @@ public class Complex
 
 	public Complex ceil()
 	{
-		real=Math.ceil(real);
-		imaginary=Math.ceil(imaginary);
-		return this;
+		return new Complex(Math.ceil(real), Math.ceil(imaginary));
 	}
 
 	public static Complex ceil(Complex val)
@@ -391,18 +381,10 @@ public class Complex
 		return ceil(this);
 	}
 
-	public Complex modulo (Complex target) // Doesn't modify the current instance
+	public Complex moduloTo (Complex target)
 	{
 		// Extension of the algorithm for general real modulo
 		return subtract(this, multiply(floor(divide(this, target)), target));
-	}
-
-	public Complex moduloTo (Complex target) // Does modify the current instance
-	{
-		Complex result=modulo(target);
-		real=result.real;
-		imaginary=result.imaginary;
-		return this;
 	}
 
 	public Complex moduloWith (Complex target) // For sanity
@@ -410,13 +392,9 @@ public class Complex
 		return moduloTo(target);
 	}
 
-	// All functions below here do not modify the object they're called on
-	// I've changed my mind. Complex will now be immutable.
-	// TODO: Make it so that this comment is at the top of the file, then delete it.
-
 	public static Complex modulo (Complex lhs, Complex rhs) // Static wrapper
 	{
-		return lhs.modulo(rhs);
+		return lhs.moduloTo(rhs);
 	}
 
 	public double magnitude()
