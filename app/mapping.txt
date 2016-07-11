@@ -5947,31 +5947,34 @@ android.support.v7.widget.ViewUtils -> android.support.v7.widget.df:
     void computeFitSystemWindows(android.view.View,android.graphics.Rect,android.graphics.Rect) -> a
     void <clinit>() -> <clinit>
 com.Ryan.Calculator.Complex -> com.Ryan.Calculator.a:
-    double real -> a
-    double imaginary -> b
-    double epsilon -> c
-    double default_epsilon -> d
-    com.Ryan.Calculator.Complex ZERO -> e
-    com.Ryan.Calculator.Complex ONE -> f
-    com.Ryan.Calculator.Complex I -> g
-    com.Ryan.Calculator.Complex PI -> h
-    com.Ryan.Calculator.Complex E -> i
-    com.Ryan.Calculator.Complex ERROR -> j
+    double real -> i
+    double imaginary -> j
+    double epsilon -> a
+    double default_epsilon -> b
+    com.Ryan.Calculator.Complex ZERO -> c
+    com.Ryan.Calculator.Complex ONE -> d
+    com.Ryan.Calculator.Complex I -> e
+    com.Ryan.Calculator.Complex PI -> f
+    com.Ryan.Calculator.Complex E -> g
+    com.Ryan.Calculator.Complex ERROR -> h
     void <init>() -> <init>
     void <init>(double) -> <init>
     void <init>(double,double) -> <init>
     void <init>(com.Ryan.Calculator.Complex,double) -> <init>
+    double real() -> a
+    double imaginary() -> b
     java.lang.String toString() -> toString
     java.lang.String toString(com.Ryan.Calculator.Complex) -> a
     boolean equals(java.lang.Object) -> equals
+    int hashCode() -> hashCode
     com.Ryan.Calculator.Complex parseString(java.lang.String) -> a
     boolean epsilonEqualTo(double,double) -> a
     boolean epsilonNotEqualTo(double,double) -> b
     boolean epsilonGreaterThan(double,double) -> c
     boolean epsilonGreaterThanOrEqualTo(double,double) -> d
     boolean epsilonLessThan(double,double) -> e
-    boolean isReal() -> a
-    boolean isImaginary() -> b
+    boolean isReal() -> c
+    boolean isImaginary() -> d
     com.Ryan.Calculator.Complex addTo(com.Ryan.Calculator.Complex) -> b
     com.Ryan.Calculator.Complex subtractTo(com.Ryan.Calculator.Complex) -> c
     com.Ryan.Calculator.Complex multiplyTo(com.Ryan.Calculator.Complex) -> d
@@ -5988,13 +5991,13 @@ com.Ryan.Calculator.Complex -> com.Ryan.Calculator.a:
     com.Ryan.Calculator.Complex floor(com.Ryan.Calculator.Complex) -> floor
     com.Ryan.Calculator.Complex ceil() -> ceil
     com.Ryan.Calculator.Complex ceil(com.Ryan.Calculator.Complex) -> ceil
-    com.Ryan.Calculator.Complex modulo(com.Ryan.Calculator.Complex) -> f
-    double magnitude() -> c
-    double argument() -> d
+    com.Ryan.Calculator.Complex moduloTo(com.Ryan.Calculator.Complex) -> f
+    double magnitude() -> e
+    double argument() -> f
     com.Ryan.Calculator.Complex ln() -> ln
     com.Ryan.Calculator.Complex log(com.Ryan.Calculator.Complex) -> log
-    com.Ryan.Calculator.Complex log10() -> e
-    com.Ryan.Calculator.Complex ln1p() -> f
+    com.Ryan.Calculator.Complex log10() -> g
+    com.Ryan.Calculator.Complex ln1p() -> h
     com.Ryan.Calculator.Complex ln(com.Ryan.Calculator.Complex) -> ln
     com.Ryan.Calculator.Complex log10(com.Ryan.Calculator.Complex) -> g
     com.Ryan.Calculator.Complex log(com.Ryan.Calculator.Complex,com.Ryan.Calculator.Complex) -> log
@@ -6017,11 +6020,11 @@ com.Ryan.Calculator.Complex -> com.Ryan.Calculator.a:
     com.Ryan.Calculator.Complex cbrt(com.Ryan.Calculator.Complex) -> cbrt
     com.Ryan.Calculator.Complex square() -> square
     com.Ryan.Calculator.Complex square(com.Ryan.Calculator.Complex) -> square
-    com.Ryan.Calculator.Complex asin() -> g
+    com.Ryan.Calculator.Complex asin() -> i
     com.Ryan.Calculator.Complex asin(com.Ryan.Calculator.Complex) -> j
-    com.Ryan.Calculator.Complex acos() -> h
+    com.Ryan.Calculator.Complex acos() -> j
     com.Ryan.Calculator.Complex acos(com.Ryan.Calculator.Complex) -> k
-    com.Ryan.Calculator.Complex atan() -> i
+    com.Ryan.Calculator.Complex atan() -> k
     com.Ryan.Calculator.Complex atan(com.Ryan.Calculator.Complex) -> l
     com.Ryan.Calculator.Complex sinh() -> sinh
     com.Ryan.Calculator.Complex sinh(com.Ryan.Calculator.Complex) -> sinh
@@ -6029,9 +6032,9 @@ com.Ryan.Calculator.Complex -> com.Ryan.Calculator.a:
     com.Ryan.Calculator.Complex cosh(com.Ryan.Calculator.Complex) -> cosh
     com.Ryan.Calculator.Complex tanh() -> tanh
     com.Ryan.Calculator.Complex tanh(com.Ryan.Calculator.Complex) -> tanh
-    com.Ryan.Calculator.Complex toDegrees() -> j
+    com.Ryan.Calculator.Complex toDegrees() -> l
     com.Ryan.Calculator.Complex toDegrees(com.Ryan.Calculator.Complex) -> m
-    com.Ryan.Calculator.Complex toRadians() -> k
+    com.Ryan.Calculator.Complex toRadians() -> m
     com.Ryan.Calculator.Complex toRadians(com.Ryan.Calculator.Complex) -> n
     double abs() -> abs
     double abs(com.Ryan.Calculator.Complex) -> abs
