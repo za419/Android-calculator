@@ -236,7 +236,7 @@ public class Complex
 		double re=real;
 
 		real*=target.real;
-		real-=(imaginary*target.imaginary);
+		real+=(imaginary*target.imaginary);
 
 		imaginary*=target.real;
 		imaginary-=(re*target.imaginary);
