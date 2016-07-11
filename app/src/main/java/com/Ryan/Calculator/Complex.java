@@ -670,7 +670,7 @@ public class Complex
 
 	public Complex acos()
 	{
-		return multiply(negate(I), ln(add(this, sqrt(subtract(ONE, square())))));
+		return multiply(negate(I), ln(add(this, sqrt(subtract(square(), ONE)))));
 	}
 
 	public static Complex acos(Complex target)
