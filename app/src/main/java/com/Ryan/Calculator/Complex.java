@@ -598,9 +598,9 @@ public class Complex
 			}
 			if (isImaginary())
 			{
-				double coefficient=Math.pow(imaginary, exponent.real);
 				if (Math.round(exponent.real)==exponent.real)
 				{
+					double coefficient=Math.pow(imaginary, exponent.real);
 					Complex[] results = new Complex[] // The results of raising I to powers
 							{
 									new Complex(coefficient), new Complex(0, coefficient),
