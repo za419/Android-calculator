@@ -583,6 +583,8 @@ public class Complex
 			return ZERO; // Zero to the anything is zero
 		if (exponent.equals(ZERO))
 			return ONE; // Anything to the zeroth is one
+		if (equals(ONE))
+			return ONE; // One to the anything is one
 		if (exponent.isReal())
 		{
 			if (isReal()) {
