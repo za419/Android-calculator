@@ -680,7 +680,8 @@ public class Complex
 
 	public Complex atan()
 	{
-		return multiply(new Complex(0,.5), ln(add(this, I).divideTo(subtract(I, this))));
+		return multiply(new Complex(0,.5), subtract(ln(subtract(ONE, multiply(I, this))),
+													ln(add(ONE, multiply(I, this)))));
 	}
 
 	public static Complex atan(Complex target)
