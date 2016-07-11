@@ -241,7 +241,7 @@ public class Complex
 		imaginary*=target.real;
 		imaginary-=(re*target.imaginary);
 
-		double fac=(target.real*target.real)-(target.imaginary*target.imaginary);
+		double fac=(target.real*target.real)+(target.imaginary*target.imaginary);
 		if (fac==0) // Divide-by-zero check
 			return ERROR;
 		real/=fac;
