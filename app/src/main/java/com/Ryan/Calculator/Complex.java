@@ -288,29 +288,25 @@ public class Complex
 	public static Complex add (Complex lhs, Complex rhs)
 	{
 		Complex out=new Complex(lhs, default_epsilon); // Reset the epsilon, to hide what we're doing and prevent odd behavior
-		out.addTo(rhs);
-		return out;
+		return out.addTo(rhs);
 	}
 
 	public static Complex subtract (Complex lhs, Complex rhs)
 	{
 		Complex out=new Complex(lhs, default_epsilon); // Reset the epsilon, to hide what we're doing and prevent odd behavior
-		out.subtractTo(rhs);
-		return out;
+		return out.subtractTo(rhs);
 	}
 
 	public static Complex multiply (Complex lhs, Complex rhs)
 	{
 		Complex out=new Complex(lhs, default_epsilon); // Reset the epsilon, to hide what we're doing and prevent odd behavior
-		out.multiplyTo(rhs);
-		return out;
+		return out.multiplyTo(rhs);
 	}
 
 	public static Complex divide (Complex lhs, Complex rhs)
 	{
 		Complex out=new Complex(lhs, default_epsilon); // Reset the epsilon, to hide what we're doing and prevent odd behavior
-		out.divideTo(rhs);
-		return out;
+		return out.divideTo(rhs);
 	}
 
 	public Complex conjugate ()
