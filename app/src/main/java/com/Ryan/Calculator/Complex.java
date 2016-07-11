@@ -112,6 +112,12 @@ public class Complex
 		return super.equals(o);
 	}
 
+	@Override
+	public int hashCode()
+	{
+		return ((Double)real).hashCode()^((Double)imaginary).hashCode();
+	}
+
 	public static Complex parseString(String str) // Parses a string from the format used above to return a Complex
 	{
 		if (str==null)
