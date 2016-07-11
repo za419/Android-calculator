@@ -609,8 +609,10 @@ public class Complex
 		// There is almost certainly a nicer way to write this. I'm so sorry
 		// Formula used from Wolfram MathWorld: http://mathworld.wolfram.com/ComplexExponentiation.html, July 10 2016
 		// TODO: Comment this silly mess
-		return multiply(pow((real*real)+(imaginary*imaginary), divide(exponent, new Complex(2))),
-						exp(multiply(I, multiply(exponent, new Complex(argument())))));
+		double fac=exponent.real*argument()+.5*exponent.imaginary*Math.log((real*real)+(imaginary*imaginary));
+		return multiply(new Complex(Math.pow((real*real)+(imaginary*imaginary), exponent.real/2)*
+									Math.exp(-exponent.imaginary*argument())),
+						new Complex(Math.cos(fac), Math.sin(fac)));
 		// Yes, I know the indentation is messy. It's used mostly to clarify which expression pairs with which
 	}
 
