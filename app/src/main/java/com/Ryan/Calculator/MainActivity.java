@@ -398,7 +398,7 @@ public class MainActivity extends Activity
 				else if (Complex.round(tmp).equals(Complex.ZERO))
 					setText("Error: Divide by zero.");
 				else
-					setText(inIntTermsOfAny(Complex.round(currentValue).modulo(Complex.round(tmp))), ev);
+					setText(inIntTermsOfAny(Complex.round(currentValue).moduloTo(Complex.round(tmp))), ev);
 			}
 		}, Complex.ONE);
 	}
@@ -428,7 +428,7 @@ public class MainActivity extends Activity
 				else if (Complex.round(currentValue).equals(Complex.ZERO))
 					setText("Error: Divide by zero.");
 				else
-					setText(inIntTermsOfAny(Complex.round(tmp).modulo(Complex.round(currentValue))), ev);
+					setText(inIntTermsOfAny(Complex.round(tmp).moduloTo(Complex.round(currentValue))), ev);
 			}
 		}, Complex.ONE);
 	}
