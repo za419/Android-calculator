@@ -652,7 +652,7 @@ public class Complex
 
 	public static Complex cbrt(Complex out)
 	{
-		return pow(out, new Complex(1/3));
+		return pow(out, new Complex(1.0/3.0));
 	}
 
 	public Complex square()
