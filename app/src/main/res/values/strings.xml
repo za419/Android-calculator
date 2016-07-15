@@ -3,5 +3,6 @@
 
     <string name="hello">Hello World, MainActivity!</string>
     <string name="app_name">Calculator</string>
+    <string name="allowed_entry">1234567890i+-</string>
 
 </resources>
