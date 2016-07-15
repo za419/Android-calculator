@@ -171,6 +171,8 @@ public class Complex
 
 	public static Complex parseNaiveString(String str) // Create a complex based on the format used above. Much faster than parseString(), but does not play well with differently formatted inputs
 	{
+		// MAKES NO GUARANTEE ABOUT BEHAVIOR WITH STRINGS NOT RETURNED BY toNaiveString OR EQUIVALENT!
+		// USE AT YOUR OWN RISK
 		double real;
 		double imaginary;
 		real=parseDoublePrefix(str);
