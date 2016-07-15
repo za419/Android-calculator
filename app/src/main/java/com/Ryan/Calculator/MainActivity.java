@@ -510,7 +510,7 @@ public class MainActivity extends Activity
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		Complex tmp=parseComplex(ev.getText().toString());
 		tmp=Complex.divide(tmp, new Complex(180));
-		setText(Complex.toString(tmp)+'\u03C0', ev);
+		setText('('+Complex.toString(tmp)+')'+'\u03C0', ev);
 	}
 
 	public void ln(View v)
