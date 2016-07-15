@@ -125,6 +125,9 @@ public class Complex
 		if (str==null)
 			return ERROR;
 
+		if (str.equals("")) // Bug avoidance
+			return ZERO;
+
 		if (str.equals("0")) // Special case, for simplicity
 			return ZERO;
 
