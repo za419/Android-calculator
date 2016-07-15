@@ -33,7 +33,7 @@ public class MainActivity extends Activity
 
 	public Complex parseComplex(String num)
 	{
-		if (num==null || "".equals(num) || num.indexOf("Error", 0)==0 || num.indexOf("ERROR", 0)==0)
+		if (num==null || "".equals(num) || num.length()<1 || num.indexOf("Error", 0)==0 || num.indexOf("ERROR", 0)==0)
 			return Complex.ZERO;
 		if ("Not prime".equals(num) || "Not prime or composite".equals(num) || "Not Gaussian prime".equals(num))
 			return Complex.ZERO;
