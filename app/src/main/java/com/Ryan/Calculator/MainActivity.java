@@ -744,7 +744,7 @@ public class MainActivity extends Activity
 			}
 			else
 			{
-				double norm=m.magnitude();
+				double norm=(m.real()*m.real())+(m.imaginary()*m.imaginary());
 				int n=(int) Math.floor(norm);
 				if (n==norm)
 				{
