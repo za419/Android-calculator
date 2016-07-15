@@ -1,5 +1,7 @@
 package com.Ryan.Calculator;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Complex
 {
 	private final double real;
@@ -788,8 +790,10 @@ public class Complex
 	}
 
 	// Helper methods
-	private static double parseDoublePrefix(String str) // Acts like parseDouble, except it will not fail on strings like "2.0i"
+	private static double parseDoublePrefix(@NotNull String str) // Acts like parseDouble, except it will not fail on strings like "2.0i"
 	{
+		if ("".equals(str))
+			return 0;
 		StringBuilder proc = new StringBuilder();
 		int i = 0;
 		if (str.charAt(i) == '-') {
