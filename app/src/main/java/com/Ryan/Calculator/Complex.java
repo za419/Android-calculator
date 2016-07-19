@@ -150,9 +150,9 @@ public class Complex
 				imaginary=-1;
 			else
 			{
-				if (str.contains("+"))
+				if (str.contains("+")) // a+bi
 					imaginary=parseDoublePrefix(str.substring(str.indexOf('+')+1));
-				else if (str.contains("-"))
+				else if (str.contains("-") && str.charAt(0)!='-') // a-bi, but not -a+bi or -bi
 					imaginary=parseDoublePrefix(str.substring(str.indexOf("-", 1)));
 				else
 					return new Complex(0, real);
