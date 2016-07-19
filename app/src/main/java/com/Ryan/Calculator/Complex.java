@@ -152,9 +152,18 @@ public class Complex
 			{
 				if (str.contains("+")) // a+bi
 					imaginary=parseDoublePrefix(str.substring(str.indexOf('+')+1));
-				else if (str.contains("-") && str.charAt(0)!='-') // a-bi, but not -a+bi or -bi
-					imaginary=parseDoublePrefix(str.substring(str.indexOf("-", 1)));
-				else
+				else if (str.contains("-")) {
+					if (str.charAt(0)=='-') { // -a-bi, or -bi - "-a+bi" already caught by the last check
+						String n=str.substring(1);
+						if (n.contains("-")) // -a-bi
+							imaginary=parseDoublePrefix(n.substring(n.indexOf('-', 1)));
+						else // -bi
+							return new Complex(0, real);
+					}
+					else // a-bi
+						imaginary = parseDoublePrefix(str.substring(str.indexOf("-", 1)));
+				}
+				else // bi
 					return new Complex(0, real);
 			}
 		}
