@@ -69,9 +69,8 @@ public class MainActivity extends Activity
 				return Complex.PI;
 			else if (num.length()==2 && num.charAt(0)=='-') // If the string is two long and the first character is a negation
 				return Complex.negate(Complex.PI); // Return negative pi
-			else if (num.charAt(0)=='(') { // Check for parentheses
-				return Complex.multiply(Complex.PI, parseComplex((String)num.subSequence(1, num.length()-2)));
-			}
+			else if (num.charAt(0)=='(') // Check for parentheses
+				return Complex.multiply(Complex.PI, parseComplex(num.substring(1, num.length()-2)));
 			return Complex.multiply(parseComplex(num.substring(0, num.length()-1)), Complex.PI);
 		}
 		if (num.charAt(num.length()-1)=='e')
@@ -80,6 +79,8 @@ public class MainActivity extends Activity
 				return Complex.E;
 			else if (num.length()==2 && num.charAt(0)=='-') // If the string is two long and the first character is a negation
 				return Complex.negate(Complex.E); // Return negative e
+			else if (num.charAt(0)=='(') // Check for parentheses
+				return Complex.multiply(Complex.E, parseComplex(num.substring(1, num.length()-2)));
 			return Complex.multiply(parseComplex(num.substring(0, num.length()-1)), Complex.E);
 		}
 		try {
