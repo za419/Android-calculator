@@ -39,7 +39,7 @@ public class MainActivity extends Activity
 		InputFilter filter=new InputFilter() {
 			@Override
 			public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-				if (source.toString().contains("!")) {
+				if (source!=null && source.toString().contains("!")) {
 					SpannableString ch=new SpannableString(source.toString().replace('!', 'i'));
 					if (source instanceof Spanned) // We need to copy spans if source is spanned
 						TextUtils.copySpansFrom((Spanned)source, 0, source.length(), Spanned.class, ch, 0);
