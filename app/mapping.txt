@@ -6108,10 +6108,9 @@ com.Ryan.Calculator.MainActivity -> com.Ryan.Calculator.MainActivity:
     java.math.BigInteger fastPow(int) -> a
     void raise2(android.view.View) -> raise2
 com.Ryan.Calculator.MainActivity$1 -> com.Ryan.Calculator.b:
-    android.widget.EditText val$ev -> a
-    com.Ryan.Calculator.MainActivity this$0 -> b
-    void <init>(com.Ryan.Calculator.MainActivity,android.widget.EditText) -> <init>
-    void onClick(android.view.View) -> onClick
+    com.Ryan.Calculator.MainActivity this$0 -> a
+    void <init>(com.Ryan.Calculator.MainActivity) -> <init>
+    java.lang.CharSequence filter(java.lang.CharSequence,int,int,android.text.Spanned,int,int) -> filter
 com.Ryan.Calculator.MainActivity$10 -> com.Ryan.Calculator.c:
     android.widget.EditText val$ev -> a
     com.Ryan.Calculator.MainActivity this$0 -> b
@@ -6127,42 +6126,47 @@ com.Ryan.Calculator.MainActivity$12 -> com.Ryan.Calculator.e:
     com.Ryan.Calculator.MainActivity this$0 -> b
     void <init>(com.Ryan.Calculator.MainActivity,android.widget.EditText) -> <init>
     void onClick(android.view.View) -> onClick
-com.Ryan.Calculator.MainActivity$2 -> com.Ryan.Calculator.f:
+com.Ryan.Calculator.MainActivity$13 -> com.Ryan.Calculator.f:
     android.widget.EditText val$ev -> a
     com.Ryan.Calculator.MainActivity this$0 -> b
     void <init>(com.Ryan.Calculator.MainActivity,android.widget.EditText) -> <init>
     void onClick(android.view.View) -> onClick
-com.Ryan.Calculator.MainActivity$3 -> com.Ryan.Calculator.g:
+com.Ryan.Calculator.MainActivity$2 -> com.Ryan.Calculator.g:
     android.widget.EditText val$ev -> a
     com.Ryan.Calculator.MainActivity this$0 -> b
     void <init>(com.Ryan.Calculator.MainActivity,android.widget.EditText) -> <init>
     void onClick(android.view.View) -> onClick
-com.Ryan.Calculator.MainActivity$4 -> com.Ryan.Calculator.h:
+com.Ryan.Calculator.MainActivity$3 -> com.Ryan.Calculator.h:
     android.widget.EditText val$ev -> a
     com.Ryan.Calculator.MainActivity this$0 -> b
     void <init>(com.Ryan.Calculator.MainActivity,android.widget.EditText) -> <init>
     void onClick(android.view.View) -> onClick
-com.Ryan.Calculator.MainActivity$5 -> com.Ryan.Calculator.i:
+com.Ryan.Calculator.MainActivity$4 -> com.Ryan.Calculator.i:
     android.widget.EditText val$ev -> a
     com.Ryan.Calculator.MainActivity this$0 -> b
     void <init>(com.Ryan.Calculator.MainActivity,android.widget.EditText) -> <init>
     void onClick(android.view.View) -> onClick
-com.Ryan.Calculator.MainActivity$6 -> com.Ryan.Calculator.j:
+com.Ryan.Calculator.MainActivity$5 -> com.Ryan.Calculator.j:
     android.widget.EditText val$ev -> a
     com.Ryan.Calculator.MainActivity this$0 -> b
     void <init>(com.Ryan.Calculator.MainActivity,android.widget.EditText) -> <init>
     void onClick(android.view.View) -> onClick
-com.Ryan.Calculator.MainActivity$7 -> com.Ryan.Calculator.k:
+com.Ryan.Calculator.MainActivity$6 -> com.Ryan.Calculator.k:
     android.widget.EditText val$ev -> a
     com.Ryan.Calculator.MainActivity this$0 -> b
     void <init>(com.Ryan.Calculator.MainActivity,android.widget.EditText) -> <init>
     void onClick(android.view.View) -> onClick
-com.Ryan.Calculator.MainActivity$8 -> com.Ryan.Calculator.l:
+com.Ryan.Calculator.MainActivity$7 -> com.Ryan.Calculator.l:
     android.widget.EditText val$ev -> a
     com.Ryan.Calculator.MainActivity this$0 -> b
     void <init>(com.Ryan.Calculator.MainActivity,android.widget.EditText) -> <init>
     void onClick(android.view.View) -> onClick
-com.Ryan.Calculator.MainActivity$9 -> com.Ryan.Calculator.m:
+com.Ryan.Calculator.MainActivity$8 -> com.Ryan.Calculator.m:
+    android.widget.EditText val$ev -> a
+    com.Ryan.Calculator.MainActivity this$0 -> b
+    void <init>(com.Ryan.Calculator.MainActivity,android.widget.EditText) -> <init>
+    void onClick(android.view.View) -> onClick
+com.Ryan.Calculator.MainActivity$9 -> com.Ryan.Calculator.n:
     android.widget.EditText val$ev -> a
     com.Ryan.Calculator.MainActivity this$0 -> b
     void <init>(com.Ryan.Calculator.MainActivity,android.widget.EditText) -> <init>
