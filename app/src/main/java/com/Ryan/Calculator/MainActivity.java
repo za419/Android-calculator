@@ -63,14 +63,19 @@ public class MainActivity extends Activity
 			return Complex.ZERO;
 		if ("Prime".equals(num) || "Gaussian prime".equals(num))
 			return Complex.ONE;
+		if (num.charAt(0)=='(') {
+			char ending=num.charAt(num.length()-1);
+			if (ending=='\u03C0')
+				return Complex.multiply(Complex.PI, parseComplex(num.substring(1, num.length() - 2)));
+			else if (ending=='e')
+				return Complex.multiply(Complex.E, parseComplex(num.substring(1, num.length()-2)));
+		}
 		if (num.charAt(num.length()-1)=='\u03C0')
 		{
 			if (num.length()==1)
 				return Complex.PI;
 			else if (num.length()==2 && num.charAt(0)=='-') // If the string is two long and the first character is a negation
 				return Complex.negate(Complex.PI); // Return negative pi
-			else if (num.charAt(0)=='(') // Check for parentheses
-				return Complex.multiply(Complex.PI, parseComplex(num.substring(1, num.length()-2)));
 			return Complex.multiply(parseComplex(num.substring(0, num.length()-1)), Complex.PI);
 		}
 		if (num.charAt(num.length()-1)=='e')
@@ -79,8 +84,6 @@ public class MainActivity extends Activity
 				return Complex.E;
 			else if (num.length()==2 && num.charAt(0)=='-') // If the string is two long and the first character is a negation
 				return Complex.negate(Complex.E); // Return negative e
-			else if (num.charAt(0)=='(') // Check for parentheses
-				return Complex.multiply(Complex.E, parseComplex(num.substring(1, num.length()-2)));
 			return Complex.multiply(parseComplex(num.substring(0, num.length()-1)), Complex.E);
 		}
 		try {
