@@ -4,12 +4,18 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainActivity extends Activity
 {
@@ -29,6 +35,24 @@ public class MainActivity extends Activity
 				findViewById(R.id.mainLayout).setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
 		}
 		setZero();
+
+		InputFilter filter=new InputFilter() {
+			@Override
+			public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+				if (source.toString().contains("!")) {
+					SpannableString ch=new SpannableString(source.toString().replace('!', 'i'));
+					if (source instanceof Spanned) // We need to copy spans if source is spanned
+						TextUtils.copySpansFrom((Spanned)source, 0, source.length(), Spanned.class, ch, 0);
+					return ch;
+				}
+				return null;
+			}
+		};
+
+		EditText ev=(EditText)findViewById(R.id.mainTextField);
+		ArrayList<InputFilter> filters=new ArrayList<>(Arrays.asList(ev.getFilters()));
+		filters.add(filter);
+		ev.setFilters(filters.toArray(new InputFilter[]{}));
 	}
 
 	public Complex parseComplex(String num)
