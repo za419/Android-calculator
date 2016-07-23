@@ -57,6 +57,10 @@ public class MainActivity extends Activity
 
 	public double parseCoefficient(String num) // Parses a number of any form into a double coefficient
 	{
+		// Error handling
+		if ("".equals(num) || num.length()<1)
+			return 0;
+
 		if (num.charAt(num.length()-1)=='\u03C0')
 		{
 			if (num.length()==1)
@@ -87,12 +91,15 @@ public class MainActivity extends Activity
 
 	public Complex parseComplex(String num)
 	{
+		// Special string checks
 		if (num==null || "".equals(num) || num.length()<1 || num.indexOf("Error", 0)==0 || num.indexOf("ERROR", 0)==0)
 			return Complex.ZERO;
 		if ("Not prime".equals(num) || "Not prime or composite".equals(num) || "Not Gaussian prime".equals(num))
 			return Complex.ZERO;
 		if ("Prime".equals(num) || "Gaussian prime".equals(num))
 			return Complex.ONE;
+
+		// Handle parentheticals
 		if (num.charAt(0)=='(') {
 			char ending=num.charAt(num.length()-1);
 			if (ending=='\u03C0')
@@ -100,26 +107,50 @@ public class MainActivity extends Activity
 			else if (ending=='e')
 				return Complex.multiply(Complex.E, parseComplex(num.substring(1, num.length()-2)));
 		}
-		if (num.charAt(num.length()-1)=='\u03C0')
-		{
-			if (num.length()==1)
-				return Complex.PI;
-			else if (num.length()==2 && num.charAt(0)=='-') // If the string is two long and the first character is a negation
-				return Complex.negate(Complex.PI); // Return negative pi
-			return Complex.multiply(parseComplex(num.substring(0, num.length()-1)), Complex.PI);
+
+		// Start parsing the number
+		if (num.contains("\u03C0") || num.contains("e")) {
+			// If our number has a character Complex.parseString won't handle, use parseCoefficient-based processing
+			String real;
+			String imaginary;
+			if (num.contains("+")) { // A plus sign is an easy indicator of a two-part number: -a+bi or a+bi
+				int n=num.indexOf('+');
+				real=num.substring(0, n);
+				imaginary=num.substring(n+1);
+			}
+			else if (num.contains("-")) { // A minus sign appears in one of four remaining formats: a-bi, -a-bi, -a, and -bi
+				if (num.contains("i")) { // a-bi, -a-bi, or -bi
+					int n=num.lastIndexOf('-');
+					if (n==0) { // -bi
+						real="";
+						imaginary=num.substring(0, num.length()-1);
+					}
+					else {
+						real=num.substring(0, n);
+						imaginary=num.substring(n); // Include the minus sign
+					}
+				}
+				else { // -a
+					imaginary="";
+					real=num;
+				}
+			}
+			else { // If there is no sign, it can only be a or bi. Differentiate on i.
+				real="";
+				imaginary="";
+				if (num.charAt(num.length()-1)=='i')
+					imaginary=num.substring(0, num.length()-1);
+				else
+					real=num;
+			}
+			return new Complex(parseCoefficient(real), parseCoefficient(imaginary));
 		}
-		if (num.charAt(num.length()-1)=='e')
-		{
-			if (num.length()==1)
-				return Complex.E;
-			else if (num.length()==2 && num.charAt(0)=='-') // If the string is two long and the first character is a negation
-				return Complex.negate(Complex.E); // Return negative e
-			return Complex.multiply(parseComplex(num.substring(0, num.length()-1)), Complex.E);
-		}
-		try {
+
+		// If didn't need to perform the relatively expensive parseCoefficient processing...
+		try { // Try to use parseString
 			return Complex.parseString(num);
 		}
-		catch (NumberFormatException e) {
+		catch (NumberFormatException e) { // We couldn't manage to handle the string
 			setText("ERROR: Invalid number");
 			View v=findViewById(R.id.mainCalculateButton);
 			v.setOnClickListener(null); // Cancel existing computation
