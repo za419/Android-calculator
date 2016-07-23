@@ -6044,7 +6044,8 @@ com.Ryan.Calculator.MainActivity -> com.Ryan.Calculator.MainActivity:
     com.Ryan.Calculator.Complex currentValue -> a
     void <init>() -> <init>
     void onCreate(android.os.Bundle) -> onCreate
-    com.Ryan.Calculator.Complex parseComplex(java.lang.String) -> a
+    double parseCoefficient(java.lang.String) -> a
+    com.Ryan.Calculator.Complex parseComplex(java.lang.String) -> b
     java.lang.String inIntTermsOfPi(double) -> a
     java.lang.String inIntTermsOfPi(com.Ryan.Calculator.Complex) -> a
     java.lang.String inIntTermsOfE(double) -> b
@@ -6055,7 +6056,7 @@ com.Ryan.Calculator.MainActivity -> com.Ryan.Calculator.MainActivity:
     void setZero(android.widget.EditText) -> a
     void setZero() -> a
     void setText(java.lang.String,android.widget.EditText) -> a
-    void setText(java.lang.String) -> b
+    void setText(java.lang.String) -> c
     void terms(android.view.View) -> terms
     void decimal(android.view.View) -> decimal
     com.Ryan.Calculator.Complex getValue(android.widget.EditText) -> b
