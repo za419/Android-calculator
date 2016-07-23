@@ -321,7 +321,7 @@ public class MainActivity extends Activity
 	{
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		String str=ev.getText().toString().trim();
-		if (str==null || str.indexOf("Error", 0)==0 || str.indexOf("ERROR", 0)==0)
+		if (str.indexOf("Error", 0)==0 || str.indexOf("ERROR", 0)==0)
 			setText(Complex.toString(Complex.ZERO));
 		else
 			setText(Complex.toString(parseComplex(str)), ev);
