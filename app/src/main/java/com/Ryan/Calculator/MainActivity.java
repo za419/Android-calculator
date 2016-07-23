@@ -107,18 +107,25 @@ public class MainActivity extends Activity
 			if (num.contains("+")) { // A plus sign is an easy indicator of a two-part number: -a+bi or a+bi
 				int n=num.indexOf('+');
 				real=num.substring(0, n);
-				imaginary=num.substring(n+1);
+				imaginary=num.substring(n+1, num.length()-1);
+				if ("".equals(imaginary)) // Keep "i" from tripping us up
+					imaginary="1";
 			}
 			else if (num.contains("-")) { // A minus sign appears in one of four remaining formats: a-bi, -a-bi, -a, and -bi
 				if (num.contains("i")) { // a-bi, -a-bi, or -bi
 					int n=num.lastIndexOf('-');
 					if (n==0) { // -bi
 						real="";
-						imaginary=num.substring(0, num.length()-1);
+						if ("-i".equals(num)) // Keep "-i" from tripping us up
+							imaginary="-1";
+						else
+							imaginary=num.substring(0, num.length()-1);
 					}
-					else {
+					else { // a-bi or -a-bi
 						real=num.substring(0, n);
-						imaginary=num.substring(n); // Include the minus sign
+						imaginary=num.substring(n, num.length()-1); // Include the minus sign
+						if ("-".equals(imaginary)) // Keep "-i" from tripping us up
+							imaginary="-1";
 					}
 				}
 				else { // -a
@@ -129,6 +136,8 @@ public class MainActivity extends Activity
 			else { // If there is no sign, it can only be a or bi. Differentiate on i.
 				real="";
 				imaginary="";
+				if ("i".equals(num))
+					imaginary="1"; // Keep "i" from tripping us up
 				if (num.charAt(num.length()-1)=='i')
 					imaginary=num.substring(0, num.length()-1);
 				else
