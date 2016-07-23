@@ -55,7 +55,7 @@ public class MainActivity extends Activity
 		ev.setFilters(filters.toArray(new InputFilter[]{}));
 	}
 
-	public double parseCoefficient(String num) // Parses a number of any form into a double coefficient
+	public double parseCoefficient(String num) throws NumberFormatException // Parses a number of any form into a double coefficient
 	{
 		// Error handling
 		if ("".equals(num) || num.length()<1)
@@ -77,16 +77,7 @@ public class MainActivity extends Activity
 				return -Math.E; // Return negative e
 			return parseCoefficient(num.substring(0, num.length()-1))*Math.E;
 		}
-		try {
-			return Double.parseDouble(num);
-		}
-		catch (NumberFormatException ex) {
-			setText("ERROR: Invalid number");
-			View v=findViewById(R.id.mainCalculateButton);
-			v.setOnClickListener(null); // Cancel existing computation
-			v.setVisibility(View.GONE); // Remove the button
-			return Double.NaN;
-		}
+		return Double.parseDouble(num);
 	}
 
 	public Complex parseComplex(String num)
@@ -143,7 +134,16 @@ public class MainActivity extends Activity
 				else
 					real=num;
 			}
-			return new Complex(parseCoefficient(real), parseCoefficient(imaginary));
+			try {
+				return new Complex(parseCoefficient(real), parseCoefficient(imaginary));
+			}
+			catch (NumberFormatException ex) { // We couldn't manage to handle the string
+				setText("ERROR: Invalid number");
+				View v=findViewById(R.id.mainCalculateButton);
+				v.setOnClickListener(null); // Cancel existing computation
+				v.setVisibility(View.GONE); // Remove the button
+				return Complex.ERROR;
+			}
 		}
 
 		// If didn't need to perform the relatively expensive parseCoefficient processing...
