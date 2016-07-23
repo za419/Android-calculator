@@ -55,6 +55,36 @@ public class MainActivity extends Activity
 		ev.setFilters(filters.toArray(new InputFilter[]{}));
 	}
 
+	public double parseCoefficient(String num) // Parses a number of any form into a double coefficient
+	{
+		if (num.charAt(num.length()-1)=='\u03C0')
+		{
+			if (num.length()==1)
+				return Math.PI;
+			else if (num.length()==2 && num.charAt(0)=='-') // If the string is two long and the first character is a negation
+				return -Math.PI; // Return negative pi
+			return parseCoefficient(num.substring(0, num.length()-1))*Math.PI;
+		}
+		if (num.charAt(num.length()-1)=='e')
+		{
+			if (num.length()==1)
+				return Math.E;
+			else if (num.length()==2 && num.charAt(0)=='-') // If the string is two long and the first character is a negation
+				return -Math.E; // Return negative e
+			return parseCoefficient(num.substring(0, num.length()-1))*Math.E;
+		}
+		try {
+			return Double.parseDouble(num);
+		}
+		catch (NumberFormatException ex) {
+			setText("ERROR: Invalid number");
+			View v=findViewById(R.id.mainCalculateButton);
+			v.setOnClickListener(null); // Cancel existing computation
+			v.setVisibility(View.GONE); // Remove the button
+			return Double.NaN;
+		}
+	}
+
 	public Complex parseComplex(String num)
 	{
 		if (num==null || "".equals(num) || num.length()<1 || num.indexOf("Error", 0)==0 || num.indexOf("ERROR", 0)==0)
