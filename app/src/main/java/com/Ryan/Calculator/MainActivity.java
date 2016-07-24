@@ -1,6 +1,7 @@
 package com.Ryan.Calculator;
 
 import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,7 +25,9 @@ public class MainActivity extends Activity
 		setContentView(R.layout.main);
 		if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB)
 		{
-			getActionBar().hide();
+			ActionBar ab=getActionBar();
+			if (ab!=null)
+				ab.hide();
 			if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 				findViewById(R.id.mainLayout).setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
 		}
