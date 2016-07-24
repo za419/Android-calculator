@@ -52,7 +52,7 @@ public class MainActivity extends Activity
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		ArrayList<InputFilter> filters=new ArrayList<>(Arrays.asList(ev.getFilters()));
 		filters.add(filter);
-		ev.setFilters(filters.toArray(new InputFilter[]{}));
+		ev.setFilters(filters.toArray(new InputFilter[filters.size()]));
 	}
 
 	public double parseCoefficient(String num) throws NumberFormatException // Parses a number of any form into a double coefficient
