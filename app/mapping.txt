@@ -6108,6 +6108,11 @@ com.Ryan.Calculator.MainActivity -> com.Ryan.Calculator.MainActivity:
     boolean isDivisible(int,int) -> a
     java.math.BigInteger fastPow(int) -> a
     void raise2(android.view.View) -> raise2
+    com.Ryan.Calculator.Complex access$000(com.Ryan.Calculator.MainActivity,java.lang.String) -> a
+    com.Ryan.Calculator.Complex access$100(com.Ryan.Calculator.MainActivity) -> a
+    java.lang.String access$200(com.Ryan.Calculator.MainActivity,com.Ryan.Calculator.Complex) -> a
+    void access$300(com.Ryan.Calculator.MainActivity,java.lang.String,android.widget.EditText) -> a
+    void access$400(com.Ryan.Calculator.MainActivity,java.lang.String) -> b
 com.Ryan.Calculator.MainActivity$1 -> com.Ryan.Calculator.b:
     com.Ryan.Calculator.MainActivity this$0 -> a
     void <init>(com.Ryan.Calculator.MainActivity) -> <init>
