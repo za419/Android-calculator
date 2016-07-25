@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, MainActivity!</string>
-    <string name="app_name">Calculator</string>
+    <string name="app_name">Complex Calculator</string>
+    <string name="app_description">A small calculator application which can perform operations on complex numbers.</string>
+    <string name="allowed_entry">1234567890i+-.()</string>
 
 </resources>
