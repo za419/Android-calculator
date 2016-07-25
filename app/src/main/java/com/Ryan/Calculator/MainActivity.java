@@ -869,27 +869,6 @@ public class MainActivity extends Activity
 		return num%den==0;
 	}
 
-	private double fastPow(double val, int power)
-	{
-		if (val==2)
-			return fastPow(power).doubleValue();
-		switch (power)
-		{
-		case 0:
-			return 1;
-		case 1:
-			return val;
-		case 2:
-			return val*val;
-		default:
-			if (power<0)
-				return 1/fastPow(val, -1*power);
-			if (power%2==0)
-				return fastPow(fastPow(val, 2), power>>1);
-			return val*fastPow(val, power-1);
-		}
-	}
-
 	private BigInteger fastPow(int pow) // 2 as base
 	{
 		return BigInteger.ZERO.flipBit(pow);
