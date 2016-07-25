@@ -12,15 +12,19 @@ android {
 
     buildTypes {
         release {
+            shrinkResources true
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
     dexOptions {
         incremental true
+        maxProcessCount 8
+        javaMaxHeapSize "3g"
     }
 }
 
 dependencies {
     compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'org.jetbrains:annotations-java5:15.0'
 }
