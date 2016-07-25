@@ -8,6 +8,9 @@ public class Complex
 	private final double imaginary;
 
 	public double epsilon; // The tolerance for comparisons. Can be changed if a certain Complex is known to need a different epsilon
+	// Note that this is not a final term: Epsilon can be set on any Complex, including ones that are made and constants.
+	// A useful trick is therefore to use Complex.ZERO as a comparison facilitator, storing an epsilon used for other calculations.
+	// A less useful trick is to use these to store doubles globally. While doable, it will get messy.
 	// All instances of Complex created by a method of another will inherit the parent epsilon.
 
 	static public double default_epsilon = 1E-6; // The default tolerance for all new Complex's. Can be changed if all or most will need a different epsilon. Defaults to a reasonable value
