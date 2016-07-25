@@ -19,7 +19,7 @@ import java.util.Arrays;
 
 public class MainActivity extends Activity
 {
-	public Complex currentValue=Complex.ZERO;
+	private Complex currentValue=Complex.ZERO;
 
 	/** Called when the activity is first created. */
 	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
@@ -55,7 +55,7 @@ public class MainActivity extends Activity
 		ev.setFilters(filters.toArray(new InputFilter[filters.size()]));
 	}
 
-	public double parseCoefficient(String num) throws NumberFormatException // Parses a number of any form into a double coefficient
+	private double parseCoefficient(String num) throws NumberFormatException // Parses a number of any form into a double coefficient
 	{
 		// Error handling
 		if ("".equals(num) || num.length()<1)
@@ -80,7 +80,7 @@ public class MainActivity extends Activity
 		return Double.parseDouble(num);
 	}
 
-	public Complex parseComplex(String num)
+	private Complex parseComplex(String num)
 	{
 		// Special string checks
 		if (num==null || "".equals(num) || num.length()<1 || num.indexOf("Error", 0)==0 || num.indexOf("ERROR", 0)==0)
@@ -168,7 +168,7 @@ public class MainActivity extends Activity
 		}
 	}
 
-	public String inIntTermsOfPi(double num)
+	private String inIntTermsOfPi(double num)
 	{
 		if (num==0)
 			return "0";
@@ -184,7 +184,7 @@ public class MainActivity extends Activity
 			return Double.toString(num);
 	}
 
-	public String inIntTermsOfPi(Complex num)
+	private String inIntTermsOfPi(Complex num)
 	{
 		if (num.equals(Complex.ZERO)) // Special case: Prevents "0+0i"
 			return "0";
@@ -211,7 +211,7 @@ public class MainActivity extends Activity
 		return out;
 	}
 
-	public String inIntTermsOfE(double num)
+	private String inIntTermsOfE(double num)
 	{
 		if (num==0)
 			return "0";
@@ -227,7 +227,7 @@ public class MainActivity extends Activity
 			return Double.toString(num);
 	}
 
-	public String inIntTermsOfE(Complex num)
+	private String inIntTermsOfE(Complex num)
 	{
 		if (num.equals(Complex.ZERO)) // Special case: Prevents "0+0i"
 			return "0";
@@ -254,7 +254,7 @@ public class MainActivity extends Activity
 		return out;
 	}
 
-	public String inIntTermsOfAny(double num)
+	private String inIntTermsOfAny(double num)
 	{
 		if (Double.isNaN(num)) // "Last-resort" check
 			return "ERROR: Non-numeric result."; // Trap NaN and return a generic error for it.
@@ -267,7 +267,7 @@ public class MainActivity extends Activity
 			return inIntTermsOfE(num);
 	}
 
-	public String inIntTermsOfAny(Complex num)
+	private String inIntTermsOfAny(Complex num)
 	{
 		if (num.equals(Complex.ZERO)) // Special case: Prevents "0+0i"
 			return "0";
@@ -299,23 +299,23 @@ public class MainActivity extends Activity
 		setZero();
 	}
 
-	public void setZero(EditText ev)
+	private void setZero(EditText ev)
 	{
 		setText("0", ev);
 	}
 
-	public void setZero()
+	private void setZero()
 	{
 		setZero((EditText) findViewById(R.id.mainTextField));
 	}
 
-	public void setText(String n, EditText ev)
+	private void setText(String n, EditText ev)
 	{
 		ev.setText(n);
 		ev.setSelection(0, n.length()); // Ensure the cursor is at the end
 	}
 
-	public void setText(String n)
+	private void setText(String n)
 	{
 		setText(n, (EditText) findViewById(R.id.mainTextField));
 	}
@@ -336,17 +336,17 @@ public class MainActivity extends Activity
 			setText(Complex.toString(parseComplex(str)), ev);
 	}
 
-	public Complex getValue(final EditText ev) // Parses the content of ev into a double.
+	private Complex getValue(final EditText ev) // Parses the content of ev into a double.
 	{
 		return parseComplex(ev.getText().toString().trim());
 	}
 
-	public void doCalculate(final EditText ev, OnClickListener ocl) // Common code for buttons that use the mainCalculateButton.
+	private void doCalculate(final EditText ev, OnClickListener ocl) // Common code for buttons that use the mainCalculateButton.
 	{
 		doCalculate(ev, ocl, Complex.ZERO);
 	}
 
-	public void doCalculate(final EditText ev, OnClickListener ocl, Complex n) // Common code for buttons that use the mainCalculateButton, setting the default value to n rather than zero.
+	private void doCalculate(final EditText ev, OnClickListener ocl, Complex n) // Common code for buttons that use the mainCalculateButton, setting the default value to n rather than zero.
 	{
 		setText(inIntTermsOfAny(n), ev);
 		final Button b=(Button)findViewById(R.id.mainCalculateButton);
@@ -865,11 +865,11 @@ public class MainActivity extends Activity
 		setText(prime ? "Gaussian prime" : "Not Gaussian prime");
 	}
 
-	public boolean isDivisible(int num, int den) {
+	private boolean isDivisible(int num, int den) {
 		return num%den==0;
 	}
 
-	public double fastPow(double val, int power)
+	private double fastPow(double val, int power)
 	{
 		if (val==2)
 			return fastPow(power).doubleValue();
@@ -890,7 +890,7 @@ public class MainActivity extends Activity
 		}
 	}
 
-	public BigInteger fastPow(int pow) // 2 as base
+	private BigInteger fastPow(int pow) // 2 as base
 	{
 		return BigInteger.ZERO.flipBit(pow);
 	}
