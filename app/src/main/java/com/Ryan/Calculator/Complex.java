@@ -9,6 +9,10 @@ import java.io.Serializable;
 
 public class Complex implements Parcelable, Serializable
 {
+	// Serializable implementation data
+	private static final long serialVersionUID=0L; // Change this whenever the implementation does
+
+	// Class members
 	private final double real;
 	private final double imaginary;
 
