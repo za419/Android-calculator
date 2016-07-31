@@ -1,8 +1,13 @@
 package com.Ryan.Calculator;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.jetbrains.annotations.NotNull;
 
-public class Complex
+import java.io.Serializable;
+
+public class Complex implements Parcelable, Serializable
 {
 	private final double real;
 	private final double imaginary;
@@ -23,6 +28,7 @@ public class Complex
 	final static public Complex E=new Complex(Math.E);
 	final static public Complex ERROR=new Complex(Double.NaN, Double.NaN); // Signifies an invalid operation
 
+	// Constructors
 	public Complex()
 	{
 		real=0;
@@ -65,6 +71,33 @@ public class Complex
 		epsilon=Cepsilon;
 	}
 
+	// Parcelable implementation
+	@Override
+	public int describeContents() { return 0; }
+
+	@Override
+	public void writeToParcel(Parcel out, int flags) {
+		out.writeDouble(real);
+		out.writeDouble(imaginary);
+	}
+
+	public static final Parcelable.Creator<Complex> CREATOR
+			= new Parcelable.Creator<Complex>() {
+		public Complex createFromParcel(Parcel in) {
+			return new Complex(in);
+		}
+
+		public Complex[] newArray(int size) {
+			return new Complex[size];
+		}
+	};
+
+	private Complex(Parcel in) {
+		real=in.readDouble();
+		imaginary=in.readDouble();
+	}
+
+	// Complex object methods
 	public double real()
 	{
 		return real;
