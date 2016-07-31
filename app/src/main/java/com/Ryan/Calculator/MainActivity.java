@@ -58,6 +58,21 @@ public class MainActivity extends Activity
 		ev.setFilters(filters.toArray(new InputFilter[filters.size()]));
 	}
 
+	// Keep currentValue through configuration changes
+	@Override
+	public void onSaveInstanceState (Bundle out)
+	{
+		super.onSaveInstanceState(out);
+		out.putParcelable("currentValue", currentValue);
+	}
+
+	@Override
+	public void onRestoreInstanceState (Bundle in)
+	{
+		super.onRestoreInstanceState(in);
+		currentValue=in.getParcelable("currentValue");
+	}
+
 	private double parseCoefficient(String num) throws NumberFormatException // Parses a number of any form into a double coefficient
 	{
 		// Error handling
