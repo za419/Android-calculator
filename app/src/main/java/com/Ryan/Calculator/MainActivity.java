@@ -29,20 +29,20 @@ public class MainActivity extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB)
+		if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB) // If we have an action bar...
 		{
 			ActionBar ab=getActionBar();
 			if (ab!=null)
-				ab.hide();
-			if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-				findViewById(R.id.mainLayout).setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
+				ab.hide(); // Hide it. It doesn't participate in our layout.
+			if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.ICE_CREAM_SANDWICH) // If we are on or above ICS...
+				findViewById(R.id.mainLayout).setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE); // Set low profile
 		}
-		setZero();
+		setZero(); // Set the input field to zero
 
 		InputFilter filter=new InputFilter() {
 			@Override
 			public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-				if (source!=null && source.toString().contains("!")) {
+				if (source!=null && source.toString().contains("!")) { // Filter exclamation points to i
 					SpannableString ch=new SpannableString(source.toString().replace('!', 'i'));
 					if (source instanceof Spanned) // We need to copy spans if source is spanned
 						TextUtils.copySpansFrom((Spanned)source, 0, source.length(), Spanned.class, ch, 0);
@@ -52,6 +52,7 @@ public class MainActivity extends Activity
 			}
 		};
 
+		// Add that filter to the input field filters
 		EditText ev=(EditText)findViewById(R.id.mainTextField);
 		ArrayList<InputFilter> filters=new ArrayList<>(Arrays.asList(ev.getFilters()));
 		filters.add(filter);
